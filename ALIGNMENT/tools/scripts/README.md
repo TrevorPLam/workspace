@@ -44,13 +44,20 @@ On Windows (Git Bash, WSL):
 
 ## Available Scripts
 
+**Complete Coverage (All 14 Sections):**
 - `validate-section-1.sh` - Root Directory Structure
+- `validate-section-2.sh` - Source Code Layout
 - `validate-section-3.sh` - Configuration & Environment
 - `validate-section-4.sh` - Dependency Management
 - `validate-section-5.sh` - CI/CD Structure
 - `validate-section-6.sh` - Testing Structure
+- `validate-section-7.sh` - Documentation Standards
+- `validate-section-8.sh` - Infrastructure / IaC
+- `validate-section-9.sh` - Governance & Ownership
 - `validate-section-10.sh` - Security & Compliance
+- `validate-section-11.sh` - Observability & Monitoring
 - `validate-section-12.sh` - Change Management
+- `validate-section-13.sh` - Quality & Health Checks
 - `validate-all.sh` - Run all available validations
 
 ## Exit Codes

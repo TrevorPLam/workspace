@@ -4,6 +4,10 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points
 - [Section 2: Source Code Layout](02-Source-Code-Layout.md) - Complete source structure before documenting it
 
+**Principles:**
+- [Documentation Principles](../principles/Documentation-Principles.md) - Core philosophy: *Documentation is code. It should be versioned, reviewed, tested, and kept current. Good documentation is findable, accessible, and written for its audience.*
+  - Key concepts: Docs as code, living documentation, FAIR principles (Findable, Accessible, Interoperable, Reusable), audience awareness, examples over explanations
+
 **Effort Estimate:**
 - **Basic README.md:** 30-60 minutes
 - **Complete documentation (README + docs/):** 2-4 hours
@@ -92,25 +96,43 @@ project/
 
 ## P0 — Required Actions
 
-**Action:** Create essential documentation
+**Action:** Create essential documentation (see [Documentation Principles](../principles/Documentation-Principles.md) for foundational concepts)
 - [ ] Write `README.md` that answers in under 1 minute:
   - What the repo is
   - How to install/run it
   - Where the code lives (reference [Section 2](02-Source-Code-Layout.md) structure)
   - How to contribute and get help
+- [ ] Apply docs as code principle (see [Documentation Principles](../principles/Documentation-Principles.md)):
+  - [ ] Documentation versioned in repository
+  - [ ] Documentation reviewed in PRs
+  - [ ] Documentation updated when code changes
 - [ ] Add `LICENSE` file (mandatory for public repos, optional for private)
 
 See [Templates](Templates.md) for README template.
 
 ## P1 — Recommended Actions
 
-**Action:** Expand documentation
+**Action:** Expand documentation (see [Documentation Principles](../principles/Documentation-Principles.md) for organization principles)
 - [ ] Ensure `docs/` folder exists (should be created in [Section 1 P1](01-Root-Directory-Structure.md))
+- [ ] Apply living documentation principle (see [Documentation Principles](../principles/Documentation-Principles.md)):
+  - [ ] Update documentation when code changes
+  - [ ] Review documentation in code reviews
+  - [ ] Remove outdated documentation
+  - [ ] Test examples to ensure they work
 - [ ] Populate `docs/` folder with structure:
   - `docs/architecture.md` - System design
   - `docs/setup.md` - Detailed setup instructions
   - `docs/operations.md` - Operational procedures
   - `docs/onboarding.md` - Developer onboarding guide (see below)
+- [ ] Write for your audience (see [Documentation Principles](../principles/Documentation-Principles.md)):
+  - [ ] Users - How to use the software
+  - [ ] Developers - How to contribute
+  - [ ] Operators - How to run/deploy
+- [ ] Use examples over explanations (see [Documentation Principles](../principles/Documentation-Principles.md)):
+  - [ ] Show, don't just tell
+  - [ ] Provide code examples
+  - [ ] Make examples copy-paste ready
+  - [ ] Test examples to ensure they work
 - [ ] Add sub-READMEs in major directories (`src/README.md`, `infra/README.md`)
 - [ ] Include diagrams (Mermaid or images) for complex systems
 - [ ] For APIs: maintain OpenAPI/Swagger specs
@@ -251,6 +273,10 @@ See [Templates](Templates.md) for README template.
 - ✅ Documentation is accurate and up-to-date
 - ✅ No broken links in documentation
 - ✅ Developer onboarding guide exists (if P1 completed)
+- ✅ Documentation follows docs as code principle (versioned, reviewed, tested)
+- ✅ Living documentation maintained (updated with code changes)
+- ✅ Documentation written for audience (clear, examples, accessible)
+- ✅ Documentation follows principles from [Documentation Principles](../principles/Documentation-Principles.md)
 
 ## Common Issues & Solutions
 

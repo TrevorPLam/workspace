@@ -26,6 +26,10 @@ ALIGNMENT/
 │   ├── 12-Change-Management.md
 │   └── 13-Quality-Health-Checks.md
 │
+├── principles/                  # Philosophical foundations for standards
+│   ├── README.md
+│   └── Configuration-Principles.md
+│
 ├── getting-started/             # Quick start guides
 │   ├── Quick-Start-Checklist.md
 │   ├── Minimum-Viable-Alignment.md
@@ -56,6 +60,7 @@ ALIGNMENT/
 │
 └── meta/                        # Metadata and configuration
     ├── alignment-progress.json
+    ├── optimization-tracker.json
     └── .markdownlint.json
 ```
 
@@ -63,6 +68,17 @@ ALIGNMENT/
 
 ### standards/
 Contains the 14 core ALIGNMENT standards (numbered 00-13). These are the main specification documents that define requirements for repository alignment.
+
+### principles/
+Contains standalone principle documents that provide philosophical foundations for standards. Principles define the "why" and "what" behind our standards, while standards provide the "how" through implementation checklists.
+
+**Characteristics:**
+- **Standalone:** Each principle document is self-contained
+- **Philosophical:** Focus on core concepts and rationale
+- **Foundational:** Standards reference principles for context
+- **Cross-cutting:** Principles may inform multiple standards
+
+See [principles/README.md](principles/README.md) for more information.
 
 ### getting-started/
 Quick start guides for different use cases:
@@ -93,12 +109,14 @@ Automation scripts and validation tools:
 ### meta/
 Metadata files:
 - Progress tracking schema
+- Optimization tracking
 - Linting configuration
 - Other configuration files
 
 ## File Naming Conventions
 
 - **Standards files**: Numbered `##-Section-Name.md` (e.g., `01-Root-Directory-Structure.md`)
+- **Principles files**: `[Topic]-Principles.md` (e.g., `Configuration-Principles.md`)
 - **Getting started**: Descriptive names (e.g., `Quick-Start-Checklist.md`)
 - **Reference**: Descriptive names (e.g., `Templates.md`)
 - **Supporting**: Descriptive names (e.g., `FAQ.md`)
@@ -124,3 +142,7 @@ Files were reorganized on 2026-01-28. If you have bookmarks or external referenc
 - Old paths: `00-Prerequisites.md` → New: `standards/00-Prerequisites.md`
 - Old paths: `Templates.md` → New: `reference/Templates.md`
 - Old paths: `scripts/` → New: `tools/scripts/`
+
+**2026-01-28 Update:**
+- Added `principles/` folder for standalone principle documents
+- `CONFIG.md` → `principles/Configuration-Principles.md`

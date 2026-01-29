@@ -5,6 +5,46 @@ All notable changes to the ALIGNMENT repository standard will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-01-28
+
+### Added
+
+#### Principles Layer
+- **Principles Infrastructure:** Added `principles/` folder for philosophical foundations
+- **Configuration Principles:** Integrated CONFIG.md as Configuration-Principles.md
+- **Testing Principles:** Created Testing-Principles.md with TDD and test pyramid guidance
+- **Security Principles:** Created Security-Principles.md with defense in depth and least privilege
+- **Change Management Principles:** Created Change-Management-Principles.md with SemVer and deprecation guidance
+- **Documentation Principles:** Created Documentation-Principles.md with docs as code and FAIR principles
+- **Governance Principles:** Created Governance-Principles.md with ownership and contribution philosophy
+- **Principles Workflow:** Created PRINCIPLES-WORKFLOW.md and PRINCIPLES-CANDIDATES.md for systematic principle identification
+
+#### Architecture & Optimization
+- **Architecture Analysis:** Created ARCHITECTURE-DEEP-ANALYSIS.md with comprehensive architecture review
+- **Consistency Analysis:** Created CONSISTENCY-ANALYSIS.md with consistency review
+- **Optimization Framework:** Created OPTIMIZATION-ROADMAP.md, OPTIMIZATION-DECISION-FRAMEWORK.md, and OPTIMIZATION-CHECKLIST.md
+- **Optimization Tracking:** Added meta/optimization-tracker.json for tracking optimization opportunities
+
+### Changed
+- Enhanced Section 3 (Configuration) with principles integration and layering model
+- Enhanced Section 6 (Testing) with test pyramid and TDD principles
+- Enhanced Section 7 (Documentation) with docs as code and FAIR principles
+- Enhanced Section 9 (Governance) with ownership and contribution principles
+- Enhanced Section 10 (Security) with defense in depth and least privilege principles
+- Enhanced Section 12 (Change Management) with SemVer and deprecation principles
+- Updated README.md with principles section
+- Updated STRUCTURE.md with principles folder documentation
+
+### Removed
+- **Cleanup:** Removed redundant historical summary documents:
+  - ARCHITECTURE-ANALYSIS.md (superseded by ARCHITECTURE-DEEP-ANALYSIS.md)
+  - INTEGRATION-SUMMARY.md (historical, integration complete)
+  - QUESTION-REFINEMENT-SUMMARY.md (historical, changes in standards)
+  - REORGANIZATION-SUMMARY.md (historical, structure in STRUCTURE.md)
+  - principles/WORKFLOW-ANALYSIS-SUMMARY.md (redundant with workflow docs)
+
+---
+
 ## [1.1.0] - 2026-01-28
 
 ### Added

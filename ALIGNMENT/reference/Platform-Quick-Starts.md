@@ -196,16 +196,165 @@ stages:
 
 ### Time Estimate: 20-40 minutes
 
+## CircleCI Quick Start
+
+### Setup (10 minutes)
+
+1. **Create .circleci/config.yml:**
+```yaml
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:18.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Test
+          command: npm test
+      - run:
+          name: Lint
+          command: npm run lint
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
+```
+
+2. **Connect repository:**
+   - Go to CircleCI dashboard
+   - Add project
+   - Select repository
+   - Start building
+
+### Time Estimate: 15-30 minutes
+
+## Bitbucket Pipelines Quick Start
+
+### Setup (10 minutes)
+
+1. **Create bitbucket-pipelines.yml in root:**
+```yaml
+image: node:18
+
+pipelines:
+  default:
+    - step:
+        name: Build and Test
+        caches:
+          - node
+        script:
+          - npm ci
+          - npm run build
+          - npm run lint
+          - npm test
+        artifacts:
+          - dist/**
+  branches:
+    main:
+      - step:
+          name: Build and Test
+          caches:
+            - node
+          script:
+            - npm ci
+            - npm run build
+            - npm run lint
+            - npm test
+            - npm audit --audit-level=moderate
+```
+
+2. **Enable Pipelines:**
+   - Go to repository Settings → Pipelines
+   - Enable Pipelines
+   - Push changes
+
+### Time Estimate: 15-30 minutes
+
+## Jenkins Quick Start
+
+### Setup (20 minutes)
+
+1. **Create Jenkinsfile in root:**
+```groovy
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'npm ci'
+                sh 'npm run build'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+        
+        stage('Security') {
+            steps {
+                sh 'npm audit --audit-level=moderate'
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
+```
+
+2. **Create Pipeline Job:**
+   - New Item → Pipeline
+   - Configure → Pipeline script from SCM
+   - Select Git, enter repository URL
+   - Script Path: `Jenkinsfile`
+
+### Time Estimate: 30-60 minutes (includes Jenkins setup)
+
 ## Platform Comparison
 
-| Feature | GitHub Actions | GitLab CI | Azure DevOps |
-|---------|---------------|-----------|--------------|
-| **Config Location** | `.github/workflows/*.yml` | `.gitlab-ci.yml` | `azure-pipelines.yml` |
-| **Free Tier** | ✅ (public repos) | ✅ | ✅ (limited) |
-| **Self-Hosted** | ✅ | ✅ | ✅ |
-| **Matrix Builds** | ✅ | ✅ | ✅ |
-| **Caching** | ✅ | ✅ | ✅ |
-| **Setup Time** | 15-30 min | 15-30 min | 20-40 min |
+| Feature | GitHub Actions | GitLab CI | Azure DevOps | CircleCI | Bitbucket | Jenkins |
+|---------|---------------|-----------|--------------|----------|-----------|---------|
+| **Config Location** | `.github/workflows/*.yml` | `.gitlab-ci.yml` | `azure-pipelines.yml` | `.circleci/config.yml` | `bitbucket-pipelines.yml` | `Jenkinsfile` |
+| **Free Tier** | ✅ (public) | ✅ | ✅ (limited) | ✅ (limited) | ✅ (limited) | ✅ (self-hosted) |
+| **Self-Hosted** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| **Matrix Builds** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Caching** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Setup Time** | 15-30 min | 15-30 min | 20-40 min | 15-30 min | 15-30 min | 30-60 min |
 
 ## Common CI/CD Patterns
 

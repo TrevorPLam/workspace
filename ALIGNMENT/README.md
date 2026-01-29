@@ -1,6 +1,6 @@
 # Repository Alignment Standard
 
-**Version:** 1.1.0  
+**Version:** 1.2.0  
 **Last Updated:** 2026-01-28  
 *(Human-Friendly, Hybrid Tone, P0 → P1 → P2)*
 
@@ -18,12 +18,25 @@ This standard defines how every repository should be organized, documented, and 
 ### Core Standards
 - [Reference Guide](#reference-guide) - Detailed standards by category (see below)
 
+### Principles
+- [Principles Overview](principles/README.md) - Philosophical foundations for standards
+- [Configuration Principles](principles/Configuration-Principles.md) - *Treat config like code: versioned, validated, layered, and boring*
+- [Testing Principles](principles/Testing-Principles.md) - *Tests are specifications, documentation, and safety nets*
+- [Security Principles](principles/Security-Principles.md) - *Security is not a feature—it's a fundamental requirement*
+- [Change Management Principles](principles/Change-Management-Principles.md) - *Version numbers communicate intent. Changes communicate impact.*
+- [Documentation Principles](principles/Documentation-Principles.md) - *Documentation is code. It should be versioned, reviewed, tested, and kept current.*
+- [Governance Principles](principles/Governance-Principles.md) - *Clear ownership enables accountability. Open contribution enables growth.*
+
 ### Reference Materials
 - [Templates](reference/Templates.md) - File templates and examples
 - [Quick Reference](reference/Quick-Reference.md) - Cheat sheets and templates
 - [Decision Tree](reference/Decision-Tree.md) - Decision-making guide
-- [Language Quick Starts](reference/Language-Quick-Starts.md) - Language-specific guidance
-- [Platform Quick Starts](reference/Platform-Quick-Starts.md) - Platform-specific guidance
+- [Language Quick Starts](reference/Language-Quick-Starts.md) - Language-specific guidance (JS/TS, Python, Go, Rust, Ruby, PHP, Java/Kotlin, C#, Swift)
+- [Platform Quick Starts](reference/Platform-Quick-Starts.md) - CI/CD platform guidance (GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Bitbucket, Jenkins)
+- [Cloud-Specific Guidance](reference/Cloud-Specific-Guidance.md) - AWS, Azure, GCP best practices
+- [Execution Flow](reference/Execution-Flow.md) - Visual execution order guide
+- [Section Dependencies](reference/Section-Dependencies.md) - Dependency graph and prerequisites
+- [Migration Paths](reference/Migration-Paths.md) - Migration strategy visual guide
 - [Dependency Graph](reference/Dependency-Graph.md) - Section dependencies
 - [Badge Generator](reference/Badge-Generator.md) - Repository badges
 
@@ -34,6 +47,21 @@ This standard defines how every repository should be organized, documented, and 
 - [Common Pitfalls](supporting/Common-Pitfalls.md) - Mistakes to avoid
 - [FAQ](supporting/FAQ.md) - Frequently asked questions
 - [Getting Help](supporting/Getting-Help.md) - Where to find help
+
+### Tools & Automation
+- [Validation Scripts](tools/scripts/README.md) - Automated compliance checking
+- [Checklist Generator](tools/checklist-generator.html) - Interactive checklist creation
+- [Progress Calculator](tools/progress-calculator.html) - Track alignment progress
+- [Compliance Score Calculator](tools/compliance-score-calculator.html) - Calculate repository health score
+
+### Research & Learning
+- [Research Documentation](research/README.md) - Comprehensive research on all topics
+- [Master Research Summary](research/MASTER-RESEARCH-SUMMARY.md) - High-level research overview
+
+### Architecture & Optimization
+- [Architecture Analysis](ARCHITECTURE-DEEP-ANALYSIS.md) - Comprehensive architecture analysis
+- [Optimization Roadmap](OPTIMIZATION-ROADMAP.md) - Future optimization planning
+- [Consistency Analysis](CONSISTENCY-ANALYSIS.md) - Consistency review
 
 ### Contributing
 - [Contributing to ALIGNMENT](CONTRIBUTING.md) - How to improve this standard

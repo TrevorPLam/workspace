@@ -5,6 +5,10 @@
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 - [Section 5: CI/CD Structure](05-CI-CD-Structure.md) - Phase 1 (bootstrap) should be complete
 
+**Principles:**
+- [Governance Principles](../principles/Governance-Principles.md) - Core philosophy: *Clear ownership enables accountability. Open contribution enables growth. Code review is learning, not gatekeeping. Trust enables autonomy.*
+  - Key concepts: Clear ownership (every area has an owner), open contribution (contributions welcome), code review as learning, trust enables autonomy, shared responsibility
+
 **Effort Estimate:**
 - **Basic governance (CODEOWNERS + CONTRIBUTING):** 1-2 hours
 - **Complete governance (P0 + P1):** 3-5 hours
@@ -39,8 +43,16 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Define ownership and contribution rules
+**Action:** Define ownership and contribution rules (see [Governance Principles](../principles/Governance-Principles.md) for foundational concepts)
+- [ ] Apply clear ownership principle (see [Governance Principles](../principles/Governance-Principles.md)):
+  - [ ] Every area has an owner (code, docs, infrastructure)
+  - [ ] Owners are accountable for their areas
+  - [ ] Ownership enables autonomy
 - [ ] Create `CODEOWNERS` file in `.github/` directory (see [Section 1](01-Root-Directory-Structure.md))
+- [ ] Apply open contribution principle (see [Governance Principles](../principles/Governance-Principles.md)):
+  - [ ] Contributions are welcome
+  - [ ] Clear contribution process
+  - [ ] Recognize contributors
 - [ ] Create `CONTRIBUTING.md` with:
   - How to contribute
   - Code style guidelines
@@ -71,7 +83,12 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 - [ ] Link branching strategy to CI/CD branch protection rules (see [Section 5 P1](05-CI-CD-Structure.md))
 - [ ] Document in CONTRIBUTING.md
 
-**Action:** Define code review standards
+**Action:** Define code review standards (see [Governance Principles](../principles/Governance-Principles.md) for review philosophy)
+- [ ] Apply code review as learning principle (see [Governance Principles](../principles/Governance-Principles.md)):
+  - [ ] Review is educational, not gatekeeping
+  - [ ] Constructive, respectful feedback
+  - [ ] Focus on code, not person
+  - [ ] Explain why, not just what
 - [ ] Create code review checklist covering:
   - Functionality: Does it work as intended? Are edge cases handled?
   - Tests: Are tests adequate, passing, and maintainable?
@@ -83,15 +100,16 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
   - Minimum reviewers (typically 1-2, depending on repo size)
   - Code owner approval for sensitive areas (per CODEOWNERS)
   - All CI checks must pass before approval
-- [ ] Set review SLAs:
+- [ ] Set review SLAs (see [Governance Principles](../principles/Governance-Principles.md)):
   - Critical/urgent: 4 hours
   - Normal priority: 24-48 hours
   - Low priority: 72 hours
-- [ ] Document review best practices:
+- [ ] Document review best practices (see [Governance Principles](../principles/Governance-Principles.md)):
   - Keep PRs small and focused (aim for <400 lines when possible)
   - Provide constructive, actionable feedback
   - Approve with suggestions when appropriate
   - Request changes only for blocking issues
+  - Fast, helpful reviews (don't delay)
 - [ ] Add review guidelines to CONTRIBUTING.md and PR template (see [Section 1 P1](01-Root-Directory-Structure.md) for `.github/` folder)
 
 ## P2 — Advanced Actions
@@ -149,6 +167,10 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 - ✅ Branching strategy documented
 - ✅ Code review standards defined
 - ✅ No governance gaps (every area has owner)
+- ✅ Clear ownership enables accountability (every area has owner)
+- ✅ Open contribution process (contributions welcome, clear process)
+- ✅ Code review as learning (constructive, educational, not gatekeeping)
+- ✅ Governance follows principles from [Governance Principles](../principles/Governance-Principles.md)
 
 ## Common Issues & Solutions
 

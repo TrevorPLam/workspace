@@ -6,6 +6,10 @@
 - [Section 4: Dependency Management](04-Dependency-Management.md)
 - [Section 5: CI/CD Structure](05-CI-CD-Structure.md) - Phase 1 (bootstrap) should be complete
 
+**Principles:**
+- [Security Principles](../principles/Security-Principles.md) - Core philosophy: *Security is not a feature—it's a fundamental requirement. Apply defense in depth, least privilege, and secure by default to every layer.*
+  - Key concepts: Defense in depth (multiple security layers), least privilege (minimum necessary access), secure by default (security built-in), never trust input, security as shared responsibility
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -103,14 +107,19 @@ project/
 
 ## P0 — Required Actions
 
-**Action:** Implement security basics
+**Action:** Implement security basics (see [Security Principles](../principles/Security-Principles.md) for foundational concepts)
 - [ ] Create `SECURITY.md` with:
-  - Vulnerability disclosure process
+  - Vulnerability disclosure process (see [Security Principles](../principles/Security-Principles.md) - responsible disclosure)
   - Security contact information
   - Supported versions
+- [ ] Apply defense in depth (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Multiple security layers (application, infrastructure, data, access control)
+  - [ ] No single point of failure
+  - [ ] Fail-secure defaults (deny access when uncertain)
 - [ ] Configure automated secret scanning (should already be in CI/CD from [Section 5](05-CI-CD-Structure.md)):
   - [ ] Pre-commit hooks (e.g., git-secrets, truffleHog)
   - [ ] CI pipeline scanning
+  - [ ] Follow "no secrets in code" principle (see [Security Principles](../principles/Security-Principles.md))
 - [ ] Set up dependency vulnerability scanning with SLAs (should already be in CI/CD from [Section 5](05-CI-CD-Structure.md)):
   - Critical (CVSS 9.0+): 7 days response
   - High (CVSS 7.0-8.9): 30 days response
@@ -122,7 +131,19 @@ See [Templates](Templates.md) for SECURITY.md template.
 
 ## P1 — Recommended Actions
 
-**Action:** Enhance security
+**Action:** Enhance security (see [Security Principles](../principles/Security-Principles.md) for advanced concepts)
+- [ ] Apply least privilege principle (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Grant minimum necessary access to users, services, and systems
+  - [ ] Use role-based access control (RBAC)
+  - [ ] Review access regularly and revoke when no longer needed
+- [ ] Implement secure by default (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Security built-in from design, not added later
+  - [ ] Secure default configurations
+  - [ ] No "magic" security - explicit security controls
+- [ ] Never trust input (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Validate all input at boundaries
+  - [ ] Use whitelist validation (allow only known good values)
+  - [ ] Encode output to prevent injection attacks
 - [ ] Add security review gates for:
   - Infrastructure changes
   - Sensitive code changes
@@ -130,15 +151,36 @@ See [Templates](Templates.md) for SECURITY.md template.
 - [ ] For web apps: add DAST (Dynamic Application Security Testing)
 - [ ] Implement security policy enforcement (OPA policies for infra)
 - [ ] Schedule regular security audits and dependency reviews
+- [ ] Apply security as shared responsibility (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Security in code review process
+  - [ ] Security training for developers
+  - [ ] Security metrics and goals
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced security
+**Action:** Advanced security (see [Security Principles](../principles/Security-Principles.md) for advanced practices)
+- [ ] Implement continuous security improvement (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Regular security audits and reviews
+  - [ ] Update threat models as system evolves
+  - [ ] Security training and skill development
+  - [ ] Track security metrics and goals
+- [ ] Document threat modeling (see [Security Principles](../principles/Security-Principles.md) - STRIDE model):
+  - [ ] Identify assets, threats, and vulnerabilities
+  - [ ] Assess risk and impact
+  - [ ] Mitigate high-risk threats
+- [ ] Create security incident response plan (see [Security Principles](../principles/Security-Principles.md)):
+  - [ ] Detection, containment, eradication, recovery
+  - [ ] Define roles and responsibilities
+  - [ ] Practice incident response
 - [ ] Set up automated compliance scanning (export controls, GDPR, etc.)
 - [ ] Create security metrics dashboard
-- [ ] Document threat modeling
-- [ ] Create security incident response runbooks
 - [ ] Integrate penetration testing
+- [ ] Ensure security follows "Golden rules" from [Security Principles](../principles/Security-Principles.md):
+  - [ ] Defense in depth implemented
+  - [ ] Least privilege applied
+  - [ ] Secure by default configured
+  - [ ] Input validation at all boundaries
+  - [ ] Security monitoring and alerting
 
 **Action:** Achieve SLSA Compliance (Supply Chain Security)
 - [ ] Understand SLSA levels (Level 1-4):
@@ -220,6 +262,11 @@ See [Templates](Templates.md) for SLSA Compliance Documentation template.
 - ✅ Dependency vulnerability scanning configured
 - ✅ License compliance checking configured
 - ✅ No secrets committed to repository
+- ✅ Defense in depth implemented (multiple security layers)
+- ✅ Least privilege applied (minimum necessary access)
+- ✅ Secure by default configured (security built-in)
+- ✅ Input validation implemented (never trust input)
+- ✅ Security follows principles from [Security Principles](../principles/Security-Principles.md)
 
 ## Common Issues & Solutions
 

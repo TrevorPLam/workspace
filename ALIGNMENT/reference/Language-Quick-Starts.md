@@ -290,6 +290,360 @@ jobs:
 
 ### Time Estimate: 1-3 hours
 
+## Ruby Quick Start
+
+### Structure
+```
+project/
+├── README.md
+├── LICENSE
+├── Gemfile
+├── Gemfile.lock
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── lib/
+│   └── project_name.rb
+└── spec/
+    └── project_name_spec.rb
+```
+
+### Essential Files
+
+**Gemfile:**
+```ruby
+source 'https://rubygems.org'
+
+ruby '3.2.0'
+
+gem 'rspec', group: :test
+gem 'rubocop', group: :development
+```
+
+**.gitignore:**
+```
+.bundle/
+vendor/bundle
+*.gem
+*.rbc
+.env
+.env.local
+coverage/
+```
+
+**CI/CD (.github/workflows/ci.yml):**
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - run: bundle install
+      - run: bundle exec rspec
+      - run: bundle exec rubocop
+```
+
+### Key Tools
+- **Linting:** RuboCop
+- **Formatting:** RuboCop (auto-fix)
+- **Testing:** RSpec, Minitest
+- **Dependencies:** Bundler
+
+### Time Estimate: 2-4 hours
+
+## PHP Quick Start
+
+### Structure
+```
+project/
+├── README.md
+├── LICENSE
+├── composer.json
+├── composer.lock
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── src/
+│   └── App.php
+└── tests/
+    └── AppTest.php
+```
+
+### Essential Files
+
+**composer.json:**
+```json
+{
+  "name": "vendor/project-name",
+  "type": "library",
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "phpstan/phpstan": "^1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Vendor\\ProjectName\\": "src/"
+    }
+  }
+}
+```
+
+**.gitignore:**
+```
+vendor/
+composer.lock  # Usually committed, but some ignore
+.env
+.env.local
+```
+
+**CI/CD (.github/workflows/ci.yml):**
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: php-actions/composer@v6
+      - run: composer install
+      - run: composer test
+      - run: composer phpstan
+      - run: composer cs-check
+```
+
+### Key Tools
+- **Linting:** PHP_CodeSniffer, PHPStan
+- **Formatting:** PHP CS Fixer
+- **Testing:** PHPUnit
+- **Dependencies:** Composer
+
+### Time Estimate: 2-4 hours
+
+## Java/Kotlin Quick Start
+
+### Structure
+```
+project/
+├── README.md
+├── LICENSE
+├── build.gradle.kts
+├── settings.gradle.kts
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── src/
+│   ├── main/
+│   │   └── kotlin/
+│   │       └── App.kt
+│   └── test/
+│       └── kotlin/
+│           └── AppTest.kt
+└── gradle/
+    └── wrapper/
+```
+
+### Essential Files
+
+**build.gradle.kts:**
+```kotlin
+plugins {
+    kotlin("jvm") version "1.9.0"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.9.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+}
+```
+
+**.gitignore:**
+```
+build/
+.gradle/
+.idea/
+*.iml
+.env
+.env.local
+```
+
+**CI/CD (.github/workflows/ci.yml):**
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - run: ./gradlew build
+      - run: ./gradlew test
+      - run: ./gradlew check
+```
+
+### Key Tools
+- **Linting:** ktlint, Detekt
+- **Formatting:** ktlint (auto-fix)
+- **Testing:** JUnit, Kotlin Test
+- **Dependencies:** Gradle, Maven
+
+### Time Estimate: 2-4 hours
+
+## C# / .NET Quick Start
+
+### Structure
+```
+project/
+├── README.md
+├── LICENSE
+├── ProjectName.csproj
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── src/
+│   └── Program.cs
+└── tests/
+    └── ProjectName.Tests.csproj
+```
+
+### Essential Files
+
+**ProjectName.csproj:**
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>
+```
+
+**.gitignore:**
+```
+bin/
+obj/
+*.user
+*.suo
+.env
+.env.local
+```
+
+**CI/CD (.github/workflows/ci.yml):**
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet restore
+      - run: dotnet build
+      - run: dotnet test
+      - run: dotnet format --verify-no-changes
+```
+
+### Key Tools
+- **Linting:** Roslyn Analyzers
+- **Formatting:** dotnet format
+- **Testing:** xUnit, NUnit, MSTest
+- **Dependencies:** NuGet
+
+### Time Estimate: 2-4 hours
+
+## Swift Quick Start
+
+### Structure
+```
+project/
+├── README.md
+├── LICENSE
+├── Package.swift
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── Sources/
+│   └── ProjectName/
+│       └── ProjectName.swift
+└── Tests/
+    └── ProjectNameTests/
+        └── ProjectNameTests.swift
+```
+
+### Essential Files
+
+**Package.swift:**
+```swift
+// swift-tools-version: 5.9
+import PackageDescription
+
+let package = Package(
+    name: "ProjectName",
+    products: [
+        .library(name: "ProjectName", targets: ["ProjectName"]),
+    ],
+    targets: [
+        .target(name: "ProjectName"),
+        .testTarget(name: "ProjectNameTests", dependencies: ["ProjectName"]),
+    ]
+)
+```
+
+**.gitignore:**
+```
+.build/
+.swiftpm/
+.env
+.env.local
+```
+
+**CI/CD (.github/workflows/ci.yml):**
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift build
+      - run: swift test
+      - run: swift format --lint .
+```
+
+### Key Tools
+- **Linting:** SwiftLint
+- **Formatting:** swift-format
+- **Testing:** XCTest (built-in)
+- **Dependencies:** Swift Package Manager
+
+### Time Estimate: 2-4 hours
+
 ## Common Patterns Across Languages
 
 ### All Languages Need:
@@ -317,6 +671,26 @@ jobs:
 **Rust:**
 - [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)
 - [The Rust Book](https://doc.rust-lang.org/book/)
+
+**Ruby:**
+- [Ruby Style Guide](https://rubystyle.guide/)
+- [Ruby Best Practices](https://github.com/rubocop/ruby-style-guide)
+
+**PHP:**
+- [PHP The Right Way](https://phptherightway.com/)
+- [PSR Standards](https://www.php-fig.org/psr/)
+
+**Java/Kotlin:**
+- [Kotlin Coding Conventions](https://kotlinlang.org/docs/coding-conventions.html)
+- [Effective Java](https://www.oracle.com/java/technologies/javase/effective-java.html)
+
+**C# / .NET:**
+- [.NET Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+- [C# Coding Guidelines](https://github.com/dotnet/runtime/blob/main/docs/coding-guidelines/coding-style.md)
+
+**Swift:**
+- [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/)
+- [Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 
 ## Next Steps
 

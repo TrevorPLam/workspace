@@ -5,6 +5,10 @@
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 - [Section 2: Source Code Layout](02-Source-Code-Layout.md)
 
+**Principles:**
+- [Configuration Principles](../principles/Configuration-Principles.md) - Core philosophy: *Treat config like code: versioned, validated, layered, and boring.*
+  - Key concepts: Layering model (Base → Env → Region/Tenant → Secrets → Runtime), schema validation, "one key, one home" rule
+
 **Effort Estimate:**
 - **Basic configuration (P0):** 30-60 minutes
 - **Centralized config + pre-commit hooks (P1):** 2-4 hours
@@ -115,6 +119,14 @@ Before proceeding, answer these questions:
 **Action:** Centralize configuration
 - [ ] Create `config/` directory for configuration files
   - **Note:** If code already exists, this may require moving config files
+- [ ] Implement layering model (see [Configuration Principles](../principles/Configuration-Principles.md)):
+  - [ ] Create `config/schema.*` (the contract) - defines configuration structure
+  - [ ] Create `config/default.*` (base defaults) - safe, minimal, works locally
+  - [ ] Create `config/env/dev.*`, `config/env/stage.*`, `config/env/prod.*` (deltas only)
+  - [ ] Create `config/regions/*` or `config/tenants/*` (optional, only if needed)
+  - [ ] Create `config/loader.*` (the only code that merges layers + validates)
+  - [ ] Follow "one key, one home" rule - no duplicate keys across layers
+  - [ ] Document override precedence: Base → Env → Region/Tenant → Secrets → Runtime
 - [ ] Document configuration precedence: environment variables → config files → defaults
 - [ ] Add configuration documentation in `docs/configuration.md`
   - **Note:** If `docs/` folder doesn't exist yet, create it (see [Section 1 P1](01-Root-Directory-Structure.md)). For docs structure guidance, see [Documentation Standards](07-Documentation-Standards.md)
@@ -150,10 +162,16 @@ Before proceeding, answer these questions:
 
 ## P2 — Advanced Actions
 
-**Action:** Validate configuration
-- [ ] Use schema validation (Zod, JSON Schema, etc.)
+**Action:** Validate configuration (see [Configuration Principles](../principles/Configuration-Principles.md) for rationale)
+- [ ] Use schema validation (Zod, JSON Schema, Pydantic, Yup, etc.)
 - [ ] Generate typed configuration objects
-- [ ] Add configuration validation on startup
+- [ ] Add configuration validation on:
+  - [ ] App startup (fail fast, fail loud)
+  - [ ] CI (every PR)
+  - [ ] Deployment
+- [ ] Implement strong typing + constraints (not just "string" - validate ranges, enums, URL formats)
+- [ ] Log final resolved config on startup (redacting secrets) - no "magic"
+- [ ] Document each config key (what/why/default/owner) - see "Golden rules" in [Configuration Principles](../principles/Configuration-Principles.md)
 
 ## Decision: What environment variables do you need?
 
@@ -200,6 +218,9 @@ Before proceeding, answer these questions:
 - ✅ `.gitignore` properly configured
 - ✅ Pre-commit hooks configured (if P1 completed)
 - ✅ Configuration centralized in `config/` directory (if P1 completed)
+- ✅ Layering model implemented (if P1 completed) - Base → Env → Region/Tenant → Secrets → Runtime
+- ✅ Schema validation implemented (if P2 completed) - validates on startup, CI, and deployment
+- ✅ Configuration follows "Golden rules" from [Configuration Principles](../principles/Configuration-Principles.md) (if P2 completed)
 
 ## Rollback Procedures
 

@@ -4,6 +4,10 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points (especially "Is versioned project?")
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 
+**Principles:**
+- [Change Management Principles](../principles/Change-Management-Principles.md) - Core philosophy: *Version numbers communicate intent. Changes communicate impact. Breaking changes require planning, deprecation, and clear communication.*
+  - Key concepts: Semantic Versioning (MAJOR.MINOR.PATCH), breaking changes philosophy, deprecation strategy, change communication, commit messages as documentation
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -39,20 +43,33 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Set up change tracking
+**Action:** Set up change tracking (see [Change Management Principles](../principles/Change-Management-Principles.md) for foundational concepts)
 - [ ] For versioned projects: ensure `CHANGELOG.md` exists and follows [Keep a Changelog](https://keepachangelog.com/) format
   - **Note:** File should be created in [Section 1 P0](01-Root-Directory-Structure.md); format it properly here
-- [ ] Use semantic versioning (SemVer: MAJOR.MINOR.PATCH)
+- [ ] Use semantic versioning (SemVer: MAJOR.MINOR.PATCH) - see [Change Management Principles](../principles/Change-Management-Principles.md):
+  - [ ] MAJOR version for breaking changes (incompatible API changes)
+  - [ ] MINOR version for new features (backward compatible)
+  - [ ] PATCH version for bug fixes (backward compatible)
+  - [ ] Version numbers communicate intent (see [Change Management Principles](../principles/Change-Management-Principles.md))
+- [ ] Apply breaking changes philosophy (see [Change Management Principles](../principles/Change-Management-Principles.md)):
+  - [ ] Plan breaking changes carefully (they're costly for users)
+  - [ ] Deprecate before removing (give users time to adapt)
+  - [ ] Provide migration guides (help users transition)
 - [ ] Document breaking changes clearly in changelog
 - [ ] Include breaking changes in release notes
 
-**Action:** Standardize commit messages
+**Action:** Standardize commit messages (see [Change Management Principles](../principles/Change-Management-Principles.md) for commit message principles)
 - [ ] Adopt [Conventional Commits](https://www.conventionalcommits.org/) format: `type(scope): description`
+- [ ] Follow commit message principles from [Change Management Principles](../principles/Change-Management-Principles.md):
+  - [ ] Use imperative mood ("Add feature" not "Added feature")
+  - [ ] Keep first line < 50 characters
+  - [ ] Be descriptive (explain what and why)
+  - [ ] Reference issues/PRs in footer
 - [ ] Use standard commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`, `revert`
 - [ ] Mark breaking changes with `!` after type/scope or `BREAKING CHANGE:` in footer
 - [ ] Configure commitlint or pre-commit hook to enforce format (see [Section 3 P1](03-Configuration-Environment.md))
 - [ ] Document commit message guidelines in CONTRIBUTING.md
-- [ ] **Note:** Enables automatic changelog generation (see P1 below)
+- [ ] **Note:** Commit messages document history and enable automatic changelog generation (see P1 below)
 
 See [Templates](Templates.md) for CHANGELOG.md template.
 
@@ -67,11 +84,22 @@ See [Templates](Templates.md) for CHANGELOG.md template.
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced release management
+**Action:** Advanced release management (see [Change Management Principles](../principles/Change-Management-Principles.md) for advanced practices)
+- [ ] Implement deprecation strategy (see [Change Management Principles](../principles/Change-Management-Principles.md)):
+  - [ ] Mark features as deprecated before removing
+  - [ ] Set removal timeline (at least one release cycle)
+  - [ ] Provide clear deprecation notices
+  - [ ] Remove only in next MAJOR version
+- [ ] Assess change impact (see [Change Management Principles](../principles/Change-Management-Principles.md)):
+  - [ ] Who is affected by changes?
+  - [ ] What breaks with changes?
+  - [ ] How severe is the impact?
+  - [ ] Version accordingly (MAJOR for high impact)
 - [ ] Automate release notes generation
 - [ ] Create version compatibility matrices
 - [ ] Define deprecation policies and timelines
 - [ ] Set up release automation
+- [ ] Ensure change management follows "Golden rules" from [Change Management Principles](../principles/Change-Management-Principles.md)
 
 ## Decision: Is this a versioned project?
 
@@ -112,6 +140,10 @@ See [Templates](Templates.md) for CHANGELOG.md template.
 - ✅ Commit messages follow Conventional Commits format
 - ✅ Commit message validation configured (if P0 completed)
 - ✅ Semantic versioning used (if versioned project)
+- ✅ Breaking changes philosophy applied (plan, deprecate, communicate)
+- ✅ Deprecation strategy defined (deprecate before removing)
+- ✅ Change communication clear (changelog, release notes, migration guides)
+- ✅ Change management follows principles from [Change Management Principles](../principles/Change-Management-Principles.md)
 
 ## Common Issues & Solutions
 

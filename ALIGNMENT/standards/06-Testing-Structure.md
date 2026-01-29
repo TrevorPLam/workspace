@@ -4,6 +4,10 @@
 - [Section 2: Source Code Layout](02-Source-Code-Layout.md)
 - [Section 5: CI/CD Structure](05-CI-CD-Structure.md) - Phase 1 (bootstrap CI/CD) should be complete
 
+**Principles:**
+- [Testing Principles](../principles/Testing-Principles.md) - Core philosophy: *Tests are specifications, documentation, and safety nets. Write tests that describe behavior, catch regressions, and enable confident refactoring.*
+  - Key concepts: Test pyramid (70% unit, 20% integration, 10% E2E), TDD red-green-refactor cycle, quality over quantity, test organization principles
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -35,25 +39,35 @@ Before proceeding, answer these questions:
 ## P0 — Required Actions
 
 **Action:** Set up testing infrastructure
-- [ ] Choose and document test pattern:
-  - Co-located: `Button.tsx` → `Button.test.tsx`
+- [ ] Choose and document test pattern (see [Testing Principles](../principles/Testing-Principles.md) for guidance):
+  - Co-located: `Button.tsx` → `Button.test.tsx` (recommended for most projects)
   - Centralized: `tests/` mirroring source structure
 - [ ] Install test framework (Jest, pytest, Go testing, etc.)
 - [ ] Create first test file to verify setup
-- [ ] Ensure all critical paths have tests (aim for 60%+ coverage)
+- [ ] Follow test pyramid model (see [Testing Principles](../principles/Testing-Principles.md)):
+  - Focus on unit tests first (70% of tests should be unit tests)
+  - Add integration tests for component interactions (20%)
+  - Add E2E tests for critical user workflows (10%)
+- [ ] Ensure all critical paths have tests (aim for 80%+ coverage on critical paths, 60%+ overall)
+- [ ] Write tests that describe behavior, not implementation (see [Testing Principles](../principles/Testing-Principles.md))
 - [ ] Verify tests pass locally
 - [ ] **Note:** CI/CD test step will be added in [Section 5 Phase 2](05-CI-CD-Structure.md) after this section is complete
 
 ## P1 — Recommended Actions
 
-**Action:** Organize test structure
-- [ ] Separate test categories:
-  - `tests/unit/` - Unit tests
-  - `tests/integration/` - Integration tests
-  - `tests/e2e/` - End-to-end tests
+**Action:** Organize test structure (see [Testing Principles](../principles/Testing-Principles.md) for organization principles)
+- [ ] Separate test categories following test pyramid:
+  - `tests/unit/` - Unit tests (70% of tests - fast, isolated)
+  - `tests/integration/` - Integration tests (20% of tests - component interactions)
+  - `tests/e2e/` - End-to-end tests (10% of tests - critical user workflows)
 - [ ] Create shared test utilities (`tests/fixtures/`, `tests/mocks/`)
+- [ ] Follow Arrange-Act-Assert pattern in tests (see [Testing Principles](../principles/Testing-Principles.md))
+- [ ] Use descriptive test names that describe behavior
 - [ ] For web apps: add accessibility testing (a11y checks)
-- [ ] Configure coverage thresholds in test config
+- [ ] Configure coverage thresholds in test config:
+  - Critical paths: 80%+ coverage
+  - Overall: 60%+ coverage
+  - New code: 80%+ coverage requirement
 
 **Action:** Define performance budgets
 - [ ] Set performance budgets for:
@@ -72,12 +86,20 @@ Before proceeding, answer these questions:
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced testing
+**Action:** Advanced testing (see [Testing Principles](../principles/Testing-Principles.md) for advanced techniques)
+- [ ] Consider Test-Driven Development (TDD) for new features:
+  - Red: Write failing test first
+  - Green: Write minimum code to pass
+  - Refactor: Improve code while keeping tests green
 - [ ] Add contract testing (OpenAPI/GraphQL schemas)
 - [ ] Create `tests/performance/` directory for load testing
 - [ ] Implement flaky test quarantine and retry logic
-- [ ] Add mutation testing for critical components
-- [ ] Consider property-based testing where applicable
+- [ ] Add mutation testing for critical components (ensures tests actually test code)
+- [ ] Consider property-based testing where applicable (generate test cases automatically)
+- [ ] Ensure tests follow "Golden rules" from [Testing Principles](../principles/Testing-Principles.md):
+  - Tests are fast, isolated, and repeatable
+  - Tests describe behavior, not implementation
+  - Tests enable confident refactoring
 
 ## Decision: Which test pattern should you use?
 
@@ -115,7 +137,12 @@ Before proceeding, answer these questions:
 - ✅ Test framework installed and configured
 - ✅ Tests run successfully locally
 - ✅ Test pattern chosen and documented
-- ✅ Critical paths have test coverage (60%+)
+- ✅ Test pyramid implemented (70% unit, 20% integration, 10% E2E)
+- ✅ Critical paths have test coverage (80%+ on critical paths, 60%+ overall)
+- ✅ Tests follow principles from [Testing Principles](../principles/Testing-Principles.md):
+  - Tests describe behavior, not implementation
+  - Tests are fast, isolated, and repeatable
+  - Tests enable confident refactoring
 - ✅ Tests integrated into CI/CD (if Phase 2 complete)
 
 ## Common Issues & Solutions

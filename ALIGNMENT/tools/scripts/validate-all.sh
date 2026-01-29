@@ -19,12 +19,18 @@ TOTAL_WARNINGS=0
 # Run all validation scripts in order
 VALIDATION_SCRIPTS=(
     "validate-section-1.sh"
+    "validate-section-2.sh"
     "validate-section-3.sh"
     "validate-section-4.sh"
     "validate-section-5.sh"
     "validate-section-6.sh"
+    "validate-section-7.sh"
+    "validate-section-8.sh"
+    "validate-section-9.sh"
     "validate-section-10.sh"
+    "validate-section-11.sh"
     "validate-section-12.sh"
+    "validate-section-13.sh"
 )
 
 for script_name in "${VALIDATION_SCRIPTS[@]}"; do
