@@ -2,146 +2,69 @@
 
 **Prerequisites:** [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points first
 
-**Note:** This section assumes you've completed Section 0 and answered the decision point questions.
+## 🎯 What You're Trying to Accomplish
+Your repository's root directory (top-level folder) is the first thing people see. This section helps you organize it so it's **clean, clear, and professional** - like a desk with only essential items on top and everything else organized in drawers.
 
-**Effort Estimate:**
+**In simple terms:** Move files from root into organized folders so the repository is easy to understand at a glance.
+
+## 🎓 Why This Section Exists
+A messy root directory with 25+ files overwhelms people. A clean root with 5-10 essential files says "this project is well-organized." It also makes it easier to find things and signals professionalism.
+
+## 📊 Effort Estimate
 - **New repository:** 30-60 minutes
 - **Existing repository (small, < 20 files):** 1-2 hours
 - **Existing repository (medium, 20-50 files):** 2-4 hours
 - **Existing repository (large, 50+ files):** 4-8 hours
 
-## Before/After Examples
+## 📚 Key Concepts
 
-### Example 1: JavaScript/TypeScript Project
+### Concept 1: Root Directory Clutter
+**Simple version:** Too many files in the root folder makes it hard to understand what's important.
 
-**BEFORE (25 files in root):**
-```
-my-project/
-├── README.md
-├── package.json
-├── package-lock.json
-├── .gitignore
-├── index.js
-├── utils.js
-├── config.js
-├── config.prod.js
-├── config.dev.js
-├── .eslintrc.json
-├── .prettierrc
-├── jest.config.js
-├── webpack.config.js
-├── docker-compose.yml
-├── Dockerfile
-├── .env.example
-├── setup.sh
-├── deploy.sh
-├── docs/
-│   └── api.md
-├── scripts/
-│   └── build.sh
-├── tests/
-│   └── index.test.js
-└── src/  (empty)
-```
+**Why it matters:** Someone opening your repo should understand the project in 5 seconds by looking at root. If root has 25 files, they're confused.
 
-**AFTER (8 files in root):**
-```
-my-project/
-├── README.md
-├── LICENSE
-├── package.json
-├── package-lock.json
-├── .gitignore
-├── CHANGELOG.md
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── config/
-│   ├── eslint.config.js
-│   ├── prettier.config.js
-│   ├── jest.config.js
-│   └── webpack.config.js
-├── scripts/
-│   ├── setup.sh
-│   ├── deploy.sh
-│   └── build.sh
-├── docs/
-│   └── api.md
-├── src/
-│   ├── index.js
-│   └── utils.js
-├── tests/
-│   └── index.test.js
-├── docker-compose.yml
-└── Dockerfile
-```
+**Real-world analogy:** Like a desk. Important items on top (README, License), everything else in drawers (folders).
 
-**Changes Made:**
-- Moved `index.js`, `utils.js` → `src/`
-- Moved `config.js`, `config.*.js` → `config/`
-- Moved `.eslintrc.json`, `.prettierrc`, `jest.config.js`, `webpack.config.js` → `config/`
-- Moved `setup.sh`, `deploy.sh` → `scripts/`
-- Added `LICENSE` (required for public repos)
-- Added `CHANGELOG.md` (versioned project)
-- Created `.github/workflows/` for CI/CD
+**Example:** Root should have 5-10 files maximum. Source code, tests, config → goes in folders.
 
-### Example 2: Python Project
+### Concept 2: Essential vs Non-Essential Files
+**Simple version:** Essential files must be in root. Non-essential goes in folders.
 
-**BEFORE (18 files in root):**
-```
-my-python-app/
-├── README.md
-├── requirements.txt
-├── setup.py
-├── main.py
-├── config.py
-├── database.py
-├── .env
-├── .env.example
-├── .gitignore
-├── .flake8
-├── pytest.ini
-├── Dockerfile
-├── docker-compose.yml
-├── deploy.sh
-└── docs/
-    └── README.md
-```
+**Why it matters:** If someone needs the LICENSE to use your code, it must be easy to find. Config files are "nice to have in root" - they can go in a folder.
 
-**AFTER (7 files in root):**
-```
-my-python-app/
-├── README.md
-├── LICENSE
-├── requirements.txt
-├── setup.py
-├── .gitignore
-├── CHANGELOG.md
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── config/
-│   ├── config.py
-│   ├── .flake8
-│   └── pytest.ini
-├── scripts/
-│   └── deploy.sh
-├── docs/
-│   └── README.md
-├── src/
-│   ├── main.py
-│   └── database.py
-├── docker-compose.yml
-└── Dockerfile
-```
+**Essential (stays in root):**
+- `README.md` - What is this project?
+- `LICENSE` - Legal terms
+- `.gitignore` - What to ignore
+- `package.json` / `setup.py` / etc. - Package/dependency file
+- `CHANGELOG.md` - Version history (if versioned)
 
-**Changes Made:**
-- Moved `main.py`, `database.py` → `src/`
-- Moved `config.py`, `.flake8`, `pytest.ini` → `config/`
-- Moved `deploy.sh` → `scripts/`
-- Removed `.env` (should be in `.gitignore`, not committed)
-- Added `LICENSE`
-- Added `CHANGELOG.md`
+**Non-essential (move to folders):**
+- Config files → `config/`
+- Scripts → `scripts/`
+- Source code → `src/`
+- Tests → `tests/`
+- Documentation → `docs/`
+
+## 📊 Before/After Examples
+
+### JavaScript Project
+**BEFORE:** 25 files scattered in root (confusing)  
+**AFTER:** 8 files in root + organized folders (clear)
+
+Key moves:
+- Source code (`index.js`, `utils.js`) → `src/`
+- Config files (`.eslintrc.json`, `jest.config.js`) → `config/`
+- Scripts (`setup.sh`, `deploy.sh`) → `scripts/`
+
+### Python Project  
+**BEFORE:** 18 files in root  
+**AFTER:** 7 files in root
+
+Key moves:
+- Source code (`main.py`) → `src/`
+- Config (`.flake8`, `pytest.ini`) → `config/`
+- Scripts (`deploy.sh`) → `scripts/`
 
 ## P0 — Required Actions
 
