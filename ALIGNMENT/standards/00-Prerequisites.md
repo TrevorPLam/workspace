@@ -151,28 +151,73 @@ A file that specifies who must approve changes to specific parts of the codebase
 
 ## Document Your Answers
 
-**Before proceeding, document your answers:**
+**What this means:** After answering the 10 decision point questions above, you need to save your answers in a JSON file (a structured text file that both humans and computers can read).
 
-Create or update `alignment-progress.json` with your decision point answers:
+**Why it matters:** Your answers guide which tasks you need to do in later sections. Documenting them ensures you (and AI agents) can reference them consistently throughout the alignment process.
 
+### Task: Create alignment-progress.json *(USER/AGENT)*
+
+- [ ] **Create or find the file location:**
+  - If `meta/` folder exists → Create `meta/alignment-progress.json`
+  - If not → Create `alignment-progress.json` in root (you'll move it to `meta/` in Section 1)
+
+- [ ] **Copy this template and fill in YOUR answers:**
+  ```json
+  {
+    "repository": "my-project-name",
+    "started": "2026-01-29",
+    "decision_points": {
+      "is_versioned_project": true,
+      "project_type": "application",
+      "primary_language": "JavaScript",
+      "package_manager": "npm",
+      "cicd_platform": "github",
+      "is_public_repo": true,
+      "structure_type": "application",
+      "has_code_in_root": true,
+      "has_secrets_in_repo": false,
+      "repository_owners": ["your-github-username"]
+    }
+  }
+  ```
+
+- [ ] **Replace the example values** with your actual answers from above:
+  - `"my-project-name"` → your repository name
+  - `"2026-01-29"` → today's date
+  - `true` → `false` (or vice versa) based on your answers
+  - `"application"` → your actual project type
+  - `"JavaScript"` → your actual primary language
+  - etc.
+
+- [ ] **Save the file**
+
+- [ ] **Commit to Git:**
+  ```bash
+  git add alignment-progress.json
+  git commit -m "Add alignment decision points"
+  ```
+
+**Example for a Python web API:**
 ```json
 {
+  "repository": "my-api",
+  "started": "2026-01-29",
   "decision_points": {
-    "is_versioned_project": true/false,
-    "project_type": "library|application|cli|api|infrastructure|monorepo|documentation",
-    "primary_language": "JavaScript|Python|Go|Rust|Java|C++|Other",
-    "package_manager": "npm|yarn|pnpm|pip|poetry|go mod|Cargo|Other",
-    "cicd_platform": "github|gitlab|jenkins|circleci|azure-devops|other|none",
-    "is_public_repo": true/false,
-    "structure_type": "single-package|monorepo|application",
-    "has_code_in_root": true/false,
+    "is_versioned_project": true,
+    "project_type": "api",
+    "primary_language": "Python",
+    "package_manager": "poetry",
+    "cicd_platform": "github",
+    "is_public_repo": false,
+    "structure_type": "application",
+    "has_code_in_root": true,
     "has_secrets_in_repo": false,
-    "repository_owners": ["primary", "additional", "teams"]
+    "repository_owners": ["api-team"]
   }
 }
 ```
 
-**Note:** Additional questions will appear in later sections as needed. Answer them when you reach those sections.
+**Note:** Additional questions will appear in later sections as needed. You'll add them to this same file when you reach those sections.
 
 ## Verification
 

@@ -147,56 +147,250 @@ my-python-app/
 
 **Action:** Clean up root directory
 
-- [ ] Remove all non-essential files from root
-- [ ] Keep only: `README.md`, `LICENSE`, `.gitignore`, version manager file, main package/build file
-- [ ] For versioned projects: ensure `CHANGELOG.md` exists (basic file; format it properly in [Section 12](12-Change-Management.md))
-- [ ] Remove build artifacts, temporary files, and environment secrets
-- [ ] Verify every root-level file has an obvious purpose
-- [ ] Configure `.gitignore` to exclude:
-  - Environment files: `.env`, `.env.local`, `.env.*.local`
-  - Build artifacts: `dist/`, `build/`, `*.o`, `*.exe`
-  - IDE files: `.idea/`, `.vscode/` (or document if committed)
-  - OS files: `.DS_Store`, `Thumbs.db`
+**What this means:** Your repository's root (top-level folder) should only contain essential files that someone needs to see immediately. Think of it like a desk - keep only what you need on top, organize everything else in drawers (subdirectories).
 
-**Files to include:**
+**Why it matters:** A clean root makes your repository easy to understand at first glance. Too many files in root overwhelms new contributors and makes the repository structure unclear.
 
-- `README.md` (required)
-- `LICENSE` (required for public repos)
-- `.gitignore` (required - see [Configuration & Environment](03-Configuration-Environment.md) for details)
-- Package manager file: `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml` (as applicable)
-- `CHANGELOG.md` (required for versioned projects)
+### Task 1: Audit current root files *(USER)*
+- [ ] **List all files** in your root directory (don't include folders yet)
+  - *Command:* `ls -la` (Mac/Linux) or `dir` (Windows) in your terminal
+  - *Or:* Look at the files in your code editor's file explorer
+- [ ] **Count the files** - How many files do you have? (Target: ≤10 files)
+- [ ] **Identify purpose** - For each file, ask: "Does this NEED to be in root?"
+
+### Task 2: Keep only essential root files *(USER/AGENT)*
+- [ ] **Required files that must stay in root:**
+  - `README.md` - Main documentation entry point (explains what the project is)
+  - `LICENSE` - Legal license for your code (required for public repositories)
+  - `.gitignore` - Tells Git which files to ignore (prevents committing sensitive data)
+  - Package manager file - `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, etc. (depends on your programming language)
+  - `CHANGELOG.md` - Version history (required ONLY if your project has version numbers)
+
+### Task 3: Move configuration files to config/ *(USER/AGENT)*
+- [ ] **Create `config/` directory** if it doesn't exist
+  - *Command:* `mkdir config`
+- [ ] **Move these types of files to `config/`:**
+  - Build configuration: `webpack.config.js`, `vite.config.ts`, etc.
+  - Linter configuration: `.eslintrc.json`, `.prettierrc`, etc.
+  - Test configuration: `jest.config.js`, `pytest.ini`, etc.
+  - Any file ending in `.config.js`, `.config.ts`, `.rc`, or `rc.json`
+  - *Example:* `mv webpack.config.js config/` or `git mv webpack.config.js config/`
+
+### Task 4: Move scripts to scripts/ *(USER/AGENT)*
+- [ ] **Create `scripts/` directory** if it doesn't exist
+  - *Command:* `mkdir scripts`
+- [ ] **Move these files to `scripts/`:**
+  - Shell scripts: `setup.sh`, `deploy.sh`, `build.sh`, etc.
+  - Helper scripts: Any `.sh`, `.bash`, or `.ps1` files
+  - *Example:* `mv setup.sh scripts/` or `git mv setup.sh scripts/`
+
+### Task 5: Remove temporary and generated files *(USER)*
+- [ ] **Delete these immediately (if found):**
+  - Build artifacts: `dist/`, `build/`, `*.o`, `*.exe`, compiled files
+  - Environment files: `.env` (CRITICAL - this contains secrets!)
+  - Temporary files: `*.tmp`, `*.log`, `*.cache`
+  - OS files: `.DS_Store` (Mac), `Thumbs.db` (Windows)
+  - *Warning:* If you find `.env` in your repository, you have a SECURITY ISSUE. See [Section 10: Security](10-Security-Compliance.md) immediately.
+
+### Task 6: Configure .gitignore *(USER/AGENT)*
+- [ ] **Open or create `.gitignore` file**
+- [ ] **Add these patterns to prevent future accidents:**
+  ```
+  # Environment files (secrets)
+  .env
+  .env.local
+  .env.*.local
+  
+  # Build artifacts
+  dist/
+  build/
+  *.o
+  *.exe
+  
+  # IDE files (unless your team requires specific settings)
+  .idea/
+  .vscode/
+  
+  # OS files
+  .DS_Store
+  Thumbs.db
+  ```
+- [ ] **Save and commit** the updated `.gitignore`
+  - *Commands:* 
+    ```bash
+    git add .gitignore
+    git commit -m "Add/update .gitignore to exclude generated files"
+    ```
+
+### Task 7: Verify root cleanliness *(USER)*
+- [ ] **Count root files again** - Should be ≤10 files
+- [ ] **Check each remaining file** - Every file should have an obvious, essential purpose
+- [ ] **Review with teammate** - Can someone new understand your root structure immediately?
+
+**Done Criteria:**
+- ✅ Root directory has ≤10 files
+- ✅ Only essential files remain (README, LICENSE, .gitignore, package file, optional CHANGELOG)
+- ✅ Configuration files moved to `config/`
+- ✅ Scripts moved to `scripts/`
+- ✅ No secrets (.env) in root
+- ✅ .gitignore configured to prevent future clutter
 
 ## P1 — Recommended Actions
 
-**Action:** Organize related files
+**Action:** Organize related files into folders
 
-- [ ] If using GitHub: create `.github/` folder (required for CI/CD - see [CI/CD Structure](05-CI-CD-Structure.md))
-- [ ] Create `docs/` folder for extended documentation
-  - **Note:** Create the folder structure here; populate with content in [Documentation Standards](07-Documentation-Standards.md)
+**What this means:** Group related files together in dedicated folders. This makes your repository easier to navigate and shows clear organization patterns.
+
+**Why it matters:** As repositories grow, having clear organizational folders prevents chaos. It's like having a filing system - everything has its place.
+
+### Task 1: Create .github/ folder (for GitHub users) *(USER/AGENT)*
+- [ ] **Check if using GitHub** - Is your code hosted on GitHub? (Check your `git remote -v` output)
+- [ ] **Create `.github/` directory** if yes
+  - *Command:* `mkdir .github` or `mkdir -p .github/workflows`
+  - *Why:* GitHub looks for special files here (workflows, issue templates, pull request templates)
+- [ ] **Create subdirectories:**
+  - [ ] `.github/workflows/` - For CI/CD automation (GitHub Actions)
+    - *Command:* `mkdir .github/workflows`
+  - [ ] `.github/ISSUE_TEMPLATE/` - For issue templates (optional for now)
+  - [ ] `.github/PULL_REQUEST_TEMPLATE.md` - For PR templates (optional for now)
+- [ ] **Note:** You'll add actual workflow files in [Section 5: CI/CD Structure](05-CI-CD-Structure.md)
+
+### Task 2: Create docs/ folder *(USER/AGENT)*
+- [ ] **Create `docs/` directory**
+  - *Command:* `mkdir docs`
+  - *Why:* Centralized location for all documentation beyond the README
+- [ ] **Create `docs/README.md`** - Index file explaining what documentation exists
+  - *Template content:*
+    ```markdown
+    # Documentation Index
+    
+    ## Available Documentation
+    - `README.md` (in root) - Project overview
+    - More documentation coming in Section 7
+    
+    ## Documentation Structure
+    TBD - Will be organized in Section 7: Documentation Standards
+    ```
+- [ ] **Commit the structure:**
+  ```bash
+  git add docs/
+  git commit -m "Add docs folder structure"
+  ```
+- [ ] **Note:** You'll populate this with actual documentation content in [Section 7: Documentation Standards](07-Documentation-Standards.md)
+
+**Done Criteria:**
+- ✅ `.github/` folder created (if using GitHub)
+- ✅ `.github/workflows/` folder exists (empty for now)
+- ✅ `docs/` folder created
+- ✅ `docs/README.md` placeholder exists
+- ✅ Changes committed to Git
 
 ## P2 — Advanced Actions
 
-**Action:** Add repository index
+**Action:** Add repository index and templates
 
-- [ ] Create `INDEX.md` or `INDEX.json` describing directory purposes
-- [ ] Add `NOTICE` file for legal/compliance when applicable
+**What this means:** Create advanced organizational tools that help both humans and automation understand your repository structure.
 
-**Action:** Create repository template (for new repository creation)
-- [ ] Create ALIGNMENT-compliant repository template:
-  - [ ] Include all P0 requirements pre-configured
-  - [ ] Pre-populated CI/CD workflows
-  - [ ] Standard directory structure
-  - [ ] Template files (README, CONTRIBUTING, etc.)
-- [ ] Create setup automation:
-  - [ ] CLI tool or script for instant repo creation
-  - [ ] Template variables (project name, type, etc.)
-  - [ ] Automated configuration
-- [ ] GitHub template repository:
-  - [ ] Create template repo on GitHub
-  - [ ] Configure template variables
-  - [ ] Document usage
-- [ ] Document repository template usage in `docs/repository-templates.md`
-- [ ] **Note:** Enables one-command repository creation following ALIGNMENT standards
+**Why it matters:** These are "nice-to-have" features that become more valuable as your project grows or when you're creating multiple similar repositories.
+
+### Task 1: Create repository index file *(AGENT)*
+- [ ] **Choose format:** `INDEX.md` (human-readable) or `INDEX.json` (machine-readable)
+- [ ] **Document all directories and their purposes**
+  - *Example INDEX.md structure:*
+    ```markdown
+    # Repository Index
+    
+    ## Directory Structure
+    
+    - `src/` - Source code (see Section 2)
+    - `tests/` - Test files (see Section 6)
+    - `docs/` - Documentation (see Section 7)
+    - `config/` - Configuration files (see Section 3)
+    - `scripts/` - Build and deployment scripts
+    - `.github/workflows/` - CI/CD automation (see Section 5)
+    
+    ## Purpose
+    This repository contains [project description]
+    ```
+- [ ] **Update when structure changes** - Treat this as living documentation
+- [ ] **Commit the index:**
+  ```bash
+  git add INDEX.md
+  git commit -m "Add repository structure index"
+  ```
+
+### Task 2: Add NOTICE file (if legally required) *(USER)*
+- [ ] **Determine if needed:**
+  - Using Apache License 2.0? → Yes, need NOTICE
+  - Using third-party code with attribution requirements? → Yes, need NOTICE
+  - Corporate/enterprise repository? → Check with legal team
+  - Simple MIT/BSD license? → Usually not needed
+- [ ] **Create `NOTICE` file** if required
+  - Include copyright notices
+  - Include third-party attributions
+  - Include any required legal text
+- [ ] **Commit if created:**
+  ```bash
+  git add NOTICE
+  git commit -m "Add NOTICE file for legal compliance"
+  ```
+
+### Task 3: Create repository template (for organizations) *(AGENT)*
+
+**Purpose:** If you're creating multiple similar repositories, a template saves hours of setup time. This is especially useful for organizations or teams that create many projects.
+
+- [ ] **Create template repository structure:**
+  - [ ] Create new "template" repository (e.g., `my-org/repo-template`)
+  - [ ] Include all P0 requirements pre-configured:
+    - Pre-filled README.md template
+    - Standard .gitignore for your tech stack
+    - LICENSE file
+    - Standard directory structure (src/, tests/, docs/, config/)
+  - [ ] Add pre-populated CI/CD workflows
+    - Basic build workflow
+    - Test workflow
+    - Linting workflow
+  - [ ] Include template files:
+    - CONTRIBUTING.md template
+    - CODE_OF_CONDUCT.md template
+    - Issue templates
+    - PR template
+
+- [ ] **Create setup automation script:**
+  - [ ] Write CLI tool or script (bash/python/node) that:
+    - Accepts project name and type as input
+    - Clones template
+    - Replaces placeholder variables (PROJECT_NAME, etc.)
+    - Initializes Git repository
+    - Creates initial commit
+  - [ ] Example usage: `create-repo my-new-project --type=api`
+  - [ ] Document script usage in template README
+
+- [ ] **Configure as GitHub template:**
+  - [ ] In GitHub repository settings, enable "Template repository"
+  - [ ] Add template variables in repository description
+  - [ ] Document "Use this template" button usage
+  - [ ] Test template by creating a new repository from it
+
+- [ ] **Document template usage:**
+  - [ ] Create `docs/repository-templates.md`
+  - [ ] Explain when to use the template
+  - [ ] Provide step-by-step usage instructions
+  - [ ] Include customization guidelines
+  - [ ] List template maintenance procedures
+
+**Benefits:**
+- New repositories are ALIGNMENT-compliant from day one
+- Saves 2-4 hours per new repository
+- Ensures consistency across multiple projects
+- Reduces onboarding time for new projects
+
+**Done Criteria:**
+- ✅ INDEX.md or INDEX.json created and documents all directories
+- ✅ NOTICE file added (if legally required)
+- ✅ Repository template created (if creating multiple similar repos)
+- ✅ Template automation script works (if applicable)
+- ✅ Template documentation exists (if applicable)
 
 ## Decision: Is this a versioned project?
 
