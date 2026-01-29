@@ -14,20 +14,22 @@
 
 Before proceeding, answer these questions:
 
-1. **Do you have automated health checks?**
-   - [ ] Yes (needs alignment with ALIGNMENT standards)
-   - [ ] No (needs setup - P1)
+1. **What quality metrics should you track?**
+   - [ ] Test coverage - **Target percentage?** _______________ (recommend 60%+ for critical paths)
+   - [ ] Code complexity - **What thresholds?** (cyclomatic complexity, maintainability index)
+   - [ ] Dependency health - **Which dependencies matter most?** _______________
+   - [ ] Documentation coverage - **What needs documentation?** (APIs, architecture, setup)
+   - [ ] Build success rate - **What's acceptable?** _______________
+   - [ ] Other metrics: _______________
 
-2. **What quality metrics do you track?**
-   - [ ] Test coverage
-   - [ ] Code complexity
-   - [ ] Dependency health
-   - [ ] Documentation coverage
-   - [ ] None (needs setup)
-
-3. **Do you have compliance validation automated?**
-   - [ ] Yes (needs alignment)
-   - [ ] No (needs setup - P1)
+2. **What compliance checks should be automated?**
+   - [ ] Required files exist (README, LICENSE, SECURITY.md, etc.)
+   - [ ] File structure matches standards
+   - [ ] Naming conventions followed
+   - [ ] Documentation completeness
+   - [ ] CI/CD configuration correctness
+   - [ ] Security scanning configured
+   - [ ] Other checks: _______________
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 

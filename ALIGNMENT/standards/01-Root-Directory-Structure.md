@@ -212,15 +212,15 @@ my-python-app/
 
 **Manual Check:**
 - [ ] Run `ls -la` (or `dir` on Windows) and verify root has ≤ 10 files (excluding hidden files)
-- [ ] Verify `README.md` exists and contains:
-  - What the repo is (1-2 sentences)
-  - How to install/run it
-  - Where the code lives
-  - How to contribute
+- [ ] Verify `README.md` clearly describes:
+  - What the repo is (1-2 sentences) - **What should it say?**
+  - How to install/run it - **What are the exact commands?**
+  - Where the code lives - **Which directories contain source code?**
+  - How to contribute - **What's the contribution process?**
 - [ ] Check `.gitignore` excludes: `.env`, `build/`, `dist/`, `node_modules/`, `*.o`, `*.exe`
 - [ ] Verify no secrets are committed (run: `git log --all --full-history -- .env` or similar)
-- [ ] If public repo: verify `LICENSE` file exists
-- [ ] If versioned project: verify `CHANGELOG.md` exists
+- [ ] If public repo: verify `LICENSE` file exists and matches your chosen license type
+- [ ] If versioned project: verify `CHANGELOG.md` follows [Keep a Changelog](https://keepachangelog.com/) format
 
 **Automated Check:**
 ```bash

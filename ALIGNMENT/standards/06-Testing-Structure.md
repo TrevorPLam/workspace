@@ -8,7 +8,7 @@
 
 Before proceeding, answer these questions:
 
-1. **What testing framework do you use (or plan to use)?**
+1. **What testing framework will you use?**
    - [ ] Jest (JavaScript/TypeScript)
    - [ ] pytest (Python)
    - [ ] Go testing (built-in)
@@ -16,9 +16,13 @@ Before proceeding, answer these questions:
    - [ ] JUnit (Java)
    - [ ] Other: _______________
 
-2. **Do you have existing tests?**
-   - [ ] Yes (needs organization per this section)
-   - [ ] No (needs test infrastructure setup)
+2. **What types of tests do you need?**
+   - [ ] Unit tests (individual functions/components)
+   - [ ] Integration tests (component interactions)
+   - [ ] End-to-end tests (full user workflows)
+   - [ ] Performance tests (load, stress, benchmarks)
+   - [ ] Accessibility tests (a11y for web apps)
+   - [ ] Other: _______________
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 

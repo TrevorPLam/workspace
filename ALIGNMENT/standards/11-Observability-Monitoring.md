@@ -15,22 +15,17 @@
 
 Before proceeding, answer these questions:
 
-1. **Do you have logging currently implemented?**
-   - [ ] Yes (needs conversion to structured logging)
-   - [ ] No (needs full setup)
+1. **What observability do you need?**
+   - [ ] Logging (application events, errors, debug info) - **What should be logged?** _______________
+   - [ ] Error tracking (exceptions, crashes, failures) - **Which service?** (Sentry, Rollbar, etc.)
+   - [ ] Metrics (performance, business metrics, system health) - **What metrics matter?** _______________
+   - [ ] Distributed tracing (request flows across services) - **Do you have microservices?**
+   - [ ] Health checks (service availability, dependencies) - **What endpoints/services?** _______________
 
-2. **What logging format do you currently use?**
-   - [ ] Unstructured (print statements, console.log)
+2. **What logging format will you use?**
+   - [ ] Structured JSON (recommended for production)
    - [ ] Semi-structured (custom format)
-   - [ ] Structured JSON (already compliant)
-
-3. **Do you have error tracking configured?**
-   - [ ] Yes (Sentry, Rollbar, etc.)
-   - [ ] No (needs setup - P1)
-
-4. **Do you have metrics/telemetry collection?**
-   - [ ] Yes (Prometheus, Datadog, etc.)
-   - [ ] No (needs setup - P1)
+   - [ ] Unstructured (simple text) - **Note:** Consider migrating to structured
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 

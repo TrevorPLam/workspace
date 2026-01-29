@@ -204,37 +204,41 @@ See [Templates](Templates.md) for README template.
 
 ## Decision: What documentation do you need?
 
-**From Section 0, determine your project type:**
+**From Section 0, determine your project type and document:**
 
 **Library/Package:**
-- [ ] README with installation and usage
-- [ ] API documentation (JSDoc, GoDoc, etc.)
-- [ ] Examples in `examples/` directory
+- [ ] **README content:** What installation steps are needed? What are the main usage examples?
+- [ ] **API documentation:** Which functions/classes need documentation? What's the API surface?
+- [ ] **Examples:** What example use cases should be demonstrated? Where should examples live?
 
 **Application:**
-- [ ] README with setup and run instructions
-- [ ] Architecture documentation (`docs/architecture.md`)
-- [ ] Developer onboarding guide (`docs/onboarding.md`)
+- [ ] **README content:** What setup steps are required? What are the run commands?
+- [ ] **Architecture:** What are the main components? How do they interact? What design decisions were made?
+- [ ] **Onboarding:** What tools/accounts are needed? What's the first contribution workflow?
 
 **API/Service:**
-- [ ] README with API overview
-- [ ] OpenAPI/Swagger specification
-- [ ] API versioning documentation
+- [ ] **README content:** What's the API purpose? What are the main endpoints?
+- [ ] **OpenAPI/Swagger:** What endpoints exist? What are request/response schemas?
+- [ ] **Versioning:** What's the versioning strategy? How are breaking changes communicated?
 
 **Infrastructure:**
-- [ ] README with deployment instructions
-- [ ] Infrastructure documentation (`infra/README.md`)
-- [ ] Environment setup guide
+- [ ] **README content:** What deployment steps are required? What environments exist?
+- [ ] **Infrastructure docs:** What infrastructure components exist? How are they configured?
+- [ ] **Environment setup:** What credentials/permissions are needed? How are environments provisioned?
 
 ## Verification
 
 **Manual Check:**
-- [ ] Verify `README.md` exists and contains all required sections (what, install, run, contribute)
-- [ ] Check `LICENSE` file exists (if public repo)
-- [ ] If `docs/` folder exists: verify it has clear structure
-- [ ] Test README instructions: Can someone clone and run the project?
+- [ ] Verify `README.md` content is complete and accurate:
+  - **What section:** Does it clearly explain the project's purpose?
+  - **Install section:** Can a new user follow these steps successfully?
+  - **Run section:** Are the commands correct and complete?
+  - **Contribute section:** Is the contribution process clear?
+- [ ] Check `LICENSE` file exists and matches your chosen license (if public repo)
+- [ ] If `docs/` folder exists: verify structure is logical and files are findable
+- [ ] **Test README:** Have someone unfamiliar with the project try to clone and run it - what issues do they encounter?
 - [ ] Check for broken links: Use link checker tool
-- [ ] Verify documentation is up-to-date (no outdated instructions)
+- [ ] Verify documentation matches current codebase: Are examples still valid? Are commands correct?
 
 **Automated Check (Future):**
 ```bash

@@ -17,13 +17,16 @@ Before proceeding, answer these questions:
 
 1. **What is your repository structure type?**
    - **Note:** This should match your answer from Section 0 Question 7. If different, update Section 0 answer.
-   - [ ] Single Package/Library (flat structure)
-   - [ ] Monorepo (multiple packages/apps)
-   - [ ] Application (feature-based or layer-based)
+   - [ ] Single Package/Library (flat structure) - **What's the main package/module name?** _______________
+   - [ ] Monorepo (multiple packages/apps) - **How many apps/packages?** _______________ **What are they?** _______________
+   - [ ] Application (feature-based or layer-based) - **What's the organization approach?** (features, layers, domains)
 
-2. **Do you have existing code in the root directory?**
-   - [ ] Yes (needs migration to appropriate directory)
-   - [ ] No (starting fresh)
+2. **Where should your source code live?**
+   - [ ] `src/` directory (JavaScript/Python/Rust standard)
+   - [ ] `cmd/` + `pkg/` (Go standard)
+   - [ ] `apps/` + `packages/` (monorepo standard)
+   - [ ] Other: _______________
+   - [ ] Code currently in root - **What files need to move?** _______________
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 

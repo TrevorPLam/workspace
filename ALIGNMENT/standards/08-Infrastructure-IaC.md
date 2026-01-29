@@ -14,22 +14,20 @@
 
 Before proceeding, answer these questions:
 
-1. **Do you have infrastructure as code (IaC)?**
-   - [ ] Yes (Terraform, CloudFormation, Pulumi, etc.)
-   - [ ] No (needs setup - P0)
+1. **What infrastructure needs to be managed?**
+   - [ ] Cloud resources (compute, storage, networking) - **Which provider?** (AWS, Azure, GCP, etc.)
+   - [ ] Kubernetes clusters and workloads - **What environments?** (dev, staging, prod)
+   - [ ] Container orchestration (Docker Compose, Kubernetes) - **What services?** _______________
+   - [ ] Configuration management (Ansible, Chef, Puppet) - **What systems?** _______________
+   - [ ] No infrastructure code (application-only repository) - **Skip this section**
 
-2. **What infrastructure tools do you use?**
-   - [ ] Terraform
-   - [ ] CloudFormation
-   - [ ] Pulumi
-   - [ ] Ansible
-   - [ ] Kubernetes manifests
-   - [ ] Docker Compose
+2. **What infrastructure tools will you use?**
+   - [ ] Terraform - **What resources/modules?** _______________
+   - [ ] CloudFormation/CDK - **Which cloud provider?** _______________
+   - [ ] Pulumi - **What language?** (TypeScript, Python, Go, etc.)
+   - [ ] Kubernetes manifests - **What workloads?** _______________
+   - [ ] Docker Compose - **What services?** _______________
    - [ ] Other: _______________
-
-3. **Do you deploy to cloud providers?**
-   - [ ] Yes (AWS, Azure, GCP, etc.)
-   - [ ] No (self-hosted or local)
 
 **Note:** If you don't have infrastructure code, you can skip this section or mark it as "not applicable" in your progress tracker.
 

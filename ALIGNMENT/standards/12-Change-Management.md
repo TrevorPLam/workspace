@@ -8,18 +8,24 @@
 
 Before proceeding, answer these questions:
 
-1. **Do you use semantic versioning (SemVer)?**
-   - [ ] Yes (already using)
-   - [ ] No (needs setup - P0)
+1. **What versioning strategy will you use?**
+   - [ ] Semantic Versioning (SemVer: MAJOR.MINOR.PATCH) - **Starting version?** _______________
+   - [ ] Calendar Versioning (CalVer: YYYY.MM.DD)
+   - [ ] Custom versioning scheme: _______________
+   - [ ] No versioning (internal projects only)
 
-2. **Do you have a CHANGELOG.md file?**
-   - [ ] Yes (needs formatting per this section)
-   - [ ] No (needs creation if versioned project - see Section 0 Question 1)
+2. **What should your CHANGELOG.md include?** (if versioned project)
+   - [ ] Added (new features)
+   - [ ] Changed (changes in existing functionality)
+   - [ ] Deprecated (soon-to-be removed features)
+   - [ ] Removed (removed features)
+   - [ ] Fixed (bug fixes)
+   - [ ] Security (vulnerability fixes)
 
-3. **What commit message convention do you use?**
-   - [ ] Conventional Commits (recommended - P0)
-   - [ ] Custom format
-   - [ ] None (needs setup - P0)
+3. **What commit message format will you use?**
+   - [ ] Conventional Commits (`type(scope): description`) - **Recommended**
+   - [ ] Custom format: _______________
+   - [ ] No standard format (not recommended)
 
 **Note:** If you answered "No" to "Is versioned project?" in Section 0, you can skip CHANGELOG.md requirements but should still adopt commit conventions.
 

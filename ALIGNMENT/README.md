@@ -10,18 +10,32 @@ This standard defines how every repository should be organized, documented, and 
 
 ## Table of Contents
 
-- [Quick Start Checklist](Quick-Start-Checklist.md) - Start here for new repos
-- [Minimum Viable Alignment (MVA)](Minimum-Viable-Alignment.md) - **Quick start** (~90 minutes)
-- [Migration Guide](Migration-Guide.md) - **For existing repositories** - Incremental adoption strategies
-- [Reference Guide](#reference-guide) - Detailed standards by category
-- [Workflow Guides](Workflow-Guides.md) - Step-by-step processes
-- [Quick Reference](Quick-Reference.md) - Cheat sheets and templates
-- [Templates](Templates.md) - File templates and examples
-- [Success Metrics](Success-Metrics.md) - Defining "successfully aligned"
-- [Cost-Benefit Analysis](Cost-Benefit-Analysis.md) - ROI and investment analysis
-- [Common Pitfalls](Common-Pitfalls.md) - Mistakes to avoid
-- [FAQ](FAQ.md) - Frequently asked questions
-- [Getting Help](Getting-Help.md) - Where to find help
+### Getting Started
+- [Quick Start Checklist](getting-started/Quick-Start-Checklist.md) - Start here for new repos
+- [Minimum Viable Alignment (MVA)](getting-started/Minimum-Viable-Alignment.md) - **Quick start** (~90 minutes)
+- [Migration Guide](getting-started/Migration-Guide.md) - **For existing repositories** - Incremental adoption strategies
+
+### Core Standards
+- [Reference Guide](#reference-guide) - Detailed standards by category (see below)
+
+### Reference Materials
+- [Templates](reference/Templates.md) - File templates and examples
+- [Quick Reference](reference/Quick-Reference.md) - Cheat sheets and templates
+- [Decision Tree](reference/Decision-Tree.md) - Decision-making guide
+- [Language Quick Starts](reference/Language-Quick-Starts.md) - Language-specific guidance
+- [Platform Quick Starts](reference/Platform-Quick-Starts.md) - Platform-specific guidance
+- [Dependency Graph](reference/Dependency-Graph.md) - Section dependencies
+- [Badge Generator](reference/Badge-Generator.md) - Repository badges
+
+### Supporting Documentation
+- [Workflow Guides](supporting/Workflow-Guides.md) - Step-by-step processes
+- [Success Metrics](supporting/Success-Metrics.md) - Defining "successfully aligned"
+- [Cost-Benefit Analysis](supporting/Cost-Benefit-Analysis.md) - ROI and investment analysis
+- [Common Pitfalls](supporting/Common-Pitfalls.md) - Mistakes to avoid
+- [FAQ](supporting/FAQ.md) - Frequently asked questions
+- [Getting Help](supporting/Getting-Help.md) - Where to find help
+
+### Contributing
 - [Contributing to ALIGNMENT](CONTRIBUTING.md) - How to improve this standard
 - [For AI Agents](#for-ai-agents) - Execution guidance for AI agents
 
@@ -51,7 +65,7 @@ ALIGNMENT is comprehensive, but it's not always necessary. Consider skipping or 
 - LICENSE file (if public)
 - Basic CI/CD (if code is shared)
 
-For existing repositories, see [Migration Guide](Migration-Guide.md) for incremental adoption strategies.
+For existing repositories, see [Migration Guide](getting-started/Migration-Guide.md) for incremental adoption strategies.
 
 ---
 
@@ -60,33 +74,33 @@ For existing repositories, see [Migration Guide](Migration-Guide.md) for increme
 Detailed standards organized by category. Use this as a reference when implementing specific requirements.
 
 ### Core Structure
-0. [Prerequisites & Setup](00-Prerequisites.md) - **Start here first**
-1. [Root Directory Structure](01-Root-Directory-Structure.md)
-2. [Source Code Layout](02-Source-Code-Layout.md)
-3. [Configuration & Environment](03-Configuration-Environment.md)
-4. [Dependency Management](04-Dependency-Management.md)
+0. [Prerequisites & Setup](standards/00-Prerequisites.md) - **Start here first**
+1. [Root Directory Structure](standards/01-Root-Directory-Structure.md)
+2. [Source Code Layout](standards/02-Source-Code-Layout.md)
+3. [Configuration & Environment](standards/03-Configuration-Environment.md)
+4. [Dependency Management](standards/04-Dependency-Management.md)
 
 ### Automation & Quality
-5. [CI/CD Structure](05-CI-CD-Structure.md)
-6. [Testing Structure](06-Testing-Structure.md)
+5. [CI/CD Structure](standards/05-CI-CD-Structure.md)
+6. [Testing Structure](standards/06-Testing-Structure.md)
 
 ### Documentation & Governance
-7. [Documentation Standards](07-Documentation-Standards.md)
-8. [Infrastructure / IaC Structure](08-Infrastructure-IaC.md)
-9. [Governance & Ownership](09-Governance-Ownership.md)
+7. [Documentation Standards](standards/07-Documentation-Standards.md)
+8. [Infrastructure / IaC Structure](standards/08-Infrastructure-IaC.md)
+9. [Governance & Ownership](standards/09-Governance-Ownership.md)
 
 ### Security & Operations
-10. [Security & Compliance](10-Security-Compliance.md)
-11. [Observability & Monitoring](11-Observability-Monitoring.md)
-12. [Change Management](12-Change-Management.md)
-13. [Quality & Health Checks](13-Quality-Health-Checks.md)
+10. [Security & Compliance](standards/10-Security-Compliance.md)
+11. [Observability & Monitoring](standards/11-Observability-Monitoring.md)
+12. [Change Management](standards/12-Change-Management.md)
+13. [Quality & Health Checks](standards/13-Quality-Health-Checks.md)
 
 ---
 
 ## For AI Agents
 
 **Execution Order:**
-1. **Start with [Section 0: Prerequisites](00-Prerequisites.md)** - Complete all decision points first
+1. **Start with [Section 0: Prerequisites](standards/00-Prerequisites.md)** - Complete all decision points first
 2. Complete Section 1 fully before proceeding to Section 2
 3. Sections 3-4 can be done in parallel (after Section 1)
 4. Section 5 Phase 1 (Bootstrap CI/CD) before Section 6
@@ -95,7 +109,7 @@ Detailed standards organized by category. Use this as a reference when implement
 
 **Validation:**
 - After each section, verify completion before proceeding
-- Use `alignment-progress.json` to track state (see [Templates](Templates.md))
+- Use `meta/alignment-progress.json` to track state (see [Templates](reference/Templates.md))
 - If task fails, check "Common Issues & Solutions" in that section
 - Run verification checks listed in each section
 
@@ -117,7 +131,7 @@ Detailed standards organized by category. Use this as a reference when implement
 - If validation fails: Review "Verification" subsection for that section
 
 **Progress Tracking:**
-- Initialize `alignment-progress.json` with Section 0 decision points
+- Initialize `meta/alignment-progress.json` with Section 0 decision points
 - Update after each section: status, tasks_complete, tasks_total
 - Mark sections as "completed" only after verification passes
 - Update `next_section` field to guide next steps

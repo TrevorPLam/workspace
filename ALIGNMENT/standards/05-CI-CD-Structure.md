@@ -10,17 +10,19 @@
 
 Before proceeding, answer these questions:
 
-1. **Do you already have CI/CD configured?**
-   - [ ] Yes (needs alignment with ALIGNMENT standards)
-   - [ ] No (needs full setup)
+1. **What CI/CD pipeline stages do you need?**
+   - [ ] Build (compile/package code)
+   - [ ] Test (unit, integration, e2e)
+   - [ ] Lint (code quality checks)
+   - [ ] Security scanning (SAST, dependency scanning, secret scanning)
+   - [ ] Deploy (staging, production)
+   - [ ] Other: _______________
 
-2. **What security scanning tools do you currently use (or plan to use)?**
-   - [ ] None (needs setup)
-   - [ ] ESLint with security plugins (JavaScript/TypeScript)
-   - [ ] Snyk
-   - [ ] Bandit (Python)
-   - [ ] Gosec (Go)
-   - [ ] CodeQL (GitHub)
+2. **What security scanning should your pipeline include?**
+   - [ ] Static code analysis (ESLint security plugins, Bandit, Gosec, CodeQL)
+   - [ ] Dependency vulnerability scanning (Snyk, Dependabot, npm audit)
+   - [ ] Secret scanning (truffleHog, git-secrets)
+   - [ ] Container scanning (if using containers: Trivy, Snyk Container)
    - [ ] Other: _______________
 
 **Document your answers** in `alignment-progress.json` before proceeding.

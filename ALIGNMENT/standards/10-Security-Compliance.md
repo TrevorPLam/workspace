@@ -10,15 +10,19 @@
 
 Before proceeding, answer these questions:
 
-1. **What is your security compliance level?**
-   - [ ] Basic (P0 requirements only)
-   - [ ] Standard (P0 + P1 requirements)
-   - [ ] High (P0 + P1 + P2 requirements)
-   - [ ] Compliance-specific (SOC2, HIPAA, PCI-DSS, etc.)
+1. **What security requirements apply to your project?**
+   - [ ] Basic security (public repos, no sensitive data)
+   - [ ] Standard security (production apps, user data)
+   - [ ] High security (financial, healthcare, critical infrastructure)
+   - [ ] Compliance requirements (SOC2, HIPAA, PCI-DSS, GDPR, etc.) - **Which ones?** _______________
 
-2. **Do you handle sensitive data (PII, secrets, credentials)?**
-   - [ ] Yes (requires enhanced security measures)
-   - [ ] No (standard security sufficient)
+2. **What sensitive data does your application handle?**
+   - [ ] Personal Identifiable Information (PII) - **What types?** _______________
+   - [ ] Authentication credentials (passwords, tokens)
+   - [ ] Financial data (payment info, transactions)
+   - [ ] Health data (medical records, PHI)
+   - [ ] Other sensitive data: _______________
+   - [ ] None (no sensitive data)
 
 **Note:** If secrets exist in repository (from Section 0 Question 9 or Section 3 Question 1), they must be remediated before proceeding.
 

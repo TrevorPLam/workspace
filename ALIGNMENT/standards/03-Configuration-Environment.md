@@ -85,15 +85,19 @@ project/
 
 Before proceeding, answer these questions:
 
-1. **Do you have secrets currently in the repository?**
-   - ⚠️ **CRITICAL:** If yes, these must be removed immediately!
-   - [ ] Yes (needs immediate remediation)
-   - [ ] No (needs prevention setup)
+1. **What secrets/credentials does your application need?**
+   - ⚠️ **CRITICAL:** If any secrets exist in the repository, they must be removed immediately!
+   - [ ] Database credentials (host, username, password, port)
+   - [ ] API keys (third-party services, internal APIs)
+   - [ ] Service URLs and endpoints
+   - [ ] Feature flags and configuration values
+   - [ ] Other: _______________
+   - [ ] None (application uses only hardcoded/public values)
 
-2. **What is your secret management approach?**
-   - [ ] Environment variables (.env files)
-   - [ ] Secret management service (AWS Secrets Manager, HashiCorp Vault, etc.)
-   - [ ] CI/CD secrets (GitHub Secrets, GitLab CI Variables)
+2. **How will you manage these secrets?**
+   - [ ] Environment variables (.env files for local, platform env vars for deployment)
+   - [ ] Secret management service (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault, etc.)
+   - [ ] CI/CD secrets (GitHub Secrets, GitLab CI Variables, etc.)
    - [ ] Other: _______________
 
 **Document your answers** in `alignment-progress.json` before proceeding.
@@ -151,23 +155,23 @@ Before proceeding, answer these questions:
 - [ ] Generate typed configuration objects
 - [ ] Add configuration validation on startup
 
-## Decision: Do you need environment variables?
+## Decision: What environment variables do you need?
 
-**Check if your application needs:**
-- Database credentials → **Yes**
-- API keys → **Yes**
-- Service URLs → **Yes**
-- Feature flags → **Yes**
-- Hardcoded values only → **No**
+**Identify required variables:**
+- [ ] **Database:** What connection details are needed? (host, port, database name, credentials)
+- [ ] **APIs:** What API keys or tokens are required? (service names, key purposes)
+- [ ] **Services:** What service URLs or endpoints are needed? (internal/external services)
+- [ ] **Feature flags:** What configuration flags exist? (feature names, default values)
+- [ ] **Other:** What other environment-specific values exist? (log levels, timeouts, etc.)
 
-**If Yes:**
-- [ ] Create `.env.example` with all required variables (no values)
-- [ ] Document each variable in `.env.example` comments
+**If you identified variables:**
+- [ ] Create `.env.example` listing all required variables with descriptions (no actual values)
+- [ ] Document each variable's purpose, format, and whether it's required or optional
 - [ ] Ensure `.env` is in `.gitignore` (from Section 1)
 
-**If No:**
+**If no variables needed:**
 - [ ] Skip `.env.example` creation
-- [ ] Still ensure `.gitignore` excludes `.env*` files
+- [ ] Still ensure `.gitignore` excludes `.env*` files for future-proofing
 
 ## Verification
 

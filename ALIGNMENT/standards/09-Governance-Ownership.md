@@ -15,17 +15,22 @@
 
 Before proceeding, answer these questions:
 
-1. **What branching strategy do you use (or want to use)?**
-   - [ ] GitHub Flow (simple: main + feature branches)
-   - [ ] Git Flow (complex: main, develop, release branches)
-   - [ ] Trunk-Based Development (main only, short-lived branches)
+1. **What branching strategy fits your workflow?**
+   - [ ] GitHub Flow (simple: main + feature branches) - **Best for:** Continuous deployment, small teams
+   - [ ] Git Flow (complex: main, develop, release branches) - **Best for:** Release-heavy projects, versioned libraries
+   - [ ] Trunk-Based Development (main only, short-lived branches) - **Best for:** Large teams, fast iteration
    - [ ] Other: _______________
 
-2. **Do you have code review standards?**
-   - [ ] Yes (needs documentation)
-   - [ ] No (needs creation)
+2. **What should code reviews cover?**
+   - [ ] Functionality (does it work, edge cases handled)
+   - [ ] Tests (adequate coverage, tests pass, maintainable)
+   - [ ] Documentation (code comments, README, API docs updated)
+   - [ ] Security (vulnerabilities, best practices)
+   - [ ] Performance (implications, regressions)
+   - [ ] Accessibility (a11y standards for web apps)
+   - [ ] Other: _______________
 
-**Note:** Repository owners/maintainers should already be documented from Section 0 Question 10. If not, answer:
+**Note:** Repository owners/maintainers should already be documented from Section 0 Question 10. If not, specify:
 - Primary maintainer: _______________
 - Additional maintainers: _______________
 - Teams (if applicable): _______________

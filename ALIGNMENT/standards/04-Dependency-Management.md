@@ -37,21 +37,22 @@
 
 ## Decision: Which package manager are you using?
 
-**From Section 0, identify your lockfile:**
-- npm → `package-lock.json`
-- pnpm → `pnpm-lock.yaml`
-- yarn → `yarn.lock`
-- pip → `requirements.txt` (no lockfile, consider poetry/pipenv)
-- poetry → `poetry.lock`
-- pipenv → `Pipfile.lock`
-- Go → `go.sum`
-- Rust → `Cargo.lock`
-- Other → [identify lockfile]
+**From Section 0, identify your lockfile and verify:**
+- npm → `package-lock.json` - **Is it committed?** Does it exist?
+- pnpm → `pnpm-lock.yaml` - **Is it committed?** Does it exist?
+- yarn → `yarn.lock` - **Is it committed?** Does it exist?
+- pip → `requirements.txt` (no lockfile) - **Consider:** poetry or pipenv for lockfile support
+- poetry → `poetry.lock` - **Is it committed?** Does it exist?
+- pipenv → `Pipfile.lock` - **Is it committed?** Does it exist?
+- Go → `go.sum` - **Is it committed?** Does it exist?
+- Rust → `Cargo.lock` - **Is it committed?** Does it exist?
+- Other → **What's the lockfile name?** _______________ **Is it committed?**
 
 **Action:** Verify lockfile exists and is committed
-- [ ] Check lockfile exists for your package manager
-- [ ] Verify lockfile is committed to git: `git ls-files | grep lock`
+- [ ] Check lockfile exists for your package manager: `ls -la | grep -E "lock|sum|txt"`
+- [ ] Verify lockfile is committed to git: `git ls-files | grep -E "lock|sum"`
 - [ ] If no lockfile exists, generate it: `npm install`, `poetry lock`, `go mod tidy`, etc.
+- [ ] **What dependencies are critical?** (list top 5-10 most important) _______________
 
 ## Verification
 
