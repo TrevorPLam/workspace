@@ -5,6 +5,12 @@
 - [Section 2: Source Code Layout](02-Source-Code-Layout.md)
 - **Recommended:** [Section 5: CI/CD Structure](05-CI-CD-Structure.md) (for CI/CD health checks)
 
+**Effort Estimate:**
+- **Structured logging (P0):** 2-4 hours
+- **Basic monitoring (P1):** 4-8 hours
+- **Full observability stack (P1 + P2):** 8-16 hours
+- **Distributed tracing (P2):** 4-8 hours additional
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:

@@ -1,17 +1,28 @@
 # Repository Alignment Standard
 
+**Version:** 1.1.0  
+**Last Updated:** 2026-01-28  
 *(Human-Friendly, Hybrid Tone, P0 → P1 → P2)*
 
 This standard defines how every repository should be organized, documented, and maintained. It is platform-agnostic, language-agnostic, and suitable for monorepos, polyrepos, app repos, infra repos, and library repos.
 
+> **Note:** When implementing ALIGNMENT, specify which version you're following (e.g., "ALIGNMENT v1.0.0") in your repository documentation for future reference.
+
 ## Table of Contents
 
 - [Quick Start Checklist](Quick-Start-Checklist.md) - Start here for new repos
+- [Minimum Viable Alignment (MVA)](Minimum-Viable-Alignment.md) - **Quick start** (~90 minutes)
+- [Migration Guide](Migration-Guide.md) - **For existing repositories** - Incremental adoption strategies
 - [Reference Guide](#reference-guide) - Detailed standards by category
 - [Workflow Guides](Workflow-Guides.md) - Step-by-step processes
 - [Quick Reference](Quick-Reference.md) - Cheat sheets and templates
 - [Templates](Templates.md) - File templates and examples
+- [Success Metrics](Success-Metrics.md) - Defining "successfully aligned"
+- [Cost-Benefit Analysis](Cost-Benefit-Analysis.md) - ROI and investment analysis
+- [Common Pitfalls](Common-Pitfalls.md) - Mistakes to avoid
+- [FAQ](FAQ.md) - Frequently asked questions
 - [Getting Help](Getting-Help.md) - Where to find help
+- [Contributing to ALIGNMENT](CONTRIBUTING.md) - How to improve this standard
 - [For AI Agents](#for-ai-agents) - Execution guidance for AI agents
 
 ---
@@ -21,6 +32,26 @@ This standard defines how every repository should be organized, documented, and 
 - **P0** — Required (must have)
 - **P1** — Strongly Recommended (should have)
 - **P2** — Advanced / Optional / Scale-Driven (nice to have)
+
+---
+
+## When Not to Align
+
+ALIGNMENT is comprehensive, but it's not always necessary. Consider skipping or using a minimal subset if:
+
+- **Tiny projects:** Single-file scripts, one-off utilities, or prototypes (< 100 lines)
+- **Temporary projects:** Experiments, proofs-of-concept, or throwaway code
+- **Legacy systems:** Very old codebases where alignment would be disruptive without clear benefit
+- **External constraints:** Projects with strict organizational requirements that conflict with ALIGNMENT
+- **Time-critical:** When alignment would delay critical deliverables (align incrementally instead)
+
+**Minimal Alignment:** Even for small projects, consider at minimum:
+- README.md with basic info
+- `.gitignore` configured
+- LICENSE file (if public)
+- Basic CI/CD (if code is shared)
+
+For existing repositories, see [Migration Guide](Migration-Guide.md) for incremental adoption strategies.
 
 ---
 

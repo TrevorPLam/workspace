@@ -25,6 +25,12 @@ Before proceeding, answer these questions:
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 
+**Effort Estimate:**
+- **Basic change management (P0):** 1-2 hours
+- **Automated changelog generation (P1):** 1-2 hours additional
+- **Advanced release management (P2):** 2-4 hours additional
+- **Existing CHANGELOG formatting:** 30-60 minutes
+
 ## P0 — Required Actions
 
 **Action:** Set up change tracking

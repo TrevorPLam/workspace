@@ -4,6 +4,13 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 
+**Effort Estimate:**
+- **New repository:** 15-30 minutes
+- **Existing repository (small, < 10 source files):** 1-2 hours
+- **Existing repository (medium, 10-50 source files):** 2-4 hours
+- **Existing repository (large, 50+ source files):** 4-8 hours
+- **Note:** Time increases significantly if import paths need updating across many files
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -19,6 +26,91 @@ Before proceeding, answer these questions:
    - [ ] No (starting fresh)
 
 **Document your answers** in `alignment-progress.json` before proceeding.
+
+## Before/After Examples
+
+### Example 1: Go Project Migration
+
+**BEFORE (source files in root):**
+```
+my-go-app/
+├── README.md
+├── go.mod
+├── go.sum
+├── main.go
+├── handlers.go
+├── database.go
+├── config.go
+├── utils.go
+└── tests/
+    └── main_test.go
+```
+
+**AFTER (proper Go structure):**
+```
+my-go-app/
+├── README.md
+├── go.mod
+├── go.sum
+├── cmd/
+│   └── app/
+│       └── main.go
+├── pkg/
+│   ├── handlers/
+│   │   └── handlers.go
+│   ├── database/
+│   │   └── database.go
+│   ├── config/
+│   │   └── config.go
+│   └── utils/
+│       └── utils.go
+└── tests/
+    └── main_test.go
+```
+
+**Changes Made:**
+- Moved `main.go` → `cmd/app/main.go` (Go convention for executables)
+- Moved other source files → `pkg/` organized by domain
+- Created proper Go package structure
+
+### Example 2: Monorepo Migration
+
+**BEFORE (flat structure):**
+```
+monorepo/
+├── README.md
+├── package.json
+├── frontend/
+│   └── src/
+├── backend/
+│   └── src/
+├── shared/
+│   └── utils.js
+└── docs/
+```
+
+**AFTER (proper monorepo structure):**
+```
+monorepo/
+├── README.md
+├── package.json
+├── pnpm-workspace.yaml
+├── apps/
+│   ├── frontend/
+│   │   └── src/
+│   └── backend/
+│       └── src/
+├── packages/
+│   └── shared/
+│       └── src/
+│           └── utils.js
+└── docs/
+```
+
+**Changes Made:**
+- Moved `frontend/`, `backend/` → `apps/`
+- Moved `shared/` → `packages/shared/`
+- Added workspace configuration (`pnpm-workspace.yaml`)
 
 ## P0 — Required Actions
 
@@ -89,6 +181,38 @@ Before proceeding, answer these questions:
 - ✅ Directory depth ≤ 4 levels
 - ✅ No vague directory names ("misc", "stuff", "helpers" without clear scope)
 
+## Rollback Procedures
+
+If moving source files causes issues:
+
+**Option 1: Revert specific commit**
+```bash
+git revert <commit-hash>
+```
+
+**Option 2: Restore from backup branch**
+```bash
+# If you created backup branch before migration
+git checkout backup/pre-alignment
+git checkout -b restore/pre-alignment
+```
+
+**Option 3: Restore specific files**
+```bash
+# Restore files from previous commit
+git checkout <previous-commit> -- path/to/file
+```
+
+**Option 4: Manual restoration**
+```bash
+# Move files back to original location
+git mv src/file.js ./
+# Update imports back
+# Test build
+```
+
+**Prevention:** Always test after moving files before proceeding to next section.
+
 ## Common Issues & Solutions
 
 **Issue:** "I don't know which directory structure to use"  
@@ -121,7 +245,12 @@ Before proceeding, answer these questions:
 **Issue:** "I'm not sure if my structure follows conventions"  
 - **Solution:** 
   - Check language-specific guides:
-    - JavaScript: [Node.js best practices](https://github.com/goldbergyoni/nodebestpractices)
-    - Python: [Python packaging guide](https://packaging.python.org/)
-    - Go: [Standard Go Project Layout](https://github.com/golang-standards/project-layout)
-    - Rust: [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)
+    - **JavaScript/TypeScript:** [Node.js best practices](https://github.com/goldbergyoni/nodebestpractices), [TypeScript project structure](https://www.typescriptlang.org/docs/handbook/project-references.html)
+    - **Python:** [Python packaging guide](https://packaging.python.org/), [PEP 8](https://pep8.org/), [Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/structure/)
+    - **Go:** [Standard Go Project Layout](https://github.com/golang-standards/project-layout), [Go project structure](https://go.dev/doc/modules/layout)
+    - **Rust:** [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/), [Cargo project layout](https://doc.rust-lang.org/cargo/guide/project-layout.html)
+    - **Java/Kotlin:** [Maven standard directory layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html), [Gradle project structure](https://docs.gradle.org/current/userguide/java_project_layout.html)
+    - **C#/.NET:** [.NET project structure](https://docs.microsoft.com/en-us/dotnet/core/project-structure), [ASP.NET Core structure](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/)
+    - **PHP:** [PSR-4 autoloading standard](https://www.php-fig.org/psr/psr-4/), [Composer project structure](https://getcomposer.org/doc/01-basic-usage.md)
+    - **Ruby:** [Ruby project structure](https://guides.rubyonrails.org/getting_started.html#creating-the-blog-application), [Bundler best practices](https://bundler.io/guides/creating_gem.html)
+    - **Swift:** [Swift package structure](https://www.swift.org/documentation/package-manager/), [iOS project structure](https://developer.apple.com/documentation/xcode/organizing-your-project-with-files-and-folders)

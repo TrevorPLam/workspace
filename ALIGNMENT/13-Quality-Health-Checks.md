@@ -4,6 +4,12 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points
 - All P0 sections (1-12) should be completed first
 
+**Effort Estimate:**
+- **Basic quality checks (P0):** 1-2 hours
+- **Automated health scoring (P1):** 4-8 hours
+- **Compliance validation (P1):** 2-4 hours additional
+- **DORA metrics tracking (P2):** 4-8 hours additional
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -114,6 +120,32 @@ See [Templates](Templates.md) for Repository Health Check Script template.
   - [ ] Set targets (elite: <15%)
 - [ ] Create DORA metrics dashboard
 - [ ] Document DORA metrics tracking in `docs/dora-metrics.md`
+
+**Action:** Integration Testing Across ALIGNMENT Sections
+- [ ] **Test Section Integration:**
+  - [ ] Verify CI/CD (Section 5) runs tests from Section 6
+  - [ ] Verify security scanning (Section 10) works with CI/CD (Section 5)
+  - [ ] Verify pre-commit hooks (Section 3) enforce commit conventions (Section 12)
+  - [ ] Verify documentation (Section 7) references correct structure (Section 1-2)
+  - [ ] Verify health checks (Section 13) validate all previous sections
+- [ ] **End-to-End Validation:**
+  - [ ] Create test repository following all P0 sections
+  - [ ] Verify fresh clone → build → test → deploy works
+  - [ ] Verify all validation scripts pass
+  - [ ] Verify all documentation links work
+- [ ] **Cross-Section Dependencies:**
+  - [ ] Document which sections depend on others
+  - [ ] Verify prerequisite sections are complete before proceeding
+  - [ ] Test that skipping optional sections doesn't break required ones
+- [ ] **Automated Integration Tests:**
+  - [ ] Create CI job that validates ALIGNMENT compliance end-to-end
+  - [ ] Run validation scripts for all implemented sections
+  - [ ] Check that all required files exist and are correct
+  - [ ] Verify no circular dependencies between sections
+- [ ] **Document Integration Points:**
+  - [ ] Create `docs/integration-testing.md` describing how sections work together
+  - [ ] Document known integration issues and workarounds
+  - [ ] Provide integration test checklist
 
 ## Core Principles
 

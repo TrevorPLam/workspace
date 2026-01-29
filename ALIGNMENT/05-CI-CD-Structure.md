@@ -25,6 +25,104 @@ Before proceeding, answer these questions:
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 
+## Before/After Examples
+
+### Example 1: GitHub Actions Setup
+
+**BEFORE (no CI/CD):**
+```
+project/
+├── README.md
+├── package.json
+└── src/
+```
+
+**AFTER (GitHub Actions CI/CD):**
+```
+project/
+├── README.md
+├── package.json
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+└── src/
+```
+
+**ci.yml contents:**
+```yaml
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
+      - run: npm test
+      - run: npm audit
+```
+
+**Changes Made:**
+- Created `.github/workflows/ci.yml`
+- Added build, lint, test, and security checks
+- Configured to run on push and PR
+
+### Example 2: GitLab CI Setup
+
+**BEFORE (no CI/CD):**
+```
+project/
+├── README.md
+└── src/
+```
+
+**AFTER (GitLab CI):**
+```
+project/
+├── README.md
+├── .gitlab-ci.yml
+└── src/
+```
+
+**.gitlab-ci.yml contents:**
+```yaml
+stages:
+  - build
+  - test
+  - security
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+
+test:
+  stage: test
+  script:
+    - npm test
+
+security:
+  stage: security
+  script:
+    - npm audit
+```
+
+**Effort Estimate:**
+- **New CI/CD setup (GitHub Actions):** 2-4 hours
+- **New CI/CD setup (GitLab CI):** 2-4 hours
+- **New CI/CD setup (Jenkins):** 4-8 hours (if self-hosted)
+- **Existing CI/CD alignment:** 1-3 hours
+- **Phase 1 (Bootstrap):** 1-2 hours
+- **Phase 2 (Complete with tests):** 1-2 hours additional
+
 ## P0 — Required Actions
 
 **Action:** Set up bootstrap CI/CD pipeline (Phase 1 - Do First)
@@ -73,17 +171,32 @@ Before proceeding, answer these questions:
 ## Decision: Which CI/CD platform are you using?
 
 **From Section 0, identify your platform:**
-- **GitHub** → `.github/workflows/ci.yml`
-- **GitLab** → `.gitlab-ci.yml` in root
+- **GitHub Actions** → `.github/workflows/ci.yml`
+  - [Documentation](https://docs.github.com/en/actions)
+  - [Workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+- **GitLab CI** → `.gitlab-ci.yml` in root
+  - [Documentation](https://docs.gitlab.com/ee/ci/)
+  - [.gitlab-ci.yml reference](https://docs.gitlab.com/ee/ci/yaml/)
 - **Jenkins** → `Jenkinsfile` in root
+  - [Documentation](https://www.jenkins.io/doc/)
+  - [Pipeline syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)
 - **CircleCI** → `.circleci/config.yml`
+  - [Documentation](https://circleci.com/docs/)
+  - [Configuration reference](https://circleci.com/docs/config-intro/)
 - **Azure DevOps** → `azure-pipelines.yml`
+  - [Documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/)
+  - [YAML schema](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
+- **Bitbucket Pipelines** → `bitbucket-pipelines.yml`
+  - [Documentation](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/)
+- **Travis CI** → `.travis.yml`
+  - [Documentation](https://docs.travis-ci.com/)
 - **Other** → [platform-specific config location]
 
 **Action:** Create CI/CD config file in correct location
 - [ ] Create config file in platform-specific location
 - [ ] Use platform-specific syntax (YAML for most platforms)
-- [ ] Reference platform documentation if needed
+- [ ] Reference platform documentation (links above)
+- [ ] Test configuration in feature branch before merging
 
 ## Verification
 
@@ -107,6 +220,42 @@ Before proceeding, answer these questions:
 - ✅ Pipeline blocks merges on failure
 - ✅ CI/CD process documented
 - ✅ Test step added (if Phase 2 completed)
+
+## Rollback Procedures
+
+If CI/CD changes break builds:
+
+**Option 1: Restore previous CI/CD config**
+```bash
+# GitHub Actions
+git checkout <previous-commit> -- .github/workflows/ci.yml
+
+# GitLab CI
+git checkout <previous-commit> -- .gitlab-ci.yml
+
+# Jenkins
+git checkout <previous-commit> -- Jenkinsfile
+```
+
+**Option 2: Disable CI/CD temporarily**
+```bash
+# Rename config file to disable
+mv .github/workflows/ci.yml .github/workflows/ci.yml.disabled
+# Or comment out in GitLab CI
+```
+
+**Option 3: Revert to backup**
+```bash
+# If you backed up config before changes
+cp .github/workflows/ci.yml.backup .github/workflows/ci.yml
+```
+
+**Option 4: Fix incrementally**
+- Revert to Phase 1 (build + lint only)
+- Fix issues
+- Re-add test step after fixing
+
+**Prevention:** Test CI/CD in feature branch before merging to main.
 
 ## Common Issues & Solutions
 

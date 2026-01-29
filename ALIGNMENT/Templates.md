@@ -3,6 +3,41 @@
 <!-- markdownlint-disable MD031 MD040 MD022 MD025 MD004 MD032 -->
 File templates and examples for common repository files.
 
+## Template Index
+
+Quick reference to available templates:
+
+### Core Files (P0)
+- **[README Template](#readme-template)** - Basic project README structure
+- **[.env.example Template](#envexample-template)** - Environment variable template
+- **[CHANGELOG.md Template](#changelogmd-template)** - Version changelog format (for versioned projects)
+
+### Governance Files (P0)
+- **[CODEOWNERS Example](#codeowners-example)** - Code ownership specification
+- **[CONTRIBUTING.md Template](#contributingmd-template)** - Contribution guidelines
+- **[SECURITY.md Template](#securitymd-template)** - Security policy and disclosure process
+
+### Documentation (P1)
+- **[docs/onboarding.md Template](#docsonboardingmd-template)** - Developer onboarding guide
+- **[HEALTHCHECK.md Template](#healthcheckmd-template)** - Repository health status
+
+### CI/CD & Automation (P1)
+- **[Compliance Validation CI Job Template](#compliance-validation-ci-job-template)** - CI/CD compliance checking
+- **[Repository Health Check Script Template](#repository-health-check-script-template)** - Automated health scoring
+
+### Advanced Templates (P2)
+- **[Performance Budgets Template](#performance-budgets-template)** - Performance monitoring budgets
+- **[Incident Response Runbook Template](#incident-response-runbook-template)** - Incident management procedures
+- **[SLSA Compliance Documentation Template](#slsa-compliance-documentation-template)** - Supply chain security
+- **[AI Provenance Schema Template](#ai-provenance-schema-template)** - AI-generated content tracking
+- **[RO-Crate Metadata Template](#ro-crate-metadata-template)** - Research data metadata (FAIR principles)
+- **[Dev Container Configuration Template](#dev-container-configuration-template)** - VS Code Dev Container setup
+
+### Commit Messages
+- **[Commit Message Examples](#commit-message-examples)** - Conventional Commits format examples
+
+---
+
 ## README Template
 
 ```markdown

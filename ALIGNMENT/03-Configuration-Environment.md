@@ -5,6 +5,82 @@
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 - [Section 2: Source Code Layout](02-Source-Code-Layout.md)
 
+**Effort Estimate:**
+- **Basic configuration (P0):** 30-60 minutes
+- **Centralized config + pre-commit hooks (P1):** 2-4 hours
+- **Containerization standards (P1):** 2-4 hours additional
+- **Schema validation (P2):** 2-3 hours additional
+- **Secret remediation (if needed):** 2-8 hours (CRITICAL - do immediately)
+
+## Before/After Examples
+
+### Example 1: Configuration Centralization
+
+**BEFORE (config files scattered):**
+```
+project/
+├── README.md
+├── package.json
+├── .eslintrc.json
+├── .prettierrc
+├── jest.config.js
+├── webpack.config.js
+├── tsconfig.json
+├── .env
+├── config.json
+└── src/
+```
+
+**AFTER (centralized config):**
+```
+project/
+├── README.md
+├── package.json
+├── .env.example
+├── config/
+│   ├── eslint.config.js
+│   ├── prettier.config.js
+│   ├── jest.config.js
+│   ├── webpack.config.js
+│   ├── tsconfig.json
+│   └── app.config.json
+├── .gitignore  (excludes .env)
+└── src/
+```
+
+**Changes Made:**
+- Moved all config files → `config/` directory
+- Created `.env.example` (no secrets)
+- Removed `.env` (now in `.gitignore`)
+- Centralized configuration management
+
+### Example 2: Pre-commit Hooks Setup
+
+**BEFORE (no hooks):**
+```
+project/
+├── .git/
+└── (no pre-commit validation)
+```
+
+**AFTER (pre-commit hooks configured):**
+```
+project/
+├── .git/
+│   └── hooks/
+│       └── pre-commit  (runs linting, formatting, secret scanning)
+├── .pre-commit-config.yaml  (or .husky/pre-commit)
+└── package.json
+    └── scripts:
+        - "lint": "eslint ."
+        - "format": "prettier --write ."
+```
+
+**Changes Made:**
+- Added pre-commit hook configuration
+- Hooks run: linting, formatting, secret scanning
+- Prevents bad commits before CI/CD
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -103,10 +179,16 @@ Before proceeding, answer these questions:
 - [ ] Verify configuration precedence is documented (env vars → config files → defaults)
 - [ ] If using pre-commit hooks: verify they run: `git commit --dry-run`
 
-**Automated Check (Future):**
+**Automated Check:**
 ```bash
+# Run validation script (from repository root)
 ./scripts/validate-section-3.sh
+
+# Or if scripts are in ALIGNMENT directory
+../ALIGNMENT/scripts/validate-section-3.sh .
 ```
+
+**Note:** See [scripts/README.md](../scripts/README.md) for validation script usage.
 
 **Done Criteria:**
 - ✅ No secrets committed to repository
@@ -114,6 +196,36 @@ Before proceeding, answer these questions:
 - ✅ `.gitignore` properly configured
 - ✅ Pre-commit hooks configured (if P1 completed)
 - ✅ Configuration centralized in `config/` directory (if P1 completed)
+
+## Rollback Procedures
+
+If configuration changes cause issues:
+
+**Option 1: Restore .gitignore**
+```bash
+git checkout HEAD -- .gitignore
+```
+
+**Option 2: Restore config files**
+```bash
+# If moved config files, restore them
+git checkout <previous-commit> -- config/
+```
+
+**Option 3: Remove pre-commit hooks**
+```bash
+# Remove pre-commit hooks
+rm .git/hooks/pre-commit
+# Or for Husky
+rm -rf .husky
+```
+
+**Option 4: Restore .env.example**
+```bash
+git checkout HEAD -- .env.example
+```
+
+**Critical:** If secrets were exposed, rotate them immediately (cannot rollback secrets).
 
 ## Common Issues & Solutions
 

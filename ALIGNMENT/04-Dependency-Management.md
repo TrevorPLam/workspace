@@ -4,6 +4,12 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 
+**Effort Estimate:**
+- **New repository:** 15-30 minutes
+- **Existing repository (lockfile exists):** 30-60 minutes
+- **Existing repository (no lockfile):** 1-2 hours
+- **Existing repository (many dependencies):** 2-4 hours (if license review needed)
+
 ## P0 — Required Actions
 
 **Action:** Secure dependencies

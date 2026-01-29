@@ -4,6 +4,12 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 
+**Effort Estimate:**
+- **Basic infra documentation (P0):** 1-2 hours
+- **IaC structure setup (P1):** 2-4 hours
+- **GitOps setup (P2):** 4-8 hours
+- **Multi-environment IaC:** 8-16 hours (varies by complexity)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:

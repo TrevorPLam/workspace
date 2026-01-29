@@ -22,6 +22,12 @@ Before proceeding, answer these questions:
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 
+**Effort Estimate:**
+- **New test infrastructure:** 1-2 hours
+- **Organizing existing tests:** 2-4 hours
+- **Setting up test coverage:** 1-2 hours additional
+- **Full test suite setup (unit + integration + e2e):** 4-8 hours
+
 ## P0 — Required Actions
 
 **Action:** Set up testing infrastructure

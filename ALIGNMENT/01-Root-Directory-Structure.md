@@ -4,6 +4,145 @@
 
 **Note:** This section assumes you've completed Section 0 and answered the decision point questions.
 
+**Effort Estimate:**
+- **New repository:** 30-60 minutes
+- **Existing repository (small, < 20 files):** 1-2 hours
+- **Existing repository (medium, 20-50 files):** 2-4 hours
+- **Existing repository (large, 50+ files):** 4-8 hours
+
+## Before/After Examples
+
+### Example 1: JavaScript/TypeScript Project
+
+**BEFORE (25 files in root):**
+```
+my-project/
+├── README.md
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── index.js
+├── utils.js
+├── config.js
+├── config.prod.js
+├── config.dev.js
+├── .eslintrc.json
+├── .prettierrc
+├── jest.config.js
+├── webpack.config.js
+├── docker-compose.yml
+├── Dockerfile
+├── .env.example
+├── setup.sh
+├── deploy.sh
+├── docs/
+│   └── api.md
+├── scripts/
+│   └── build.sh
+├── tests/
+│   └── index.test.js
+└── src/  (empty)
+```
+
+**AFTER (8 files in root):**
+```
+my-project/
+├── README.md
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── CHANGELOG.md
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── config/
+│   ├── eslint.config.js
+│   ├── prettier.config.js
+│   ├── jest.config.js
+│   └── webpack.config.js
+├── scripts/
+│   ├── setup.sh
+│   ├── deploy.sh
+│   └── build.sh
+├── docs/
+│   └── api.md
+├── src/
+│   ├── index.js
+│   └── utils.js
+├── tests/
+│   └── index.test.js
+├── docker-compose.yml
+└── Dockerfile
+```
+
+**Changes Made:**
+- Moved `index.js`, `utils.js` → `src/`
+- Moved `config.js`, `config.*.js` → `config/`
+- Moved `.eslintrc.json`, `.prettierrc`, `jest.config.js`, `webpack.config.js` → `config/`
+- Moved `setup.sh`, `deploy.sh` → `scripts/`
+- Added `LICENSE` (required for public repos)
+- Added `CHANGELOG.md` (versioned project)
+- Created `.github/workflows/` for CI/CD
+
+### Example 2: Python Project
+
+**BEFORE (18 files in root):**
+```
+my-python-app/
+├── README.md
+├── requirements.txt
+├── setup.py
+├── main.py
+├── config.py
+├── database.py
+├── .env
+├── .env.example
+├── .gitignore
+├── .flake8
+├── pytest.ini
+├── Dockerfile
+├── docker-compose.yml
+├── deploy.sh
+└── docs/
+    └── README.md
+```
+
+**AFTER (7 files in root):**
+```
+my-python-app/
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── setup.py
+├── .gitignore
+├── CHANGELOG.md
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── config/
+│   ├── config.py
+│   ├── .flake8
+│   └── pytest.ini
+├── scripts/
+│   └── deploy.sh
+├── docs/
+│   └── README.md
+├── src/
+│   ├── main.py
+│   └── database.py
+├── docker-compose.yml
+└── Dockerfile
+```
+
+**Changes Made:**
+- Moved `main.py`, `database.py` → `src/`
+- Moved `config.py`, `.flake8`, `pytest.ini` → `config/`
+- Moved `deploy.sh` → `scripts/`
+- Removed `.env` (should be in `.gitignore`, not committed)
+- Added `LICENSE`
+- Added `CHANGELOG.md`
+
 ## P0 — Required Actions
 
 **Action:** Clean up root directory
@@ -83,10 +222,16 @@
 - [ ] If public repo: verify `LICENSE` file exists
 - [ ] If versioned project: verify `CHANGELOG.md` exists
 
-**Automated Check (Future):**
+**Automated Check:**
 ```bash
+# Run validation script (from repository root)
 ./scripts/validate-section-1.sh
+
+# Or if scripts are in ALIGNMENT directory
+../ALIGNMENT/scripts/validate-section-1.sh .
 ```
+
+**Note:** See [scripts/README.md](../scripts/README.md) for validation script usage.
 
 **Done Criteria:**
 - ✅ Root directory contains only essential files
@@ -94,6 +239,34 @@
 - ✅ `.gitignore` properly configured
 - ✅ No build artifacts or secrets in repository
 - ✅ CHANGELOG.md exists if versioned project
+
+## Rollback Procedures
+
+If root directory cleanup causes issues:
+
+**Option 1: Restore moved files**
+```bash
+# Restore files from previous commit
+git checkout <previous-commit> -- filename
+```
+
+**Option 2: Restore entire root structure**
+```bash
+# Restore all root files from backup
+git checkout backup/pre-alignment -- .
+```
+
+**Option 3: Revert commit**
+```bash
+git revert <commit-hash>
+```
+
+**Option 4: Manual restoration**
+- Move files back from `config/`, `scripts/`, `docs/`
+- Update any references
+- Test build
+
+**Prevention:** Create backup branch before major restructuring: `git checkout -b backup/pre-alignment`
 
 ## Common Issues & Solutions
 

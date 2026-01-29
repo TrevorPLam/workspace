@@ -5,6 +5,12 @@
 - [Section 1: Root Directory Structure](01-Root-Directory-Structure.md)
 - [Section 5: CI/CD Structure](05-CI-CD-Structure.md) - Phase 1 (bootstrap) should be complete
 
+**Effort Estimate:**
+- **Basic governance (CODEOWNERS + CONTRIBUTING):** 1-2 hours
+- **Complete governance (P0 + P1):** 3-5 hours
+- **Advanced governance (P2):** 4-8 hours additional
+- **Team coordination:** 1-2 hours (discussion/consensus)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:

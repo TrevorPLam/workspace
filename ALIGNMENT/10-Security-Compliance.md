@@ -24,6 +24,79 @@ Before proceeding, answer these questions:
 
 **Document your answers** in `alignment-progress.json` before proceeding.
 
+**Effort Estimate:**
+- **Basic security (P0):** 1-2 hours
+- **Standard security (P0 + P1):** 3-5 hours
+- **High security (P0 + P1 + P2):** 8-16 hours
+- **Compliance-specific (SOC2, HIPAA, etc.):** 16-40 hours (varies by requirement)
+- **Secret remediation (if needed):** 2-8 hours (depends on scope)
+
+## Before/After Examples
+
+### Example 1: SECURITY.md Creation
+
+**BEFORE (no security documentation):**
+```
+project/
+├── README.md
+└── (no security policy)
+```
+
+**AFTER (SECURITY.md added):**
+```
+project/
+├── README.md
+└── SECURITY.md
+```
+
+**SECURITY.md contents:**
+```markdown
+# Security Policy
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.x.x   | :white_check_mark: |
+| < 1.0   | :x:                |
+
+## Reporting a Vulnerability
+
+Please report vulnerabilities to: security@example.com
+
+## Response SLA
+- Critical (CVSS 9.0+): 7 days
+- High (CVSS 7.0-8.9): 30 days
+- Medium/Low: Next release cycle
+```
+
+**Changes Made:**
+- Created SECURITY.md with disclosure process
+- Defined response SLAs
+- Added security contact information
+
+### Example 2: Secret Scanning Setup
+
+**BEFORE (no secret scanning):**
+```
+project/
+├── .gitignore
+└── (secrets may be committed)
+```
+
+**AFTER (secret scanning configured):**
+```
+project/
+├── .gitignore  (excludes .env*)
+├── .pre-commit-config.yaml  (includes git-secrets)
+└── .github/workflows/ci.yml  (includes truffleHog scan)
+```
+
+**Changes Made:**
+- Pre-commit hook scans for secrets before commit
+- CI/CD scans git history for secrets
+- Prevents future secret commits
+
 ## P0 — Required Actions
 
 **Action:** Implement security basics

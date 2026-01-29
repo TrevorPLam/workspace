@@ -4,6 +4,92 @@
 - [Section 0: Prerequisites](00-Prerequisites.md) - Complete decision points
 - [Section 2: Source Code Layout](02-Source-Code-Layout.md) - Complete source structure before documenting it
 
+**Effort Estimate:**
+- **Basic README.md:** 30-60 minutes
+- **Complete documentation (README + docs/):** 2-4 hours
+- **Developer onboarding guide:** 2-3 hours additional
+- **API documentation (OpenAPI/Swagger):** 2-4 hours additional
+- **Automated documentation generation:** 1-2 hours setup
+
+## Before/After Examples
+
+### Example 1: README Improvement
+
+**BEFORE (minimal README):**
+```markdown
+# My Project
+
+Some code I wrote.
+```
+
+**AFTER (ALIGNMENT-compliant README):**
+```markdown
+# My Project
+
+Brief description (1-2 sentences) of what this project does.
+
+## Installation
+
+\`\`\`bash
+npm install
+\`\`\`
+
+## Usage
+
+\`\`\`bash
+npm start
+\`\`\`
+
+## Project Structure
+
+- `src/` - Source code
+- `tests/` - Test files
+- `docs/` - Documentation
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## License
+
+MIT - See [LICENSE](LICENSE)
+```
+
+**Changes Made:**
+- Added installation instructions
+- Added usage examples
+- Documented project structure
+- Added contributing and license sections
+
+### Example 2: Documentation Structure
+
+**BEFORE (all docs in root):**
+```
+project/
+├── README.md
+├── SETUP.md
+├── API.md
+├── ARCHITECTURE.md
+└── CONTRIBUTING.md
+```
+
+**AFTER (organized docs/ folder):**
+```
+project/
+├── README.md
+├── CONTRIBUTING.md
+└── docs/
+    ├── setup.md
+    ├── api.md
+    ├── architecture.md
+    └── onboarding.md
+```
+
+**Changes Made:**
+- Moved detailed docs → `docs/` folder
+- Kept README and CONTRIBUTING in root (standard location)
+- Organized by topic
+
 ## P0 — Required Actions
 
 **Action:** Create essential documentation
