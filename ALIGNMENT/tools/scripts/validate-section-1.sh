@@ -20,6 +20,33 @@ if [ ! -f "README.md" ]; then
     ERRORS=$((ERRORS + 1))
 else
     echo "✅ README.md exists"
+    
+    # Check README content quality
+    README_LINES=$(wc -l < README.md)
+    if [ "$README_LINES" -lt 10 ]; then
+        echo "⚠️  WARNING: README.md is very short ($README_LINES lines). Should include:"
+        echo "   - Project description"
+        echo "   - Installation/setup instructions"
+        echo "   - Usage examples"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+    
+    # Check for essential README sections
+    if ! grep -qi "^#.*install\|^#.*setup\|^#.*getting started" README.md; then
+        echo "⚠️  WARNING: README.md missing installation/setup section"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+    
+    if ! grep -qi "^#.*usage\|^#.*example\|^#.*quick start" README.md; then
+        echo "⚠️  WARNING: README.md missing usage/examples section"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+    
+    # Check for project title
+    if ! head -5 README.md | grep -q "^# "; then
+        echo "⚠️  WARNING: README.md should start with a # title"
+        WARNINGS=$((WARNINGS + 1))
+    fi
 fi
 
 # Check if .gitignore exists

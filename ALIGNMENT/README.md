@@ -63,8 +63,10 @@ This standard defines how every repository should be organized, documented, and 
 - [Optimization Roadmap](OPTIMIZATION-ROADMAP.md) - Future optimization planning
 - [Consistency Analysis](CONSISTENCY-ANALYSIS.md) - Consistency review
 
-### Contributing
+### Contributing & Community
 - [Contributing to ALIGNMENT](CONTRIBUTING.md) - How to improve this standard
+- [Community Hub](COMMUNITY.md) - Community engagement and discussions
+- [Versioning Policy](VERSIONING-POLICY.md) - Version management and deprecation
 - [For AI Agents](#for-ai-agents) - Execution guidance for AI agents
 
 ---
