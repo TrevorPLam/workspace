@@ -108,11 +108,190 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Secure configuration
-- [ ] Verify `.gitignore` is properly configured (see [Section 1](01-Root-Directory-Structure.md))
-- [ ] Verify no secrets are committed (run secret scanning)
-- [ ] Create `.env.example` template with required variables (no secrets)
-  - **Note:** Complete this after understanding what environment variables your application needs
+**Action:** Secure configuration and prevent secret leaks
+
+**What this means:** Ensure sensitive information (passwords, API keys, tokens) is NEVER committed to Git. Configure your repository to prevent accidents and provide safe templates for configuration.
+
+**Why it matters:** Leaked secrets are the #1 cause of security breaches. Once a secret is in Git history, it's extremely difficult to remove and must be considered compromised.
+
+### Task 1: Verify .gitignore is configured *(USER)*
+
+- [ ] **Open `.gitignore` file** (should exist from Section 1)
+
+- [ ] **Ensure these patterns are included:**
+  ```
+  # Environment files (CRITICAL - prevents secret leaks)
+  .env
+  .env.local
+  .env.*.local
+  .env.production
+  
+  # Build artifacts that may contain secrets
+  dist/
+  build/
+  
+  # IDE files that may contain sensitive settings
+  .vscode/settings.json
+  .idea/workspace.xml
+  ```
+
+- [ ] **Save and commit** if you added anything:
+  ```bash
+  git add .gitignore
+  git commit -m "Ensure .gitignore excludes environment files"
+  ```
+
+### Task 2: Scan for existing secrets (CRITICAL!) *(USER/AGENT)*
+
+**WARNING:** If you find secrets, you have a security incident! Follow the remediation steps.
+
+- [ ] **Install a secret scanner:**
+  ```bash
+  # Option 1: git-secrets (AWS)
+  brew install git-secrets  # Mac
+  # Or download from: https://github.com/awslabs/git-secrets
+  
+  # Option 2: truffleHog
+  pip install truffleHog
+  
+  # Option 3: gitleaks
+  brew install gitleaks  # Mac
+  ```
+
+- [ ] **Scan current repository:**
+  ```bash
+  # Using git-secrets
+  git secrets --scan-history
+  
+  # Using truffleHog
+  trufflehog filesystem . --json
+  
+  # Using gitleaks
+  gitleaks detect --source . --verbose
+  ```
+
+- [ ] **If secrets found - IMMEDIATE ACTION REQUIRED:**
+  1. **Rotate the secret immediately** - Change the password/key/token
+  2. **Remove from Git history:**
+     ```bash
+     # Use BFG Repo-Cleaner or git-filter-repo
+     # https://github.com/newren/git-filter-repo
+     git filter-repo --path .env --invert-paths
+     ```
+  3. **Force push** (coordinate with team first!):
+     ```bash
+     git push --force-with-lease origin main
+     ```
+  4. **Document incident** in `docs/security-incidents.md`
+  5. **See [Section 10: Security](10-Security-Compliance.md) for full remediation**
+
+- [ ] **If no secrets found:** ✅ Good! Continue to next task.
+
+### Task 3: Create .env.example template *(USER)*
+
+**Purpose:** Provide a template showing what environment variables your application needs, WITHOUT including actual secrets.
+
+- [ ] **Identify required environment variables:**
+  - What does your app need to connect to databases?
+  - What API keys does it use?
+  - What configuration can change between environments?
+
+- [ ] **Create `.env.example` file** with placeholders:
+  ```bash
+  # Database Configuration
+  DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+  DATABASE_POOL_SIZE=10
+  
+  # API Keys (get from: https://dashboard.example.com/api-keys)
+  API_KEY=your_api_key_here
+  API_SECRET=your_api_secret_here
+  
+  # Application Settings
+  NODE_ENV=development
+  PORT=3000
+  LOG_LEVEL=info
+  
+  # Feature Flags
+  ENABLE_FEATURE_X=false
+  ENABLE_ANALYTICS=true
+  
+  # External Services
+  REDIS_URL=redis://localhost:6379
+  EMAIL_SERVICE_URL=https://api.emailservice.com
+  ```
+
+- [ ] **Add comments explaining each variable:**
+  - What is it for?
+  - Where do you get the value?
+  - Is it required or optional?
+  - What's the default if not set?
+
+- [ ] **Use placeholder values, NOT real secrets:**
+  - ❌ BAD: `API_KEY=abc123realkey`
+  - ✅ GOOD: `API_KEY=your_api_key_here`
+  - ✅ GOOD: `DATABASE_PASSWORD=<get-from-password-manager>`
+
+- [ ] **Commit .env.example (this is safe to commit):**
+  ```bash
+  git add .env.example
+  git commit -m "Add environment variable template"
+  ```
+
+### Task 4: Set up local .env file (DO NOT COMMIT) *(USER)*
+
+- [ ] **Copy the template:**
+  ```bash
+  cp .env.example .env
+  ```
+
+- [ ] **Fill in YOUR actual values in `.env`:**
+  - Replace placeholders with real credentials
+  - Get secrets from password manager or teammate
+  - Never share this file or commit it to Git
+
+- [ ] **Verify .env is not tracked by Git:**
+  ```bash
+  git status
+  # Should NOT show .env file
+  # If it does, .gitignore is not configured correctly - go back to Task 1
+  ```
+
+- [ ] **Test your application:**
+  ```bash
+  # Run your application
+  npm start  # or python app.py, go run main.go, etc.
+  
+  # Verify it loads environment variables correctly
+  # Check logs for "Configuration loaded" or similar messages
+  ```
+
+### Task 5: Document environment setup *(USER)*
+
+- [ ] **Add to README.md or docs/development.md:**
+  ```markdown
+  ## Environment Setup
+  
+  1. Copy the environment template:
+     ```
+     cp .env.example .env
+     ```
+  
+  2. Fill in the required values:
+     - `DATABASE_URL`: Get from [where teammates get this]
+     - `API_KEY`: Generate at [service dashboard URL]
+     - `API_SECRET`: Get from team password manager
+  
+  3. Never commit `.env` to version control!
+  ```
+
+**Done Criteria:**
+- ✅ `.gitignore` excludes `.env`, `.env.local`, `.env.*.local`
+- ✅ Secret scanning completed (no secrets found, or found secrets remediated)
+- ✅ `.env.example` exists with all required variables (using placeholders, not real values)
+- ✅ `.env.example` is committed to Git
+- ✅ Local `.env` file created with actual values (NOT committed)
+- ✅ Application runs successfully with environment variables
+- ✅ Environment setup documented in README or docs/
 
 ## P1 — Recommended Actions
 
