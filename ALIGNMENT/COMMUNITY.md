@@ -18,7 +18,6 @@ ALIGNMENT is an open standard that improves through community input. This docume
 - 🐛 [GitHub Issues](https://github.com/TrevorPLam/workspace/issues) - Report bugs, request features
 - 📋 [Project Board](https://github.com/TrevorPLam/workspace/projects) - Track development progress
 - 📝 [Changelog](CHANGELOG.md) - Track what's changed
-- 🗺️ [Optimization Roadmap](OPTIMIZATION-ROADMAP.md) - Future plans
 
 ---
 
@@ -215,7 +214,6 @@ Watch for new releases:
 ### Roadmap
 
 Track future plans:
-- [Optimization Roadmap](OPTIMIZATION-ROADMAP.md) - Planned improvements
 - [Project Board](https://github.com/TrevorPLam/workspace/projects) - Current work
 - [Milestones](https://github.com/TrevorPLam/workspace/milestones) - Release planning
 
@@ -278,7 +276,6 @@ ALIGNMENT presentations:
 
 **Contributing:**
 - Read [Contributing Guide](../CONTRIBUTING.md)
-- Check [Optimization Roadmap](OPTIMIZATION-ROADMAP.md) for opportunities
 - Ask in [GitHub Discussions](https://github.com/TrevorPLam/workspace/discussions)
 
 ---

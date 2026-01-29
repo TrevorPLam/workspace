@@ -10,6 +10,50 @@
 - **GitOps setup (P2):** 4-8 hours
 - **Multi-environment IaC:** 8-16 hours (varies by complexity)
 
+## 🎯 What You're Trying to Accomplish
+If you manage infrastructure as code, organize it so deployments are repeatable and safe.
+
+## 🎓 Why This Section Exists
+Infrastructure changes can break production. A clear IaC structure reduces risk and makes reviews easier.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Infrastructure as Code (IaC)
+**Simple:** Define servers and cloud resources in code files.
+**Why it matters:** Changes can be reviewed and versioned.
+
+### Environments
+**Simple:** Separate setups for dev, staging, and prod.
+**Why it matters:** Prevents accidental changes to production.
+
+### State
+**Simple:** The record of what infrastructure exists right now.
+**Why it matters:** Drift or lost state can cause outages.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 8.1 — Decide if IaC applies | **USER**
+**Purpose:** Skip this section if there’s no infrastructure code.
+**Expected outcome:** Clear “use” or “skip” decision.
+
+#### Subtask 8.2 — Choose IaC tools | **USER**
+**Purpose:** Pick Terraform, Pulumi, etc.
+**Expected outcome:** Tool selected and documented.
+
+#### Subtask 8.3 — Create infra directory structure | **AGENT**
+**Purpose:** Organize IaC code by tool and environment.
+**Expected outcome:** `infra/` structure created.
+
+#### Subtask 8.4 — Document deployment steps | **USER**
+**Purpose:** Make infra changes repeatable.
+**Expected outcome:** Clear steps in docs.
+
+#### Subtask 8.5 — Review for safety | **USER**
+**Purpose:** Ensure production changes are controlled.
+**Expected outcome:** Review checklist applied.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -35,7 +79,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Organize infrastructure code
+**Action:** Organize infrastructure code | **AGENT**
 - [ ] Create `infra/` directory for infrastructure code
 - [ ] Separate by tool: `infra/terraform/`, `infra/kubernetes/`, `infra/docker/`
 - [ ] Ensure no environment-specific secrets are committed
@@ -44,7 +88,7 @@ Before proceeding, answer these questions:
 
 ## P1 — Recommended Actions
 
-**Action:** Improve infrastructure organization
+**Action:** Improve infrastructure organization | **AGENT**
 - [ ] Use modules for reuse (Terraform modules, Helm charts)
 - [ ] Use overlays/values files for environment differences
 - [ ] Create `infra/README.md` documenting:
@@ -56,7 +100,7 @@ Before proceeding, answer these questions:
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced infrastructure practices
+**Action:** Advanced infrastructure practices | **AGENT**
 - [ ] Implement GitOps structure (`base/overlays` pattern)
 - [ ] Add automated policy checks (OPA, Conftest)
 - [ ] Set up infrastructure drift detection

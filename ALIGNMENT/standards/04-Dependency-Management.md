@@ -10,9 +10,53 @@
 - **Existing repository (no lockfile):** 1-2 hours
 - **Existing repository (many dependencies):** 2-4 hours (if license review needed)
 
+## 🎯 What You're Trying to Accomplish
+Lock down your dependencies so installs are repeatable, secure, and legally compatible.
+
+## 🎓 Why This Section Exists
+Unpinned dependencies can break builds or introduce vulnerabilities. Lockfiles and policies make dependency changes predictable.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Lockfile
+**Simple:** A file that records the exact versions installed.
+**Why it matters:** Everyone gets the same dependency versions.
+
+### Transitive dependency
+**Simple:** A dependency of your dependency.
+**Why it matters:** Risk and licenses can come from deep in the tree.
+
+### License compatibility
+**Simple:** Legal rules that determine if a dependency is safe to use.
+**Why it matters:** Incompatible licenses can force changes to your distribution.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 4.1 — Confirm package manager and lockfile | **USER**
+**Purpose:** Ensure your ecosystem is clear.
+**Expected outcome:** Correct lockfile identified or created.
+
+#### Subtask 4.2 — Commit lockfiles | **AGENT**
+**Purpose:** Make installs reproducible.
+**Expected outcome:** Lockfile tracked in Git.
+
+#### Subtask 4.3 — Review dependency licenses | **USER**
+**Purpose:** Avoid legal surprises.
+**Expected outcome:** Known license risks documented.
+
+#### Subtask 4.4 — Set an update policy | **USER**
+**Purpose:** Define how and when dependencies update.
+**Expected outcome:** Policy documented for the team.
+
+#### Subtask 4.5 — Automate vulnerability checks | **AGENT**
+**Purpose:** Catch issues early.
+**Expected outcome:** Scanning enabled in CI.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## P0 — Required Actions
 
-**Action:** Secure dependencies
+**Action:** Secure dependencies | **USER**
 - [ ] Commit lockfiles: `package-lock.json`, `pnpm-lock.yaml`, `Cargo.lock`, `go.sum`
 - [ ] Verify license compatibility (no incompatible licenses)
 - [ ] Document dependency scanning process
@@ -20,7 +64,7 @@
 
 ## P1 — Recommended Actions
 
-**Action:** Automate dependency management
+**Action:** Automate dependency management | **AGENT**
 - [ ] Enable Dependabot or Renovate for automated updates
 - [ ] Create dependency policy document:
   - Allowed version ranges
@@ -30,7 +74,7 @@
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced dependency tracking
+**Action:** Advanced dependency tracking | **AGENT**
 - [ ] Create internal dependency dashboard
 - [ ] Enforce dependency boundaries (e.g., packages cannot depend on apps)
 - [ ] Track dependency health metrics
@@ -48,7 +92,7 @@
 - Rust → `Cargo.lock` - **Is it committed?** Does it exist?
 - Other → **What's the lockfile name?** _______________ **Is it committed?**
 
-**Action:** Verify lockfile exists and is committed
+**Action:** Verify lockfile exists and is committed | **AGENT**
 - [ ] Check lockfile exists for your package manager: `ls -la | grep -E "lock|sum|txt"`
 - [ ] Verify lockfile is committed to git: `git ls-files | grep -E "lock|sum"`
 - [ ] If no lockfile exists, generate it: `npm install`, `poetry lock`, `go mod tidy`, etc.

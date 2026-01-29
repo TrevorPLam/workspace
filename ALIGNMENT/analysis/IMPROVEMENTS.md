@@ -213,8 +213,8 @@ This document summarizes the improvements made to the ALIGNMENT repository to ad
 ### Can Be Addressed Next
 
 - **Integration of HTML tools** - Package standalone HTML tools into cohesive suite
-- **Tool organization** - Implement OPT-001 from Optimization Roadmap when tools/ exceeds 20 files
-- **Reference organization** - Implement OPT-002 when reference/ exceeds 20 files
+- **Tool organization** - Establish criteria for reorganizing tools/ when it exceeds 20 files
+- **Reference organization** - Establish criteria for reorganizing reference/ when it exceeds 20 files
 - **Comprehensive test suite** - Add automated tests for documentation integrity
 - **Real-world metrics collection** - Track adoption and implementation success rates
 

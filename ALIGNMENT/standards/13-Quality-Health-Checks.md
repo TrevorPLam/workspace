@@ -10,6 +10,50 @@
 - **Compliance validation (P1):** 2-4 hours additional
 - **DORA metrics tracking (P2):** 4-8 hours additional
 
+## 🎯 What You're Trying to Accomplish
+Define quality gates and health checks so the repo stays reliable over time.
+
+## 🎓 Why This Section Exists
+Quality drifts without regular checks. Automated health checks keep standards consistent and prevent regressions.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Quality gates
+**Simple:** Rules that code must pass before merging.
+**Why it matters:** Prevents low‑quality changes from landing.
+
+### Compliance checks
+**Simple:** Automated checks for required files and structure.
+**Why it matters:** Keeps the repo aligned with standards.
+
+### DORA metrics
+**Simple:** Team performance measures like deploy frequency and lead time.
+**Why it matters:** Indicates delivery health.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 13.1 — Define quality metrics | **USER**
+**Purpose:** Choose the signals that matter to your team.
+**Expected outcome:** Metrics selected and targets set.
+
+#### Subtask 13.2 — Configure linters/formatters | **AGENT**
+**Purpose:** Enforce code style and quality.
+**Expected outcome:** Linting tools configured.
+
+#### Subtask 13.3 — Add CI quality checks | **AGENT**
+**Purpose:** Run quality gates automatically.
+**Expected outcome:** CI includes lint, tests, and checks.
+
+#### Subtask 13.4 — Define periodic audits | **USER**
+**Purpose:** Keep standards from drifting.
+**Expected outcome:** Audit schedule documented.
+
+#### Subtask 13.5 — Review health reports | **USER**
+**Purpose:** Act on the metrics.
+**Expected outcome:** Reports reviewed and actions tracked.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -35,7 +79,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Ensure basic quality
+**Action:** Ensure basic quality | **USER**
 - [ ] Verify repo builds from scratch using documented instructions
 - [ ] Ensure all tests pass on CI (tests from [Section 6](06-Testing-Structure.md), CI from [Section 5](05-CI-CD-Structure.md))
 - [ ] Check for broken links (use link checker)
@@ -44,7 +88,7 @@ Before proceeding, answer these questions:
 
 ## P1 — Recommended Actions
 
-**Action:** Implement automated repository health scoring
+**Action:** Implement automated repository health scoring | **AGENT**
 - [ ] Create health scoring system:
   - [ ] Define scoring criteria (0-100 scale):
     - P0 requirements: 40 points (all required)
@@ -77,7 +121,7 @@ Before proceeding, answer these questions:
   - [ ] Health check configuration
   - [ ] Remediation guide
 
-**Action:** Set up automated compliance validation
+**Action:** Set up automated compliance validation | **AGENT**
 - [ ] Create compliance validation CI job:
   - [ ] Validate required files exist (README, LICENSE, SECURITY.md, etc.)
   - [ ] Check file structure matches standards
@@ -103,7 +147,7 @@ See [Templates](Templates.md) for Repository Health Check Script template.
 
 ## P2 — Advanced Actions
 
-**Action:** Track DORA Metrics (Developer Productivity)
+**Action:** Track DORA Metrics (Developer Productivity) | **USER**
 - [ ] **Deployment Frequency:**
   - [ ] Track deployments from CI/CD (Section 5)
   - [ ] Calculate frequency (daily, weekly, monthly)
@@ -123,7 +167,7 @@ See [Templates](Templates.md) for Repository Health Check Script template.
 - [ ] Create DORA metrics dashboard
 - [ ] Document DORA metrics tracking in `docs/dora-metrics.md`
 
-**Action:** Integration Testing Across ALIGNMENT Sections
+**Action:** Integration Testing Across ALIGNMENT Sections | **AGENT**
 - [ ] **Test Section Integration:**
   - [ ] Verify CI/CD (Section 5) runs tests from Section 6
   - [ ] Verify security scanning (Section 10) works with CI/CD (Section 5)
@@ -185,7 +229,7 @@ Apply these principles to every decision:
 - [ ] MTTR tracking
 - [ ] Change failure rate tracking
 
-**Action:** Implement quality checks appropriate to your project
+**Action:** Implement quality checks appropriate to your project | **USER**
 - [ ] Start with basic quality (P0)
 - [ ] Add automated health scoring (P1)
 - [ ] Consider compliance validation for production (P1)

@@ -396,4 +396,3 @@ A principle is successfully integrated when:
 - [Principles README](README.md) - Overview of principles
 - [Configuration Principles](Configuration-Principles.md) - Example implementation
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guidelines
-- [ARCHITECTURE-DEEP-ANALYSIS.md](../ARCHITECTURE-DEEP-ANALYSIS.md) - Comprehensive architecture analysis

@@ -2,7 +2,7 @@
 
 **Status:** ✅ Analysis Phase Complete  
 **Date:** January 29, 2026  
-**Location:** `C:\dev\workspace`
+**Location:** repository root (`./`)
 
 ---
 
@@ -288,14 +288,14 @@ Examples: Turborepo, Nx, Yarn Workspaces, pnpm workspaces"
 ## 📁 File Locations
 
 All analysis documents created in workspace root:
-- `C:\dev\workspace\ALIGNMENT_MODERNIZATION_SUMMARY.md`
-- `C:\dev\workspace\ALIGNMENT_STANDARDS_ANALYSIS.md`
-- `C:\dev\workspace\ALIGNMENT_TASK_BREAKDOWN.md`
-- `C:\dev\workspace\ALIGNMENT_GLOSSARY_DRAFT.md`
-- `C:\dev\workspace\ALIGNMENT_TEMPLATE_EXAMPLE.md`
+- `ALIGNMENT_MODERNIZATION_SUMMARY.md`
+- `ALIGNMENT_STANDARDS_ANALYSIS.md`
+- `ALIGNMENT_TASK_BREAKDOWN.md`
+- `ALIGNMENT_GLOSSARY_DRAFT.md`
+- `ALIGNMENT_TEMPLATE_EXAMPLE.md`
 
 Original standards remain in:
-- `C:\dev\workspace\ALIGNMENT\standards\` (all 14 sections unchanged)
+- `ALIGNMENT/standards/` (all 14 sections unchanged)
 
 ---
 

@@ -10,6 +10,50 @@
 - [Security Principles](../principles/Security-Principles.md) - Core philosophy: *Security is not a feature—it's a fundamental requirement. Apply defense in depth, least privilege, and secure by default to every layer.*
   - Key concepts: Defense in depth (multiple security layers), least privilege (minimum necessary access), secure by default (security built-in), never trust input, security as shared responsibility
 
+## 🎯 What You're Trying to Accomplish
+Protect users and systems by establishing baseline security practices and compliance requirements.
+
+## 🎓 Why This Section Exists
+Security is easiest when it’s built into everyday workflows. Clear policies reduce risk and avoid emergency fixes later.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Defense in depth
+**Simple:** Multiple layers of protection instead of one big lock.
+**Why it matters:** If one layer fails, others still protect you.
+
+### Least privilege
+**Simple:** Give only the minimum access needed.
+**Why it matters:** Limits damage if something is compromised.
+
+### Compliance
+**Simple:** Required security rules for your industry or users.
+**Why it matters:** Non‑compliance can cause legal and financial issues.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 10.1 — Classify security level | **USER**
+**Purpose:** Choose the right level of controls.
+**Expected outcome:** Basic, standard, or high‑security path selected.
+
+#### Subtask 10.2 — Add a SECURITY policy | **AGENT**
+**Purpose:** Provide a clear security contact and disclosure process.
+**Expected outcome:** SECURITY.md added.
+
+#### Subtask 10.3 — Configure security scans | **AGENT**
+**Purpose:** Automate SAST, dependency, and secret checks.
+**Expected outcome:** Scans run in CI.
+
+#### Subtask 10.4 — Document data handling | **USER**
+**Purpose:** Ensure sensitive data rules are explicit.
+**Expected outcome:** Data handling policy documented.
+
+#### Subtask 10.5 — Review incident response | **USER**
+**Purpose:** Be prepared for security events.
+**Expected outcome:** Incident response steps documented.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -107,7 +151,7 @@ project/
 
 ## P0 — Required Actions
 
-**Action:** Implement security basics (see [Security Principles](../principles/Security-Principles.md) for foundational concepts)
+**Action:** Implement security basics (see [Security Principles](../principles/Security-Principles.md) for foundational concepts) | **AGENT**
 - [ ] Create `SECURITY.md` with:
   - Vulnerability disclosure process (see [Security Principles](../principles/Security-Principles.md) - responsible disclosure)
   - Security contact information
@@ -131,7 +175,7 @@ See [Templates](Templates.md) for SECURITY.md template.
 
 ## P1 — Recommended Actions
 
-**Action:** Enhance security (see [Security Principles](../principles/Security-Principles.md) for advanced concepts)
+**Action:** Enhance security (see [Security Principles](../principles/Security-Principles.md) for advanced concepts) | **AGENT**
 - [ ] Apply least privilege principle (see [Security Principles](../principles/Security-Principles.md)):
   - [ ] Grant minimum necessary access to users, services, and systems
   - [ ] Use role-based access control (RBAC)
@@ -158,7 +202,7 @@ See [Templates](Templates.md) for SECURITY.md template.
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced security (see [Security Principles](../principles/Security-Principles.md) for advanced practices)
+**Action:** Advanced security (see [Security Principles](../principles/Security-Principles.md) for advanced practices) | **AGENT**
 - [ ] Implement continuous security improvement (see [Security Principles](../principles/Security-Principles.md)):
   - [ ] Regular security audits and reviews
   - [ ] Update threat models as system evolves
@@ -182,7 +226,7 @@ See [Templates](Templates.md) for SECURITY.md template.
   - [ ] Input validation at all boundaries
   - [ ] Security monitoring and alerting
 
-**Action:** Achieve SLSA Compliance (Supply Chain Security)
+**Action:** Achieve SLSA Compliance (Supply Chain Security) | **AGENT**
 - [ ] Understand SLSA levels (Level 1-4):
   - Level 1: Scripted builds, provenance available
   - Level 2: Version controlled, hosted source, ephemeral environment
@@ -236,7 +280,7 @@ See [Templates](Templates.md) for SLSA Compliance Documentation template.
 - [ ] Threat modeling
 - [ ] Penetration testing
 
-**Action:** Implement security appropriate to your project
+**Action:** Implement security appropriate to your project | **USER**
 - [ ] Start with basic security (P0)
 - [ ] Add enhanced security for production (P1)
 - [ ] Consider advanced security for critical systems (P2)

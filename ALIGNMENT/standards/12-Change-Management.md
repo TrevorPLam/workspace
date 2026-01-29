@@ -8,6 +8,50 @@
 - [Change Management Principles](../principles/Change-Management-Principles.md) - Core philosophy: *Version numbers communicate intent. Changes communicate impact. Breaking changes require planning, deprecation, and clear communication.*
   - Key concepts: Semantic Versioning (MAJOR.MINOR.PATCH), breaking changes philosophy, deprecation strategy, change communication, commit messages as documentation
 
+## 🎯 What You're Trying to Accomplish
+Make changes predictable by defining versioning rules, changelog practices, and release communication.
+
+## 🎓 Why This Section Exists
+Users need to trust upgrades. Clear versioning and changelogs reduce surprises and support requests.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Semantic Versioning (SemVer)
+**Simple:** MAJOR.MINOR.PATCH where MAJOR means breaking change.
+**Why it matters:** Users know when upgrades are safe.
+
+### Changelog
+**Simple:** A file describing what changed per release.
+**Why it matters:** Provides a record for users and maintainers.
+
+### Deprecation
+**Simple:** Marking something as “will be removed later.”
+**Why it matters:** Gives users time to adapt.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 12.1 — Choose a versioning strategy | **USER**
+**Purpose:** Pick SemVer, CalVer, or a custom scheme.
+**Expected outcome:** Strategy documented.
+
+#### Subtask 12.2 — Create CHANGELOG template | **AGENT**
+**Purpose:** Standardize release notes.
+**Expected outcome:** CHANGELOG.md created (if versioned).
+
+#### Subtask 12.3 — Define release process | **USER**
+**Purpose:** Make releases repeatable.
+**Expected outcome:** Release steps documented.
+
+#### Subtask 12.4 — Automate changelog generation | **AGENT**
+**Purpose:** Reduce manual effort.
+**Expected outcome:** Tooling configured if desired.
+
+#### Subtask 12.5 — Document deprecation policy | **USER**
+**Purpose:** Avoid surprise removals.
+**Expected outcome:** Deprecation rules documented.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -43,7 +87,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Set up change tracking (see [Change Management Principles](../principles/Change-Management-Principles.md) for foundational concepts)
+**Action:** Set up change tracking (see [Change Management Principles](../principles/Change-Management-Principles.md) for foundational concepts) | **USER**
 - [ ] For versioned projects: ensure `CHANGELOG.md` exists and follows [Keep a Changelog](https://keepachangelog.com/) format
   - **Note:** File should be created in [Section 1 P0](01-Root-Directory-Structure.md); format it properly here
 - [ ] Use semantic versioning (SemVer: MAJOR.MINOR.PATCH) - see [Change Management Principles](../principles/Change-Management-Principles.md):
@@ -58,7 +102,7 @@ Before proceeding, answer these questions:
 - [ ] Document breaking changes clearly in changelog
 - [ ] Include breaking changes in release notes
 
-**Action:** Standardize commit messages (see [Change Management Principles](../principles/Change-Management-Principles.md) for commit message principles)
+**Action:** Standardize commit messages (see [Change Management Principles](../principles/Change-Management-Principles.md) for commit message principles) | **USER**
 - [ ] Adopt [Conventional Commits](https://www.conventionalcommits.org/) format: `type(scope): description`
 - [ ] Follow commit message principles from [Change Management Principles](../principles/Change-Management-Principles.md):
   - [ ] Use imperative mood ("Add feature" not "Added feature")
@@ -75,7 +119,7 @@ See [Templates](Templates.md) for CHANGELOG.md template.
 
 ## P1 — Recommended Actions
 
-**Action:** Automate change management
+**Action:** Automate change management | **AGENT**
 - [ ] Set up automatic changelog generation from commit messages
 - [ ] Configure consistent release tagging
 - [ ] Document release process in `docs/releases.md`
@@ -84,7 +128,7 @@ See [Templates](Templates.md) for CHANGELOG.md template.
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced release management (see [Change Management Principles](../principles/Change-Management-Principles.md) for advanced practices)
+**Action:** Advanced release management (see [Change Management Principles](../principles/Change-Management-Principles.md) for advanced practices) | **AGENT**
 - [ ] Implement deprecation strategy (see [Change Management Principles](../principles/Change-Management-Principles.md)):
   - [ ] Mark features as deprecated before removing
   - [ ] Set removal timeline (at least one release cycle)
@@ -116,7 +160,7 @@ See [Templates](Templates.md) for CHANGELOG.md template.
 - [ ] Still use Conventional Commits for consistency
 - [ ] Consider versioning internally for tracking
 
-**Action:** Set up change management based on project type
+**Action:** Set up change management based on project type | **USER**
 - [ ] If versioned: Format CHANGELOG properly
 - [ ] Adopt Conventional Commits format
 - [ ] Configure commit message validation (pre-commit hook)

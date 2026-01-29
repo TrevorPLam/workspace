@@ -15,6 +15,50 @@
 - **Advanced governance (P2):** 4-8 hours additional
 - **Team coordination:** 1-2 hours (discussion/consensus)
 
+## 🎯 What You're Trying to Accomplish
+Define who owns what, how changes are reviewed, and how decisions are made.
+
+## 🎓 Why This Section Exists
+Clear ownership prevents bottlenecks and confusion. Governance makes collaboration smoother and more predictable.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### CODEOWNERS
+**Simple:** A file that lists who must review changes in specific paths.
+**Why it matters:** Ensures the right people approve changes.
+
+### Branching strategy
+**Simple:** The rules for how branches are created and merged.
+**Why it matters:** Keeps releases organized and stable.
+
+### Review policy
+**Simple:** The checklist for approving changes.
+**Why it matters:** Increases quality and reduces regressions.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 9.1 — Define ownership areas | **USER**
+**Purpose:** Decide who owns which parts of the repo.
+**Expected outcome:** Ownership map drafted.
+
+#### Subtask 9.2 — Add CODEOWNERS file | **AGENT**
+**Purpose:** Encode ownership in the repo.
+**Expected outcome:** CODEOWNERS file added.
+
+#### Subtask 9.3 — Choose branching strategy | **USER**
+**Purpose:** Align workflow with team size and release cadence.
+**Expected outcome:** Strategy documented.
+
+#### Subtask 9.4 — Define review checklist | **USER**
+**Purpose:** Standardize what reviewers check.
+**Expected outcome:** Review policy written.
+
+#### Subtask 9.5 — Add PR/issue templates | **AGENT**
+**Purpose:** Improve change quality and context.
+**Expected outcome:** Templates added under `.github/`.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -43,7 +87,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Define ownership and contribution rules (see [Governance Principles](../principles/Governance-Principles.md) for foundational concepts)
+**Action:** Define ownership and contribution rules (see [Governance Principles](../principles/Governance-Principles.md) for foundational concepts) | **USER**
 - [ ] Apply clear ownership principle (see [Governance Principles](../principles/Governance-Principles.md)):
   - [ ] Every area has an owner (code, docs, infrastructure)
   - [ ] Owners are accountable for their areas
@@ -64,7 +108,7 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 
 ## P1 — Recommended Actions
 
-**Action:** Expand governance
+**Action:** Expand governance | **USER**
 - [ ] Create `maintainers.md` listing:
   - Maintainer responsibilities
   - Current maintainers
@@ -72,7 +116,7 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 - [ ] Create `waiver.md` to document intentional deviations from standards
 - [ ] Document escalation process for issues
 
-**Action:** Define branching strategy
+**Action:** Define branching strategy | **USER**
 - [ ] Document chosen branching strategy (GitHub Flow recommended for most repos, Git Flow for release-heavy projects)
 - [ ] Define branch naming conventions:
   - Feature branches: `feature/description` or `feat/description`
@@ -83,7 +127,7 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 - [ ] Link branching strategy to CI/CD branch protection rules (see [Section 5 P1](05-CI-CD-Structure.md))
 - [ ] Document in CONTRIBUTING.md
 
-**Action:** Define code review standards (see [Governance Principles](../principles/Governance-Principles.md) for review philosophy)
+**Action:** Define code review standards (see [Governance Principles](../principles/Governance-Principles.md) for review philosophy) | **USER**
 - [ ] Apply code review as learning principle (see [Governance Principles](../principles/Governance-Principles.md)):
   - [ ] Review is educational, not gatekeeping
   - [ ] Constructive, respectful feedback
@@ -114,7 +158,7 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced governance
+**Action:** Advanced governance | **USER**
 - [ ] Define repository-level SLAs:
   - Response time for issues
   - Review time for PRs
@@ -140,7 +184,7 @@ See [Templates](Templates.md) for CODEOWNERS and CONTRIBUTING.md templates.
 - Good for: Large teams, fast iteration
 - [ ] Use Trunk-Based Development
 
-**Action:** Document your choice
+**Action:** Document your choice | **USER**
 - [ ] Choose branching strategy
 - [ ] Document in CONTRIBUTING.md
 - [ ] Define branch naming conventions

@@ -58,10 +58,8 @@ This standard defines how every repository should be organized, documented, and 
 - [Research Documentation](research/README.md) - Comprehensive research on all topics
 - [Master Research Summary](research/MASTER-RESEARCH-SUMMARY.md) - High-level research overview
 
-### Architecture & Optimization
-- [Architecture Analysis](ARCHITECTURE-DEEP-ANALYSIS.md) - Comprehensive architecture analysis
-- [Optimization Roadmap](OPTIMIZATION-ROADMAP.md) - Future optimization planning
-- [Consistency Analysis](CONSISTENCY-ANALYSIS.md) - Consistency review
+### Architecture & Structure
+- [Structure Overview](STRUCTURE.md) - Folder organization and rationale
 
 ### Contributing & Community
 - [Contributing to ALIGNMENT](CONTRIBUTING.md) - How to improve this standard

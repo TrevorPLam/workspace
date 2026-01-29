@@ -16,6 +16,50 @@
 - **Schema validation (P2):** 2-3 hours additional
 - **Secret remediation (if needed):** 2-8 hours (CRITICAL - do immediately)
 
+## 🎯 What You're Trying to Accomplish
+Separate everyday configuration from secrets, organize config files, and prevent sensitive values from being committed.
+
+## 🎓 Why This Section Exists
+Mismanaged configuration causes production bugs, and leaked secrets create security incidents. Clear boundaries keep systems safe and predictable.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Configuration
+**Simple:** Non‑secret settings like ports, feature flags, and log levels.
+**Why it matters:** Allows the same code to run in dev, staging, and prod.
+
+### Secrets
+**Simple:** Passwords, API keys, tokens, and certificates.
+**Why it matters:** Secrets must never be committed or exposed.
+
+### Environment variables
+**Simple:** Settings provided by the system at runtime.
+**Why it matters:** Safe way to inject secrets without hardcoding.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 3.1 — Classify config vs. secrets | **USER**
+**Purpose:** Know what must be protected.
+**Expected outcome:** A list of secret values and non‑secret settings.
+
+#### Subtask 3.2 — Create a config layout | **AGENT**
+**Purpose:** Centralize config files in one place.
+**Expected outcome:** Config files moved into a clear structure.
+
+#### Subtask 3.3 — Add `.env.example` and env docs | **AGENT**
+**Purpose:** Teach others how to set required env vars safely.
+**Expected outcome:** Example file with placeholders only.
+
+#### Subtask 3.4 — Remove committed secrets | **USER**
+**Purpose:** Eliminate immediate security risk.
+**Expected outcome:** Secrets removed and rotated if necessary.
+
+#### Subtask 3.5 — Enable secret scanning | **AGENT**
+**Purpose:** Prevent future leaks.
+**Expected outcome:** Automated scanning configured in CI or hooks.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Before/After Examples
 
 ### Example 1: Configuration Centralization
@@ -108,7 +152,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Secure configuration and prevent secret leaks
+**Action:** Secure configuration and prevent secret leaks | **USER**
 
 **What this means:** Ensure sensitive information (passwords, API keys, tokens) is NEVER committed to Git. Configure your repository to prevent accidents and provide safe templates for configuration.
 
@@ -295,7 +339,7 @@ Before proceeding, answer these questions:
 
 ## P1 — Recommended Actions
 
-**Action:** Centralize configuration
+**Action:** Centralize configuration | **AGENT**
 - [ ] Create `config/` directory for configuration files
   - **Note:** If code already exists, this may require moving config files
 - [ ] Implement layering model (see [Configuration Principles](../principles/Configuration-Principles.md)):
@@ -310,7 +354,7 @@ Before proceeding, answer these questions:
 - [ ] Add configuration documentation in `docs/configuration.md`
   - **Note:** If `docs/` folder doesn't exist yet, create it (see [Section 1 P1](01-Root-Directory-Structure.md)). For docs structure guidance, see [Documentation Standards](07-Documentation-Standards.md)
 
-**Action:** Set up pre-commit hooks
+**Action:** Set up pre-commit hooks | **AGENT**
 - [ ] Install pre-commit framework (Husky for Node.js, pre-commit for Python, or language-agnostic pre-commit framework)
 - [ ] Configure hooks for:
   - [ ] Linting (ESLint, Prettier, Black, RuboCop, etc. - language-specific)
@@ -322,7 +366,7 @@ Before proceeding, answer these questions:
 - [ ] Ensure hooks run in CI as well (don't rely solely on local hooks)
 - [ ] **Note:** Pre-commit hooks complement but don't replace CI checks (see [Section 5](05-CI-CD-Structure.md))
 
-**Action:** Standardize containerization and development environments
+**Action:** Standardize containerization and development environments | **AGENT**
 - [ ] Dev Containers configuration:
   - [ ] Create `.devcontainer/devcontainer.json`
   - [ ] Configure development environment (tools, extensions, settings)
@@ -341,7 +385,7 @@ Before proceeding, answer these questions:
 
 ## P2 — Advanced Actions
 
-**Action:** Validate configuration (see [Configuration Principles](../principles/Configuration-Principles.md) for rationale)
+**Action:** Validate configuration (see [Configuration Principles](../principles/Configuration-Principles.md) for rationale) | **USER**
 - [ ] Use schema validation (Zod, JSON Schema, Pydantic, Yup, etc.)
 - [ ] Generate typed configuration objects
 - [ ] Add configuration validation on:

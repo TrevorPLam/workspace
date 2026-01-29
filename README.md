@@ -12,6 +12,7 @@ This workspace contains the Repository Alignment Standard documentation, which p
 
 ## Structure
 
+- `AI/` - Agent resources and AI-related research notes
 - `ALIGNMENT/` - Complete alignment standard documentation
   - 14 core standards (00-13) covering all aspects of repository organization
   - 7 principles providing philosophical foundations
@@ -27,6 +28,12 @@ This workspace contains the Repository Alignment Standard documentation, which p
 4. Follow the standards in order (01 → 02 → 03 → ...)
 
 **For existing repositories:** See the [Migration Guide](ALIGNMENT/getting-started/Migration-Guide.md)
+
+## Additional Materials
+
+- [ALIGNMENT/analysis/README.md](ALIGNMENT/analysis/README.md) - Analysis package overview
+- [ALIGNMENT/analysis/ALIGNMENT_ANALYSIS_INDEX.md](ALIGNMENT/analysis/ALIGNMENT_ANALYSIS_INDEX.md) - Reading paths by role
+- [AI/research/README.md](AI/research/README.md) - Research notes
 
 ## For AI Agents
 

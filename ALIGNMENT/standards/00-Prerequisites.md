@@ -2,6 +2,62 @@
 
 **Prerequisites:** None (this is the starting point)
 
+## 🎯 What You're Trying to Accomplish
+Figure out what kind of project you have so the rest of ALIGNMENT gives you the right advice. This is a short questionnaire that tailors all later sections to your situation.
+
+## 🎓 Why This Section Exists
+Different project types need different rules. A versioned library needs a CHANGELOG; a one‑off script doesn’t. These decisions prevent you from doing unnecessary work and help avoid security mistakes early.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Versioned project
+**Simple:** Code that other people install and rely on; you must communicate changes with versions.
+**Why it matters:** Determines whether you need `CHANGELOG.md` and semantic versioning.
+
+### Monorepo
+**Simple:** Multiple related projects in one repository.
+**Why it matters:** Changes how you organize source code and dependencies.
+
+### Package manager
+**Simple:** The tool that installs dependencies (npm, pip, cargo, etc.).
+**Why it matters:** Determines your lockfile and dependency rules.
+
+### CI/CD
+**Simple:** Automated checks that run when you push code.
+**Why it matters:** Determines where pipeline files live and how quality checks run.
+
+### Secrets vs. configuration
+**Simple:** Secrets are passwords/tokens; configuration is non‑secret settings.
+**Why it matters:** Secrets must never be committed. This affects Section 3 and Section 10.
+
+## 🤔 Decision Checkpoints (Mentor Mode)
+- What type of project is this (library, app, API, monorepo, docs‑only)?
+- What language and package manager will you use?
+- What CI/CD platform (if any) will run your checks?
+- Is the repo public or private?
+- Do you have secrets in the repo right now?
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 0.1 — Gather project facts | **USER**
+**Purpose:** Make sure decisions reflect reality.
+**What you’ll do:** Identify repo type, language, package manager, and CI/CD platform.
+**Expected outcome:** Clear answers for each decision point.
+
+#### Subtask 0.2 — Record decisions in `alignment-progress.json` | **USER**
+**Purpose:** Keep a single source of truth for later sections.
+**Expected outcome:** Decision answers documented.
+
+#### Subtask 0.3 — Validate consistency across answers | **AGENT**
+**Purpose:** Catch conflicts (e.g., monorepo + no package manager).
+**Expected outcome:** Any mismatches flagged for correction.
+
+#### Subtask 0.4 — Share the decision summary | **USER**
+**Purpose:** Align the team on the chosen path.
+**Expected outcome:** Decisions communicated to collaborators.
+
+## 📘 Detailed Reference (Original Guidance)
+
 Before beginning repository alignment, ensure you have completed these foundational steps.
 
 ## Pre-Flight Checklist

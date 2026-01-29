@@ -1,0 +1,29 @@
+# AI Agents Registry (TOON Template)
+
+meta{status, owner, last_updated}:
+[Draft|Active|Deprecated], [Team or Individual], [YYYY-MM-DD]
+
+purpose{statement}:
+[Why this registry exists and how it will be used]
+
+scope{repositories, environments, data_sensitivity}:
+[Paths or names], [dev|staging|prod], [public|internal|confidential]
+
+agents[1]{agent_id, name, type, model, primary_role, responsibilities, allowed_actions, disallowed_actions, tooling, repo_access, secret_access, safety_policy, success_metrics, review_gates, provenance_location, provenance_schema, escalation_owner, approval_required}:
+[agent_id], [Human-friendly name], [Coding|Research|Review|Operations], [Model name/version], [Primary responsibility], [Responsibility 1; Responsibility 2], [Create/modify files; Run tests], [Deploy to production; Access secrets], [IDE tools; CI tools; MCP servers], [Read/Write scope], [None|Specific list], [Policy set/guardrails], [Pass rate; lead time], [Human review required?], [path or system], [PROV-AGENT|custom], [Name/Team], [Yes|No]
+
+workflow_default[5]{step, description}:
+1, Intake (request captured + scope confirmed)
+2, Plan (tasks + assumptions documented)
+3, Execute (changes made with traceability)
+4, Review (tests + human approval as required)
+5, Record (provenance + outcomes logged)
+
+boundaries[4]{area, rule}:
+Data Handling, [No PII; redact secrets]
+Security, [No privilege escalation; no prod access]
+Licensing, [Respect repo licenses and attribution]
+Privacy, [No external sharing without approval]
+
+change_log[1]{date, summary, owner}:
+[YYYY-MM-DD], [Change summary], [Owner]

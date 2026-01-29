@@ -8,6 +8,50 @@
 - [Testing Principles](../principles/Testing-Principles.md) - Core philosophy: *Tests are specifications, documentation, and safety nets. Write tests that describe behavior, catch regressions, and enable confident refactoring.*
   - Key concepts: Test pyramid (70% unit, 20% integration, 10% E2E), TDD red-green-refactor cycle, quality over quantity, test organization principles
 
+## 🎯 What You're Trying to Accomplish
+Organize tests so they’re easy to find, fast to run, and meaningful for quality.
+
+## 🎓 Why This Section Exists
+Unstructured tests are slow, flaky, and ignored. A clear testing structure improves confidence and makes CI faster.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Test pyramid
+**Simple:** Mostly unit tests, some integration tests, few end‑to‑end tests.
+**Why it matters:** Keeps feedback fast while still covering real behavior.
+
+### Test fixtures
+**Simple:** Reusable setup data for tests.
+**Why it matters:** Reduces duplication and makes tests consistent.
+
+### Coverage
+**Simple:** How much code is exercised by tests.
+**Why it matters:** Helps spot risky untested areas.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 6.1 — Choose testing frameworks | **USER**
+**Purpose:** Pick tools that fit your language.
+**Expected outcome:** Frameworks selected.
+
+#### Subtask 6.2 — Create test folder structure | **AGENT**
+**Purpose:** Make test locations predictable.
+**Expected outcome:** `tests/` or equivalent structure established.
+
+#### Subtask 6.3 — Add baseline tests | **USER**
+**Purpose:** Ensure at least one test runs in CI.
+**Expected outcome:** Smoke/unit tests added.
+
+#### Subtask 6.4 — Configure test runner in CI | **AGENT**
+**Purpose:** Run tests on every push.
+**Expected outcome:** CI executes tests reliably.
+
+#### Subtask 6.5 — Review results and adjust | **USER**
+**Purpose:** Confirm tests are useful and stable.
+**Expected outcome:** Passing, stable test suite.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -38,7 +82,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Set up testing infrastructure
+**Action:** Set up testing infrastructure | **AGENT**
 - [ ] Choose and document test pattern (see [Testing Principles](../principles/Testing-Principles.md) for guidance):
   - Co-located: `Button.tsx` → `Button.test.tsx` (recommended for most projects)
   - Centralized: `tests/` mirroring source structure
@@ -55,7 +99,7 @@ Before proceeding, answer these questions:
 
 ## P1 — Recommended Actions
 
-**Action:** Organize test structure (see [Testing Principles](../principles/Testing-Principles.md) for organization principles)
+**Action:** Organize test structure (see [Testing Principles](../principles/Testing-Principles.md) for organization principles) | **AGENT**
 - [ ] Separate test categories following test pyramid:
   - `tests/unit/` - Unit tests (70% of tests - fast, isolated)
   - `tests/integration/` - Integration tests (20% of tests - component interactions)
@@ -69,7 +113,7 @@ Before proceeding, answer these questions:
   - Overall: 60%+ coverage
   - New code: 80%+ coverage requirement
 
-**Action:** Define performance budgets
+**Action:** Define performance budgets | **USER**
 - [ ] Set performance budgets for:
   - Bundle size limits (for web apps, e.g., max 500KB initial bundle)
   - Lighthouse scores (Performance ≥90, Accessibility ≥95, Best Practices ≥90, SEO ≥90)
@@ -86,7 +130,7 @@ Before proceeding, answer these questions:
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced testing (see [Testing Principles](../principles/Testing-Principles.md) for advanced techniques)
+**Action:** Advanced testing (see [Testing Principles](../principles/Testing-Principles.md) for advanced techniques) | **AGENT**
 - [ ] Consider Test-Driven Development (TDD) for new features:
   - Red: Write failing test first
   - Green: Write minimum code to pass
@@ -113,7 +157,7 @@ Before proceeding, answer these questions:
 - Separates test code from production code
 - Good for: Large projects, strict separation needs
 
-**Action:** Choose and document your pattern
+**Action:** Choose and document your pattern | **USER**
 - [ ] Decide on test pattern (co-located or centralized)
 - [ ] Document pattern choice in `docs/testing.md` or README
 - [ ] Create first test file following chosen pattern

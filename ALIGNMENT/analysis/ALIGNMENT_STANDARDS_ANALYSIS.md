@@ -1,7 +1,7 @@
 # ALIGNMENT Standards Analysis & Modernization Plan
 
 **Analyzed Date:** January 29, 2026  
-**Location:** `C:\dev\workspace\ALIGNMENT\standards`  
+**Location:** `ALIGNMENT/standards/`  
 **Status:** In Progress - Planning phase for beginner-friendly refactor + subtask creation + AGENT/USER tagging
 
 ---

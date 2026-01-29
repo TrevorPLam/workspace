@@ -46,6 +46,28 @@ A messy root directory with 25+ files overwhelms people. A clean root with 5-10 
 - Tests → `tests/`
 - Documentation → `docs/`
 
+## ✅ Subtasks (Tagged Quick Start)
+
+#### Subtask 1.1 — Inventory root files | **USER**
+**Purpose:** Know what’s in root before moving anything.
+**Expected outcome:** A list of all root files with their purpose.
+
+#### Subtask 1.2 — Decide what must stay | **USER**
+**Purpose:** Keep only essential files visible.
+**Expected outcome:** Clear keep/move decisions per file.
+
+#### Subtask 1.3 — Move non‑essential files into folders | **AGENT**
+**Purpose:** Reduce root clutter without breaking references.
+**Expected outcome:** Files relocated to `config/`, `scripts/`, `docs/`, etc.
+
+#### Subtask 1.4 — Update `.gitignore` for generated files | **AGENT**
+**Purpose:** Prevent future clutter and secret leaks.
+**Expected outcome:** Standard ignore patterns added.
+
+#### Subtask 1.5 — Verify root cleanliness | **USER**
+**Purpose:** Confirm the root is understandable at a glance.
+**Expected outcome:** ≤10 root files and obvious purpose for each.
+
 ## 📊 Before/After Examples
 
 ### JavaScript Project
@@ -68,7 +90,7 @@ Key moves:
 
 ## P0 — Required Actions
 
-**Action:** Clean up root directory
+**Action:** Clean up root directory | **USER**
 
 **What this means:** Your repository's root (top-level folder) should only contain essential files that someone needs to see immediately. Think of it like a desk - keep only what you need on top, organize everything else in drawers (subdirectories).
 
@@ -160,7 +182,7 @@ Key moves:
 
 ## P1 — Recommended Actions
 
-**Action:** Organize related files into folders
+**Action:** Organize related files into folders | **USER**
 
 **What this means:** Group related files together in dedicated folders. This makes your repository easier to navigate and shows clear organization patterns.
 
@@ -210,7 +232,7 @@ Key moves:
 
 ## P2 — Advanced Actions
 
-**Action:** Add repository index and templates
+**Action:** Add repository index and templates | **AGENT**
 
 **What this means:** Create advanced organizational tools that help both humans and automation understand your repository structure.
 

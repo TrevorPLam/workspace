@@ -11,6 +11,50 @@
 - **Full observability stack (P1 + P2):** 8-16 hours
 - **Distributed tracing (P2):** 4-8 hours additional
 
+## 🎯 What You're Trying to Accomplish
+Make the system observable so you can detect issues quickly and understand what’s happening in production.
+
+## 🎓 Why This Section Exists
+Without observability, problems show up as user complaints. Logs, metrics, and alerts help you fix issues before they escalate.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Structured logging
+**Simple:** Logs in a consistent, machine‑readable format (often JSON).
+**Why it matters:** Makes searching and alerting easier.
+
+### Metrics
+**Simple:** Numeric signals about system health.
+**Why it matters:** Helps you detect performance regressions.
+
+### Tracing
+**Simple:** Follow a request across services.
+**Why it matters:** Identifies slow or failing components.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 11.1 — Define observability goals | **USER**
+**Purpose:** Decide what “healthy” looks like.
+**Expected outcome:** Key signals selected (logs, metrics, traces).
+
+#### Subtask 11.2 — Implement structured logging | **AGENT**
+**Purpose:** Ensure logs are consistent.
+**Expected outcome:** JSON or structured logs enabled.
+
+#### Subtask 11.3 — Add health checks | **AGENT**
+**Purpose:** Provide a quick service status endpoint.
+**Expected outcome:** Health check endpoint available.
+
+#### Subtask 11.4 — Configure alerts | **USER**
+**Purpose:** Catch issues early.
+**Expected outcome:** Alert thresholds documented.
+
+#### Subtask 11.5 — Document runbooks | **USER**
+**Purpose:** Make incident response repeatable.
+**Expected outcome:** Runbooks or playbooks created.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -31,7 +75,7 @@ Before proceeding, answer these questions:
 
 ## P0 — Required Actions
 
-**Action:** Implement basic logging
+**Action:** Implement basic logging | **AGENT**
 - [ ] Configure structured logging (JSON format recommended)
 - [ ] Ensure errors include sufficient context:
   - Error message
@@ -42,7 +86,7 @@ Before proceeding, answer these questions:
 
 ## P1 — Recommended Actions
 
-**Action:** Create health dashboard
+**Action:** Create health dashboard | **AGENT**
 - [ ] Create `HEALTHCHECK.md` summarizing:
   - Current build status
   - Test status and coverage
@@ -56,7 +100,7 @@ Before proceeding, answer these questions:
 
 See [Templates](Templates.md) for HEALTHCHECK.md template.
 
-**Action:** Document incident response process
+**Action:** Document incident response process | **USER**
 - [ ] Define incident severity levels:
   - P0/Critical: Service down, data loss, security breach
   - P1/High: Major feature broken, significant performance degradation
@@ -81,7 +125,7 @@ See [Templates](Templates.md) for HEALTHCHECK.md template.
 - [ ] Link from `docs/operations.md` (see [Section 7 P1](07-Documentation-Standards.md))
 - [ ] Integrate with monitoring/alerting (see P2 below)
 
-**Action:** Implement AI-Native Provenance Tracking (for AI/agent repositories)
+**Action:** Implement AI-Native Provenance Tracking (for AI/agent repositories) | **AGENT**
 - [ ] Set up provenance tracking system for AI agent interactions:
   - [ ] Track prompts and responses with metadata (timestamp, model, version)
   - [ ] Capture decision rationale and context
@@ -103,13 +147,13 @@ See [Templates](Templates.md) for AI Provenance Schema template.
 
 ## P2 — Advanced Actions
 
-**Action:** Automate health checks
+**Action:** Automate health checks | **AGENT**
 - [ ] Set up automated repository linting (structure linter)
 - [ ] Schedule weekly or monthly repo audits
 - [ ] Create health check automation script
 - [ ] Track health metrics over time
 
-**Action:** Set up experiment tracking (for AI/ML repositories)
+**Action:** Set up experiment tracking (for AI/ML repositories) | **AGENT**
 - [ ] Choose experiment tracking framework:
   - [ ] MLflow
   - [ ] Weights & Biases
@@ -150,7 +194,7 @@ See [Templates](Templates.md) for AI Provenance Schema template.
 - [ ] Experiment tracking (MLflow, W&B)
 - [ ] Model versioning
 
-**Action:** Implement observability appropriate to your project
+**Action:** Implement observability appropriate to your project | **USER**
 - [ ] Start with basic logging (P0)
 - [ ] Add health monitoring for production (P1)
 - [ ] Consider advanced observability for complex systems (P2)

@@ -11,6 +11,50 @@
 - **Existing repository (large, 50+ source files):** 4-8 hours
 - **Note:** Time increases significantly if import paths need updating across many files
 
+## 🎯 What You're Trying to Accomplish
+Place source code in a predictable, beginner‑friendly layout so new contributors can find things fast and tools can work consistently.
+
+## 🎓 Why This Section Exists
+Inconsistent layouts cause confusion, broken imports, and hard‑to‑maintain code. A clear layout makes refactors safer and onboarding faster.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### Source of truth
+**Simple:** There should be one obvious place where code lives (e.g., `src/`).
+**Why it matters:** Prevents duplicate or hidden code paths.
+
+### Module boundaries
+**Simple:** Each folder has one purpose (feature, layer, or package).
+**Why it matters:** Keeps responsibilities clear and avoids tangled dependencies.
+
+### Import paths
+**Simple:** The paths you use when you `import`/`require` code.
+**Why it matters:** Moving files requires updating these paths.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 2.1 — Inventory current code layout | **USER**
+**Purpose:** Understand the current structure before changing it.
+**Expected outcome:** A list of top‑level code folders and entry points.
+
+#### Subtask 2.2 — Choose a layout pattern | **USER**
+**Purpose:** Pick a structure that matches your project type.
+**Expected outcome:** Selected layout (e.g., `src/`, `apps/` + `packages/`, `cmd/` + `pkg/`).
+
+#### Subtask 2.3 — Create target folders | **AGENT**
+**Purpose:** Establish the new structure without moving files yet.
+**Expected outcome:** New folders created and ready.
+
+#### Subtask 2.4 — Migrate source files | **AGENT**
+**Purpose:** Move files into the chosen structure.
+**Expected outcome:** Code is relocated with paths updated.
+
+#### Subtask 2.5 — Verify build/tests | **USER**
+**Purpose:** Ensure the app still runs after moves.
+**Expected outcome:** Builds/tests pass and imports resolve.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Questions to Answer
 
 Before proceeding, answer these questions:
@@ -117,7 +161,7 @@ monorepo/
 
 ## P0 — Required Actions
 
-**Action:** Organize source code into dedicated directories
+**Action:** Organize source code into dedicated directories | **AGENT**
 
 **What this means:** Move all your actual code (the files that make your application work) out of the root directory and into a clearly-named folder structure. The root should only have configuration and documentation - never actual source code.
 
@@ -226,17 +270,17 @@ monorepo/
 
 - [ ] **Audit directories with generic names:**
   
-  - `helpers/` - **Action:** Rename to what they actually help with
+  - `helpers/` - **Action:** Rename to what they actually help with | **USER**
     - ✅ Better: `date-helpers/`, `string-helpers/`, or move to `utils/`
   
-  - `utils/` - **Action:** Make sure it's clearly scoped
+  - `utils/` - **Action:** Make sure it's clearly scoped | **USER**
     - ✅ Keep if: Contains genuinely reusable utilities
     - ❌ Delete if: Just one or two functions (move them where they're used)
   
-  - `common/` - **Action:** Rename to be specific
+  - `common/` - **Action:** Rename to be specific | **USER**
     - ✅ Better: `shared/`, `core/`, or specific name like `auth/`
   
-  - `misc/` or `stuff/` - **Action:** Delete or categorize
+  - `misc/` or `stuff/` - **Action:** Delete or categorize | **AGENT**
     - Every file should have a clear category
 
 - [ ] **For each vague directory, choose:**
@@ -585,7 +629,7 @@ monorepo/
 
 ## P1 — Recommended Actions
 
-**Action:** Improve code organization
+**Action:** Improve code organization | **AGENT**
 - [ ] Keep directory depth shallow (max 3-4 levels)
 - [ ] Use descriptive directory names
 - [ ] Consolidate shared utilities into single location
@@ -593,7 +637,7 @@ monorepo/
 
 ## P2 — Advanced Actions
 
-**Action:** Apply architectural boundaries
+**Action:** Apply architectural boundaries | **AGENT**
 - [ ] Organize by domain → module → component
 - [ ] Enforce dependency rules (e.g., packages cannot depend on apps)
 - [ ] Document architectural decisions in ADRs

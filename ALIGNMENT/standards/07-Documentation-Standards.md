@@ -15,6 +15,50 @@
 - **API documentation (OpenAPI/Swagger):** 2-4 hours additional
 - **Automated documentation generation:** 1-2 hours setup
 
+## 🎯 What You're Trying to Accomplish
+Create documentation that helps someone new understand, run, and contribute to the project without guessing.
+
+## 🎓 Why This Section Exists
+Good docs reduce support load and speed up onboarding. Poor docs slow everything down.
+
+## 📚 Key Concepts (Mentor Mode)
+
+### README
+**Simple:** The front door of the project.
+**Why it matters:** It’s the first file people read.
+
+### Docs index
+**Simple:** A map of all deeper documentation.
+**Why it matters:** Prevents lost or duplicated docs.
+
+### Audience awareness
+**Simple:** Write for beginners first, experts second.
+**Why it matters:** Improves adoption and success rate.
+
+## ✅ Subtasks (With Owner Tags)
+
+#### Subtask 7.1 — Inventory existing docs | **USER**
+**Purpose:** Know what you already have.
+**Expected outcome:** List of current docs and gaps.
+
+#### Subtask 7.2 — Create docs index | **AGENT**
+**Purpose:** Provide a clear navigation starting point.
+**Expected outcome:** `docs/README.md` with links.
+
+#### Subtask 7.3 — Update README essentials | **USER**
+**Purpose:** Ensure basics are covered.
+**Expected outcome:** README includes overview, install, usage.
+
+#### Subtask 7.4 — Add contribution and support links | **AGENT**
+**Purpose:** Make collaboration easy.
+**Expected outcome:** Links to CONTRIBUTING, community, issues.
+
+#### Subtask 7.5 — Validate doc links | **AGENT**
+**Purpose:** Prevent broken navigation.
+**Expected outcome:** Internal links verified.
+
+## 📘 Detailed Reference (Original Guidance)
+
 ## Before/After Examples
 
 ### Example 1: README Improvement
@@ -96,7 +140,7 @@ project/
 
 ## P0 — Required Actions
 
-**Action:** Create essential documentation (see [Documentation Principles](../principles/Documentation-Principles.md) for foundational concepts)
+**Action:** Create essential documentation (see [Documentation Principles](../principles/Documentation-Principles.md) for foundational concepts) | **USER**
 - [ ] Write `README.md` that answers in under 1 minute:
   - What the repo is
   - How to install/run it
@@ -112,7 +156,7 @@ See [Templates](Templates.md) for README template.
 
 ## P1 — Recommended Actions
 
-**Action:** Expand documentation (see [Documentation Principles](../principles/Documentation-Principles.md) for organization principles)
+**Action:** Expand documentation (see [Documentation Principles](../principles/Documentation-Principles.md) for organization principles) | **USER**
 - [ ] Ensure `docs/` folder exists (should be created in [Section 1 P1](01-Root-Directory-Structure.md))
 - [ ] Apply living documentation principle (see [Documentation Principles](../principles/Documentation-Principles.md)):
   - [ ] Update documentation when code changes
@@ -138,7 +182,7 @@ See [Templates](Templates.md) for README template.
 - [ ] For APIs: maintain OpenAPI/Swagger specs
 - [ ] Ensure accessibility: alt text for images, screen reader compatibility
 
-**Action:** Create developer onboarding documentation
+**Action:** Create developer onboarding documentation | **USER**
 - [ ] Create `docs/onboarding.md` with:
   - Prerequisites: Required tools, versions, accounts, access requests
   - Local development setup: Step-by-step instructions to get running
@@ -151,7 +195,7 @@ See [Templates](Templates.md) for README template.
 - [ ] Keep onboarding guide updated with codebase and process changes
 - [ ] Consider adding a "Day 1" checklist for new developers
 
-**Action:** Document API versioning strategy (for API projects)
+**Action:** Document API versioning strategy (for API projects) | **USER**
 - [ ] Choose versioning scheme:
   - URL versioning: `/api/v1/`, `/api/v2/` (recommended for REST APIs)
   - Header versioning: `Accept: application/vnd.api+json;version=1` (for content negotiation)
@@ -163,7 +207,7 @@ See [Templates](Templates.md) for README template.
 - [ ] Link to OpenAPI/Swagger specs (already in P1 above)
 - [ ] Document versioning decisions in ADRs if significant (see P2 below)
 
-**Action:** Implement FAIR Principles (Findable, Accessible, Interoperable, Reusable)
+**Action:** Implement FAIR Principles (Findable, Accessible, Interoperable, Reusable) | **USER**
 - [ ] **Findable:**
   - [ ] Clear metadata in README (description, keywords, tags)
   - [ ] Standardized naming conventions
@@ -191,7 +235,7 @@ See [Templates](Templates.md) for README template.
 - [ ] Document FAIR compliance in `docs/fair-compliance.md`
 - [ ] **Note:** Especially important for research/data repositories
 
-**Action:** Set up automated documentation generation
+**Action:** Set up automated documentation generation | **AGENT**
 - [ ] Configure API documentation generation:
   - [ ] Generate from OpenAPI/Swagger specs
   - [ ] Use tools: Swagger UI, Redoc, or custom generator
@@ -218,7 +262,7 @@ See [Templates](Templates.md) for README template.
 
 ## P2 — Advanced Actions
 
-**Action:** Advanced documentation
+**Action:** Advanced documentation | **USER**
 - [ ] Create ADRs in `docs/adr/` following format: `####-decision-name.md`
 - [ ] Add runbooks for operations and incident response
 - [ ] Set up versioned documentation system (Docusaurus, MkDocs, etc.)

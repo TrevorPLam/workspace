@@ -33,7 +33,7 @@
    └─ Master template + Section 00 as example
 ```
 
-**All files created in:** `C:\dev\workspace\`
+**All files created in:** repository root (`./`)
 
 ---
 
@@ -308,7 +308,7 @@ Week 7+: PHASE 6 - Integration & Polish
 
 ## 📁 FILES LOCATION
 
-All 7 documents in: **C:\dev\workspace\**
+All 7 documents in: **repository root (`./`)**
 
 ```
 README_ALIGNMENT_ANALYSIS.md

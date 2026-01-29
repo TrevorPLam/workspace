@@ -6,7 +6,6 @@ Thank you for your interest in contributing to the ALIGNMENT Repository Standard
 
 - [Detailed Contribution Guidelines](ALIGNMENT/CONTRIBUTING.md) - Comprehensive guide for ALIGNMENT contributions
 - [Principles Workflow](ALIGNMENT/principles/PRINCIPLES-WORKFLOW.md) - Process for proposing new principles
-- [Optimization Roadmap](ALIGNMENT/OPTIMIZATION-ROADMAP.md) - Planned improvements and features
 
 ## How to Contribute
 

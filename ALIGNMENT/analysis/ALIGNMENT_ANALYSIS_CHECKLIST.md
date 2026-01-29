@@ -248,10 +248,10 @@
 
 ---
 
-## 📁 Files Created in C:\dev\workspace\
+## 📁 Files Created in repository root (./)
 
 ```
-C:\dev\workspace\
+./
 ├── README_ALIGNMENT_ANALYSIS.md           ✅ (2 pages)
 ├── ALIGNMENT_ANALYSIS_INDEX.md            ✅ (8 pages)
 ├── ALIGNMENT_MODERNIZATION_SUMMARY.md     ✅ (8 pages)
@@ -348,7 +348,7 @@ This comprehensive analysis provides:
 ✅ **Why:** Make standards beginner-friendly, reduce jargon, improve accessibility  
 ✅ **How:** 6-phase approach, 100+ decomposed tasks, clear AGENT/USER ownership  
 ✅ **When:** 7 weeks with dedicated team (or phased approach)  
-✅ **Where:** All delivered in C:\dev\workspace\  
+✅ **Where:** All delivered in repository root (`./`)  
 ✅ **Who:** 3-4 person team with defined roles  
 ✅ **How Much:** ~585 person-hours (~4-5 person-months)  
 ✅ **ROI:** 10x within first year  
