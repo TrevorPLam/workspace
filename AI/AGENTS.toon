@@ -1,29 +1,61 @@
-# AI Agents Registry (TOON Template)
-
-meta{status, owner, last_updated}:
-[Draft|Active|Deprecated], [Team or Individual], [YYYY-MM-DD]
+# AGENTS.toon - Agent-optimized repository guidance
 
 purpose{statement}:
-[Why this registry exists and how it will be used]
++Provide agent-specific instructions for repository development, testing, and deployment workflows.
++Complement README.md with detailed technical guidance that agents need but humans don't.
++
 
-scope{repositories, environments, data_sensitivity}:
-[Paths or names], [dev|staging|prod], [public|internal|confidential]
+agents[3]{name, role, scope, instructions}:
+codex_agent, General Development, Full repository, Use pnpm for package management, run tests before commits, follow Rust clippy guidelines
+test_agent, Quality Assurance, Testing only, Focus on test coverage, use pytest for Python, run integration tests in CI/CD
+docs_agent, Documentation, Documentation only, Update docs on API changes, maintain contributing guides, ensure README accuracy
 
-agents[1]{agent_id, name, type, model, primary_role, responsibilities, allowed_actions, disallowed_actions, tooling, repo_access, secret_access, safety_policy, success_metrics, review_gates, provenance_location, provenance_schema, escalation_owner, approval_required}:
-[agent_id], [Human-friendly name], [Coding|Research|Review|Operations], [Model name/version], [Primary responsibility], [Responsibility 1; Responsibility 2], [Create/modify files; Run tests], [Deploy to production; Access secrets], [IDE tools; CI tools; MCP servers], [Read/Write scope], [None|Specific list], [Policy set/guardrails], [Pass rate; lead time], [Human review required?], [path or system], [PROV-AGENT|custom], [Name/Team], [Yes|No]
+environment_setup[4]{tool, command, purpose, notes}:
+pnpm, pnpm install, Install dependencies, Use --filter for specific packages
+uv, uv venv && uv sync, Python environment setup, Creates .venv with dependencies
+just, just fmt, Rust code formatting, Run automatically after code changes
+prek, prek install, Pre-commit hooks, Enable automatic checks on commits
 
-workflow_default[5]{step, description}:
-1, Intake (request captured + scope confirmed)
-2, Plan (tasks + assumptions documented)
-3, Execute (changes made with traceability)
-4, Review (tests + human approval as required)
-5, Record (provenance + outcomes logged)
+testing[5]{type, command, scope, when_to_run, notes}:
+unit, cargo test -p <package>, Rust packages, After code changes, Scope to specific package
+integration, pytest tests/, Python, Before PRs, Use breeze for full environment
+lint, pnpm lint, All code, Before commits, Fix errors before proceeding
+format, just fmt, Rust only, After changes, Automatic formatting
+docs, uv run --group docs build-docs, Documentation, After API changes, Ensure docs stay current
 
-boundaries[4]{area, rule}:
-Data Handling, [No PII; redact secrets]
-Security, [No privilege escalation; no prod access]
-Licensing, [Respect repo licenses and attribution]
-Privacy, [No external sharing without approval]
+workflow[4]{stage, action, command, verification}:
+development, Write code, Editor, Follow language-specific conventions
+testing, Run tests, pnpm test or cargo test, All tests pass
+linting, Check style, pnpm lint or clippy, No lint errors
+documentation, Update docs, Edit relevant files, Docs build successfully
+commit, Create commit, git commit -m "type(scope): description", Follow conventional commits
 
-change_log[1]{date, summary, owner}:
-[YYYY-MM-DD], [Change summary], [Owner]
+conventions[6]{area, rule, example, enforcement}:
+naming, Crate prefixes, codex- prefix for Rust crates, Manual review
+formatting, Inline format args, format!("Hello {}", name) vs format!("Hello {name}"), Clippy lint
+testing, Object equality, assert_eq!(expected, actual) vs field comparison, Manual review
+commits, Conventional commits, feat(auth): add OAuth2 support, Pre-commit hook
+pr_titles, Package prefix, [package-name] Description, PR template
+dependencies, Lock files, Commit lockfiles, CI/CD validation
+
+file_patterns[3]{pattern, purpose, agent_handling}:
+AGENTS.md, Human-readable agent instructions, Reference for TOON conversion
+AGENTS.toon, Agent-optimized format, Primary agent consumption
+.github/workflows/, CI/CD configuration, Automated validation
+contributing-docs/, Detailed guides, Reference documentation
+
+commands[5]{name, command, context, frequency, automation}:
+install, pnpm install, Workspace setup, As needed, Manual
+test, pnpm test, Development, Per change, Manual
+lint, pnpm lint, Pre-commit, Always, Manual
+format, just fmt, Post-change, Always, Automatic
+docs, uv run --group docs build-docs, Documentation changes, As needed, Manual
+
+validation[3]{check, command, failure_action}:
+syntax, cargo check, Fix errors before proceeding
+tests, cargo test --all-features, Run full test suite
+docs, build-docs, Update documentation sources
+
+integration_points[2]{system, method}:
+github, GitHub Actions, .github/workflows/ files
+ci_cd, Multiple platforms, Platform-specific configuration files
